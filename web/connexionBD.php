@@ -6,7 +6,7 @@
 	define('SERVER', 'localhost');
 	define('USER', 'root');
 	define('PASSWD', '');
-	define('BASE', 'greenteuf');
+	define('BASE', 'zingage');
 
 	$conn = mysql_connect(SERVER,USER,PASSWD,BASE);
 	$dbcon = mysql_select_db(BASE);
