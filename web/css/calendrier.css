@@ -1,0 +1,16 @@
+#ds_calclass{
+	border-style: solid;
+	border-width: 1px;
+}
+
+#ds_calclass td{
+	padding: 2px;
+}
+
+.ds_month{
+	background-color: lightgreen;
+}
+
+.ds_close {
+	background-color: lightcoral;
+}
