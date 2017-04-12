@@ -6,10 +6,10 @@
   <div id="admin">
 
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="/GreenTeuf/adm/admin">Produits</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminUsr">Utilisateurs</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminCustom">Personnalisation</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminCommande">Commande</a></li>
+      <li role="presentation" class="active"><a href="/zingage/adm/admin">Produits</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminUsr">Utilisateurs</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminCustom">Personnalisation</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminCommande">Commande</a></li>
     </ul>
 
     <section id="sectionAdmin">
@@ -39,7 +39,7 @@
                     <h4 class='modal-title'>Ajouter un article</h4>
                   </div>
                   <div class='modal-body'>
-                  <form action='/GreenTeuf/adm/addProduit' method='post' class='form-horizontal'>
+                  <form action='/zingage/adm/addProduit' method='post' class='form-horizontal'>
                     <div class='form-group'>
                       <label for='nom' class='col-sm-3 control-label'>Nom : </label>
                       <div class='col-sm-9'>
@@ -137,10 +137,10 @@
             else $st = 'Non';?>
             <tr>
               <td>
-                <a href='/GreenTeuf/ficheProduit/id=<?php echo $article['id_article']?>'><img src='/GreenTeuf/web/images/article/<?php echo $article['img_article']?>' alt='<?php echo $article['nom_article']?>'/></a>
+                <a href='/zingage/ficheProduit/id=<?php echo $article['id_article']?>'><img src='/zingage/web/images/article/<?php echo $article['img_article']?>' alt='<?php echo $article['nom_article']?>'/></a>
               </td>
               <td>
-                <a href='/GreenTeuf/ficheProduit/<?php echo $article['id_article']?>'><?php echo $article['nom_article']?></a></br>
+                <a href='/zingage/ficheProduit/<?php echo $article['id_article']?>'><?php echo $article['nom_article']?></a></br>
                 <p>
                   <?php echo $article['description_article']?>
                 </p>
@@ -163,7 +163,7 @@
                           <h4 class='modal-title'>Modifier l'article</h4>
                         </div>
                         <div class='modal-body'>
-                        <form action='/GreenTeuf/adm/admin/modifierArticle/id=<?php echo $article['id_article'] ?>' method='post' class='form-horizontal'>
+                        <form action='/zingage/adm/admin/modifierArticle/id=<?php echo $article['id_article'] ?>' method='post' class='form-horizontal'>
 							            <input type='hidden' id='id' name='id' >
                           <div class='form-group'>
                             <label for='nom' class='col-sm-3 control-label'>Nom : </label>
@@ -242,7 +242,7 @@
               </td>
               <td>
                 <!-- fait le traitement pour supprimer l'article -->
-                <form action='/GreenTeuf/adm/suppadminProduit/id=<?php echo $article['id_article'] ?>' method="delete">
+                <form action='/zingage/adm/suppadminProduit/id=<?php echo $article['id_article'] ?>' method="delete">
                     <button type='submit' class='btn btn-default btn-lg'>
                         <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
                     </button>

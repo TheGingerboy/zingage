@@ -6,10 +6,10 @@
   <div id="admin">
 
     <ul class="nav nav-pills">
-      <li role="presentation"><a href="/GreenTeuf/adm/admin">Produits</a></li>
-      <li role="presentation" class="active"><a href="/GreenTeuf/adm/adminUsr">Utilisateurs</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminCustom">Personnalisation</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminCommande">Commande</a></li>
+      <li role="presentation"><a href="/zingage/adm/admin">Produits</a></li>
+      <li role="presentation" class="active"><a href="/zingage/adm/adminUsr">Utilisateurs</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminCustom">Personnalisation</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminCommande">Commande</a></li>
     </ul>
 
 
@@ -59,7 +59,7 @@
                     <?php echo $user["tel_user"]; ?>
                 </td>
                 <td>
-                <form action='/GreenTeuf/adm/suppadminUsr/id=<?php echo $user['id_user'] ?>' method="delete">
+                <form action='/zingage/adm/suppadminUsr/id=<?php echo $user['id_user'] ?>' method="delete">
                     <button type='submit' class='btn btn-default btn-lg'>
                         <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
                     </button>

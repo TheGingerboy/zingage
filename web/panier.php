@@ -135,7 +135,7 @@ else {
           Je valide ma commande <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
         <?php }
         else { ?>
-          <button type="button" class="btn btn-default btn-lg" style="margin-left: 45%" onclick="location.href='/GreenTeuf/connexion';">
+          <button type="button" class="btn btn-default btn-lg" style="margin-left: 45%" onclick="location.href='/zingage/connexion';">
           Connectez-vous <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
           <?php } ?>
 

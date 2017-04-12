@@ -106,7 +106,7 @@ if ($_SESSION['identifiant']){
 			      </div>
 			      <div class="col-sm-offset-6 col-sm-6">
 			        <input type="submit" class="btn btn-success" value="Valider"></button>
-			        <button type="text" class="btn btn-danger" value="Annuler"onclick="window.location='/greenteuf'">Annuler</button>
+			        <button type="text" class="btn btn-danger" value="Annuler"onclick="window.location='/zingage'">Annuler</button>
 			      </div>
 			      <p>
 			        N'oubliez pas de valider vos choix :)

@@ -7,10 +7,10 @@
 
 <div id="admin">
     <ul class="nav nav-pills">
-        <li role="presentation"><a href="/GreenTeuf/adm/admin">Produits</a></li>
-        <li role="presentation"><a href="/GreenTeuf/adm/adminUsr">Utilisateurs</a></li>
-        <li role="presentation"><a href="/GreenTeuf/adm/adminCustom">Personnalisation</a></li>
-        <li role="presentation" class="active"><a href="/GreenTeuf/adm/adminCommande">Commande</a></li>
+        <li role="presentation"><a href="/zingage/adm/admin">Produits</a></li>
+        <li role="presentation"><a href="/zingage/adm/adminUsr">Utilisateurs</a></li>
+        <li role="presentation"><a href="/zingage/adm/adminCustom">Personnalisation</a></li>
+        <li role="presentation" class="active"><a href="/zingage/adm/adminCommande">Commande</a></li>
     </ul>
     <section id="commande">
             <h2>Historique des commandes</h2>
@@ -67,7 +67,7 @@
                                         <div class="modal-body">
                                             <section class="row">
                                                 <div class=" col-sm-offset-2 col-sm-5">
-                                                    <h3>Société GreenTeuf</h3>
+                                                    <h3>Société zingage</h3>
                                                     <p>36 rue des près</br>
                                                         45100 Orléans </br>
                                                         France
@@ -90,9 +90,9 @@
                                                         <?php if ($commande['date_rendu_prevu_commande']!=null){
                                                                     echo " Paiement du : <span class='paie'>".$commande['date_rendu_prevu_commande']."</span></br>";
                                                                 }?>
-                                                        Emis par : <span class="emis">Société GreenTeuf</span></br>
+                                                        Emis par : <span class="emis">Société zingage</span></br>
                                                         Contact client :
-                                                        <span class="contact1">GreenTeuf</br></span>
+                                                        <span class="contact1">zingage</br></span>
                                                         <span class="contact"><?php echo $mailSite ?></br></span>
                                                         <span class="contact"><?php echo $telSite ?></span>
                                                     </p>
@@ -127,7 +127,7 @@
                                             <div class="clear"></div>
                                             <section class="row">
                                                 <div class="col-sm-4">
-                                                    <h4>GreenTeuf</h4>
+                                                    <h4>zingage</h4>
                                                     <p>
                                                     36 rue des près</br>
                                                     45100 Orléans </br>
@@ -148,7 +148,7 @@
                                                     <p>
                                                     Banque : Caisse d'épargne</br>
                                                     IBAN : FRXX XXXX XXXX XXXX XXXX XXXX XXXX</br>
-                                                    A l'ordre de : GreenTeuf
+                                                    A l'ordre de : zingage
                                                     </p>
                                                 </div>
                                             </section>

@@ -28,7 +28,7 @@
         <p class="help-block">Image de votre proposition.</p>
       </div>
       <button type="submit" class="btn btn-success">Valider</button>
-      <button type="button" class="btn btn-danger" onclick="window.location.replace('/GreenTeuf/')">Annuler</button>
+      <button type="button" class="btn btn-danger" onclick="window.location.replace('/zingage/')">Annuler</button>
     </form>
 
   </div>

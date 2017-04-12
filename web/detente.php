@@ -15,10 +15,10 @@
           foreach ($articles as $article){
               $com = get_nb_comment($article['id_article']);?><tr>
             <td>
-              <a href='/GreenTeuf/ficheProduit/<?php echo $article['id_article']?>'><img src='/GreenTeuf/web/images/article/<?php echo $article['img_article']?>' alt='<?php echo $article['nom_article']?>'/></a>
+              <a href='/zingage/ficheProduit/<?php echo $article['id_article']?>'><img src='/zingage/web/images/article/<?php echo $article['img_article']?>' alt='<?php echo $article['nom_article']?>'/></a>
             </td>
             <td>
-              <a href='/GreenTeuf/ficheProduit/<?php echo $article['id_article']?>'><?php echo $article['nom_article']?></a></br>
+              <a href='/zingage/ficheProduit/<?php echo $article['id_article']?>'><?php echo $article['nom_article']?></a></br>
               <?php echo $article['description_article']?>
             </td>
             <td>

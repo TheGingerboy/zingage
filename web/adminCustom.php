@@ -6,10 +6,10 @@
   <div id="admin">
 
     <ul class="nav nav-pills">
-      <li role="presentation"><a href="/GreenTeuf/adm/admin">Produits</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminUsr">Utilisateurs</a></li>
-      <li role="presentation" class="active"><a href="/GreenTeuf/adm/adminCustom">Personnalisation</a></li>
-      <li role="presentation"><a href="/GreenTeuf/adm/adminCommande">Commande</a></li>
+      <li role="presentation"><a href="/zingage/adm/admin">Produits</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminUsr">Utilisateurs</a></li>
+      <li role="presentation" class="active"><a href="/zingage/adm/adminCustom">Personnalisation</a></li>
+      <li role="presentation"><a href="/zingage/adm/adminCommande">Commande</a></li>
     </ul>
 
     <section id="custom">
@@ -19,7 +19,7 @@
       <!-- Penser à faire des contrôles pour les fichiers joints :
            s'il n'y en a pas (champs non obligatoires car pas de required),
            ne rien importer  -->
-      <form action="/GreenTeuf/adm/traitementCustom" method="post">
+      <form action="/zingage/adm/traitementCustom" method="post">
         <div class="form-group">
           <label for="img">Logo :</label>
           <input type="file" name='img' id="img">

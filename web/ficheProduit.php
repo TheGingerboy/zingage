@@ -6,7 +6,7 @@
 
     <section class="row">
       <div class="col-xs-12 col-sm-offset-1 col-sm-5">
-            <img src="/GreenTeuf/web/images/article/<?php echo $produit['img_article']?>" alt="<?php echo $produit['nom_article']?>"/>
+            <img src="/zingage/web/images/article/<?php echo $produit['img_article']?>" alt="<?php echo $produit['nom_article']?>"/>
       </div>
       <div class="col-sm-5">
         <h2><?php echo $produit['nom_article']?></h2>
@@ -83,7 +83,7 @@
           if ($_SESSION['identifiant'])
           { ?>
 
-              <form action="/GreenTeuf/addcom/<?php echo intval($produit['id_article'])?>" method="post">
+              <form action="/zingage/addcom/<?php echo intval($produit['id_article'])?>" method="post">
                 <div class="form-group">
                   <label for="commentaire">Ajoutez ici votre commentaire : </label>
                   <textarea class="form-control" name="commentaire" id="commentaire" required></textarea>

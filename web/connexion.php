@@ -15,9 +15,9 @@
         <input type="password" name="mdp" class="form-control" id="mdp">
       </div>
       <button type="submit" class="btn btn-success">Valider</button>
-      <button type="button" class="btn btn-danger" onclick="window.location.replace('/GreenTeuf/')">Annuler</button>
+      <button type="button" class="btn btn-danger" onclick="window.location.replace('/zingage/')">Annuler</button>
       <p>
-        <a href="/GreenTeuf/inscription">Vous n'avez pas de compte ?</a>
+        <a href="/zingage/inscription">Vous n'avez pas de compte ?</a>
       </p>
     </form>
 

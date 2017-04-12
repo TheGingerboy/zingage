@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__.'/vendor/autoload.php';
-require_once '/web/module.config.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -122,7 +121,7 @@ $app->get('/adm/suppadminProduit/id={id}', function($id) use ($app){
     	$app->abort(404, "Utilisateur inexistant");
     else {
         delete_article_by_id($id);
-        header('Location: /GreenTeuf/adm/admin');
+        header('Location: /zingage/adm/admin');
     	return require '/web/admin.php';
     }
 });
@@ -130,21 +129,21 @@ $app->get('/adm/suppadminProduit/id={id}', function($id) use ($app){
 $app->post('/adm/admin/modifierArticle/id={id}', function($id,Request $request) use ($app){
     $data = $request->request->all();
     modif_article($id, $data);
-    header('Location: /GreenTeuf/adm/admin');
+    header('Location: /zingage/adm/admin');
     return require '/web/admin.php';
 });
 
 $app->post('/adm/addProduit', function(Request $request) use ($app){
     $data = $request->request->all();
     add_article($data);
-    header('Location: /GreenTeuf/adm/admin');
+    header('Location: /zingage/adm/admin');
     return require '/web/admin.php';
 });
 
 $app->post('/addcom/{id}', function($id, Request $request) use ($app){
     $data = $request->request->all();
     add_commentaire($id, $data);
-    header('Location: /GreenTeuf/ficheProduit/'.$id);
+    header('Location: /zingage/ficheProduit/'.$id);
     return require '/web/ficheProduit.php';
 });
 
@@ -153,10 +152,10 @@ $app->get('/adm/adminUsr', function(){
 	  return $content;
 });
 
-$app->post('/GreenTeuf/adm/addUsr', function(Request $request) use ($app){
+$app->post('/zingage/adm/addUsr', function(Request $request) use ($app){
     $data = $request->request->all();
     add_user($data);
-    header('Location: /GreenTeuf/adm/adminUsr');
+    header('Location: /zingage/adm/adminUsr');
     return require '/web/adminUsers.php';
 });
 
@@ -166,7 +165,7 @@ $app->get('/adm/suppadminUsr/id={id}', function($id) use ($app){
     	$app->abort(404, "Utilisateur inexistant");
     else {
         delete_user_by_id($id);
-        header('Location: /GreenTeuf/adm/adminUsr');
+        header('Location: /zingage/adm/adminUsr');
     	return require '/web/adminUsers.php';
     }
 });
@@ -179,7 +178,7 @@ $app->get('/adm/adminCustom', function(){
 $app->post('/adm/traitementCustom', function(Request $request) use ($app){
     $data = $request->request->all();
     modif_gt($data);
-    header('Location: /GreenTeuf/adm/admin');
+    header('Location: /zingage/adm/admin');
     return require '/web/admin.php';
     
 });

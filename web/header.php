@@ -33,33 +33,33 @@
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
               </button>
             </div>
             <div id="navbar" class="navbar-collapse collapse col-sm-6 col-md-6">
               <ul class="nav navbar-nav">
                 <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>">Accueil</a></li>
-                <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>produits">Nos produits</a></li>
-                <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>philosophie">Notre Philosophie</a></li>
-                <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>contact">Contact</a></li>
-                <!-- Affichage dans le menu du lien "Administration" si admin est connecté => Back-Office -->
               </ul>
             </div>
-              <!-- !!!!!!!! Profil déconnexion !!!!!!!! -->
-            <p id="connect" class="pull-right text-right col-xs-6 col-sm-3 col-md-3">
-              <?php
-                //si une session existe, afficher ce bandeau
-                if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>deconnexion">déconnexion</a><?php ;}
-
-                //sinon le bandeau de connexion
-                else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>connexion">Connexion</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>inscription">Inscription</a><?php ;}
-               ?>  
-             </p>
           </div>
         </div>
       </nav>
+
+    <p  class=" text-right col-xs-6 col-sm-3 col-md-3">
+    <?php
+    //si une session existe, afficher ce bandeau
+    if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>deconnexion">déconnexion</a>
+          <?php
+          //si une session existe, afficher ce bandeau
+          if ($_SESSION['identifiant'] == "Admin") {?> 
+            | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>inscription">Inscription</a>
+          <?php ;} ?>
+    <?php ;}
+
+    //sinon le bandeau de connexion
+    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>connexion">Connexion</a> <?php ;}
+    ?>  
+    </p>
+
       <div class="row">
         <div class="col-xs-1"></div>
         <h1 class="col-xs-11">AEML</h1>

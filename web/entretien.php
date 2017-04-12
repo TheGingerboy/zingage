@@ -17,10 +17,10 @@
           echo
           "<tr>
             <td>
-              <a href='/GreenTeuf/ficheProduit/".$article['id_article']."'><img src='/GreenTeuf/web/images/article/".$article['img_article']."' alt='".$article['nom_article']."'/></a>
+              <a href='/zingage/ficheProduit/".$article['id_article']."'><img src='/zingage/web/images/article/".$article['img_article']."' alt='".$article['nom_article']."'/></a>
             </td>
             <td>
-              <a href='/GreenTeuf/ficheProduit/".$article['id_article']."'>".$article['nom_article']."</a></br>"
+              <a href='/zingage/ficheProduit/".$article['id_article']."'>".$article['nom_article']."</a></br>"
               .$article['description_article']."
             </td>
             <td>
