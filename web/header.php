@@ -15,8 +15,8 @@
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>web/css/style.css"/>
-    <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>web/css/calendrier.css" />
+    <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/style.css"/>
+    <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/calendrier.css" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse col-sm-6 col-md-6">
               <ul class="nav navbar-nav">
-                <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>">Accueil</a></li>
+                <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>">Accueil</a></li>
               </ul>
             </div>
           </div>
@@ -47,16 +47,16 @@
     <p  class=" text-right col-xs-6 col-sm-3 col-md-3">
     <?php
     //si une session existe, afficher ce bandeau
-    if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>deconnexion">déconnexion</a>
+    if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>deconnexion">déconnexion</a>
           <?php
           //si une session existe, afficher ce bandeau
           if ($_SESSION['identifiant'] == "Admin") {?> 
-            | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>inscription">Inscription</a>
+            | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>inscription">Inscription</a>
           <?php ;} ?>
     <?php ;}
 
     //sinon le bandeau de connexion
-    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>connexion">Connexion</a> <?php ;}
+    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>connexion">Connexion</a> <?php ;}
     ?>  
     </p>
 
