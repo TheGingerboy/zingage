@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/style.css"/>
     <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/calendrier.css" />
+
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,24 +30,8 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-              </button>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse col-sm-6 col-md-6">
-              <ul class="nav navbar-nav">
-                <li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>">Accueil</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
 
-    <p  class="connexion">
+    <p class="connexion">
     <?php
     //si une session existe, afficher ce bandeau
     if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>deconnexion">déconnexion</a>
@@ -56,12 +43,13 @@
     <?php ;}
 
     //sinon le bandeau de connexion
-    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>connexion"><button class="btn btn-success">Connexion</button></a> <?php ;}
+    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>connexion"><button class="btn-connexion btn btn-success">Connexion</button></a> <?php ;}
     ?>  
     </p>
 
     <h1 class="text-center">
-      <img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/>
+      <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>"><img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/></a>
+      
     </h1>
 
     </header>

@@ -1,62 +1,45 @@
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+(function(){
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+  var todo = document.querySelector( '#todolist' ),
+      form = document.querySelector( 'form' ),
+      field = document.querySelector( '#newitem' );
+    
+  form.addEventListener( 'submit', function( ev ) {
+    todo.innerHTML += '<li>' + field.value + '</li>';
+    field.value = '';
+    field.focus();
+    storestate();
+    ev.preventDefault();
+  }, false);
 
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("Vous devez noter une reférence");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
+  todo.addEventListener( 'click', function( ev ) {
+    var t = ev.target;
+    if ( t.tagName === 'LI' ) {
+        t.parentNode.removeChild( t );
+        storestate();
+    };
+    ev.preventDefault();
+  }, false);
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+  document.addEventListener( 'DOMContentLoaded', retrievestate, false );
+  
+  function storestate() {
+    localStorage.todolist = todo.innerHTML;
+  };
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
+  function retrievestate() {
+    if ( localStorage.todolist ) {
+      todo.innerHTML = localStorage.todolist;
+      document.getElementById("newitem").value = "";
+      // alert(localStorage.todolist)
     }
-  }
-}
+  };
 
-//Permet l'ajout de la ref quand la touche entré est utilisé (prérequis scan)
-var validScan = document.getElementById("myInput");
-validScan.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-        newElement(e);
-    }
-});
+})();
 
 //Permet de garder le focus (selection) sur le champs à compléter
-document.getElementById('myInput').onblur = function (event) { 
-    var blurEl = this; 
+document.getElementById('newitem').onblur = function (event) { 
+    var blurEl = this;
     setTimeout(function() {
         blurEl.focus()
     }, 10);
