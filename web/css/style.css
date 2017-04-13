@@ -28,7 +28,7 @@
 
   }
   #newitem {
-    width: 80%;
+    width: 70%;
     color: black;
     border: 1px solid #8C787C;
   }
@@ -40,16 +40,29 @@
     background: #eee;
     padding: 5px 10px;
     position: relative;
+    font-size: 1.5em;
+    pointer-events: none;
   }
+
   #todolist li:nth-child(2n) {
     background: #ccc;
   }
-  #todolist li:hover:after,
+  #todolist li:after,
   #todolist li.done:after {
-    content: '✔';
-    color: #060;
+    content: 'X';
     position: absolute;
-    right: 5px;    
+    right: 5px;
+    background: #ff1200;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+    pointer-events: initial;
+}
   }
   #todolist li.done:hover:after {
     content: 'x';
@@ -63,7 +76,7 @@
 #label-zing{
     width: 100%;
     text-align: center;
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 20px;
 }
 
@@ -75,11 +88,10 @@
     right: 0;
     top: 0;
     position: absolute;
-
 }
 
 #btn-zingage {
-    width: 15%;
+    width: 25%;
     font-weight: bold;
     color: black;
     background-color: #00f5ec;
