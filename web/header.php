@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>AEML</title>
+    <title>zingage</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -44,7 +44,7 @@
         </div>
       </nav>
 
-    <p  class=" text-right col-xs-6 col-sm-3 col-md-3">
+    <p  class="connexion">
     <?php
     //si une session existe, afficher ce bandeau
     if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>deconnexion">déconnexion</a>
@@ -56,12 +56,12 @@
     <?php ;}
 
     //sinon le bandeau de connexion
-    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>connexion">Connexion</a> <?php ;}
+    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>connexion"><button class="btn btn-success">Connexion</button></a> <?php ;}
     ?>  
     </p>
 
-      <div class="row">
-        <div class="col-xs-1"></div>
-        <h1 class="col-xs-11">AEML</h1>
-      </div>
+    <h1 class="text-center">
+      <img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/>
+    </h1>
+
     </header>

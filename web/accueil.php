@@ -3,10 +3,20 @@
 ?>
 <div id="accueil">
 
-  <section class="col-sm-2">
-    <h2>Texte</h2>
-  </section>
-  
+<div id="zingage-form">
+
+		<div id="zingage-scan" class="header">
+		  <h2>Zingage</h2>
+		  <input type="text" autofocus="autofocus" id="myInput" placeholder="Votre référence">
+		  <span onclick="newElement()" class="addBtn">Add</span>
+		</div>
+
+		<ul id="myUL">
+
+		</ul>
+
+		<script type="text/javascript" src="/zingage/web/js/todolist.js"></script>
+  </div>
 </div>
 <?php
   require_once("footer.php");
