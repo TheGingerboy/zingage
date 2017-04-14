@@ -5,7 +5,7 @@
 
   <div id="formulaire">
     <h2>Connexion</h2>
-    <form action="connexionTraitement" method="post">
+    <form id="connexion-form" action="connexionTraitement" method="post">
       <div class="form-group">
         <label for="identifiant">Identifiant : </label>
         <input type="" name="identifiant" class="form-control" id="identifiant">

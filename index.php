@@ -10,84 +10,103 @@ $app['debug']=true;
 
 $app->register(new Silex\Provider\SessionServiceProvider());
 
-$app->get('/', function (){
+$app->get('/', function () use($app){
     $content = require_once '/web/accueil.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/produits', function(){
     $content = require_once '/web/produits.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/philosophie', function(){
     $content = require_once '/web/philosophie.php';
-	return $content;
+    $content = substr($content, 0, -1);
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/contact', function(){
     $content = require_once '/web/contact.php';
-	return $content;
+    $content = substr($content, 0, -1);
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/connexion', function(){
     $content = require_once '/web/connexion.php';
-	return $content;
+    $content = substr($content, 0, -1);
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->post('/connexionTraitement', function(){
     $content = require_once '/web/connexionTraitement.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/deconnexion', function(){
     $content = require_once '/web/deconnexion.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/inscription', function(){
     $content = require_once '/web/inscription.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->post('/inscriptionTraitement', function(){
     $content = require_once '/web/inscriptionTraitement.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/panier', function(){
     $content = require_once '/web/panier.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->post('/panierSupprimer', function(){
     $content = require_once '/web/panierSupprimer.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/profil', function(){
     $content = require_once '/web/profil.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->post('/profilTraitement', function(){
     $content = require_once '/web/profilTraitement.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/mentionsLegales', function(){
     $content = require_once '/web/mentionsLegales.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/entretien', function(){
     $content = require_once '/web/entretien.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/detente', function(){
     $content = require_once '/web/detente.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/ficheProduit/{id}', function($id) use ($app){
@@ -101,18 +120,21 @@ $app->get('/ficheProduit/{id}', function($id) use ($app){
 
 $app->post('/ficheProduit/panierAjout', function($id) use ($app){
     $content = require_once '/web/panierAjout.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/ficheProduit/panierAjout', function(){
   //TODO
     $content = require_once '/web/ficheProduit/panierAjout.php';
+    $content = substr($content, 0, -1); 
     return $content;
 });
 
 $app->get('/adm/admin', function(){
     $content = require_once '/web/admin.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->get('/adm/suppadminProduit/id={id}', function($id) use ($app){
@@ -149,7 +171,8 @@ $app->post('/addcom/{id}', function($id, Request $request) use ($app){
 
 $app->get('/adm/adminUsr', function(){
     $content = require_once '/web/adminUsers.php';
-	  return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 $app->post('/zingage/adm/addUsr', function(Request $request) use ($app){
@@ -172,7 +195,7 @@ $app->get('/adm/suppadminUsr/id={id}', function($id) use ($app){
 
 $app->get('/adm/adminCustom', function(){
     $content = require_once '/web/adminCustom.php';
-	return $content;
+	$content = substr($content, 0, -1); return $content;
 });
 
 $app->post('/adm/traitementCustom', function(Request $request) use ($app){
@@ -185,7 +208,8 @@ $app->post('/adm/traitementCustom', function(Request $request) use ($app){
 
 $app->get('/adm/adminCommande', function(){
     $content = require_once '/web/adminCommande.php';
-	return $content;
+	$content = substr($content, 0, -1); 
+    return $content;
 });
 
 

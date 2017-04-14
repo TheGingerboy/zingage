@@ -8,69 +8,83 @@
     width: 200px;
 }
 
-  * { 
-    margin: 0;
-    padding: 0;
-  }
-  footer, section, header, aside, figure {
-    display: block;
-  }
-  body {
-    padding: 2em;
-    font-size: 15px;
-    font-family: helvetica, arial, sans-serif;
-  }
-  form {
-    width: 100%;
-    background: #00adef;
-    color: #fff;
-    padding: 40px;
-
-  }
-  #newitem {
-    width: 70%;
-    color: black;
-    border: 1px solid #8C787C;
-  }
-  #todolist {
-    width: 100%;
-  }
-  #todolist li {
-    list-style: none;
-    background: #eee;
-    padding: 5px 10px;
-    position: relative;
-    font-size: 1.5em;
-    pointer-events: none;
-  }
-
-  #todolist li:nth-child(2n) {
-    background: #ccc;
-  }
-  #todolist li:after,
-  #todolist li.done:after {
-    content: 'X';
-    position: absolute;
-    right: 5px;
-    background: #ff1200;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-    font-size: 22px;
-    cursor: pointer;
-    pointer-events: initial;
+* { 
+  margin: 0;
+  padding: 0;
 }
-  }
-  #todolist li.done:hover:after {
-    content: 'x';
-    font-weight: bold;
-    color: #c00;
-    position: absolute;
-    right: 5px;    
-  }
+footer, section, header, aside, figure {
+  display: block;
+}
+body {
+  padding: 2em;
+  font-size: 15px;
+  font-family: helvetica, arial, sans-serif;
+}
+
+::-moz-selection {
+  background: transparent; 
+}
+
+::selection {
+  background: transparent; 
+}
+
+#zingage-form,
+#connexion-form {
+  width: 100%;
+  background: #00adef;
+  color: #fff;
+  padding: 40px;
+}
+
+#newitem {
+  width: 70%;
+  color: black;
+  border: 1px solid #8C787C;
+  padding-left: 5px;
+}
+
+#todolist {
+  width: 100%;
+}
+
+#todolist li {
+  list-style: none;
+  background: #eee;
+  padding: 5px 10px;
+  position: relative;
+  font-size: 1.5em;
+  pointer-events: none;
+}
+
+#todolist li:nth-child(2n) {
+  background: #ccc;
+}
+
+#todolist li:after,
+#todolist li.done:after {
+  content: 'X';
+  position: absolute;
+  right: 5px;
+  background: #ff1200;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 22px;
+  cursor: pointer;
+  pointer-events: initial;
+}
+
+#todolist li.done:hover:after {
+  content: 'x';
+  font-weight: bold;
+  color: #c00;
+  position: absolute;
+  right: 5px;    
+}
 
 
 #label-zing{

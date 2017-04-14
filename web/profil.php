@@ -36,9 +36,6 @@ if ($_SESSION['identifiant']){
 						$tel =$row['tel_user'];
 				}
 
-
-
-
 	  	  	?>
 
 			  <div id="formulaire">
@@ -54,12 +51,6 @@ if ($_SESSION['identifiant']){
 			        <label for="prenom" class="col-sm-3 control-label">Prénom : </label>
 			        <div class="col-sm-9">
 			          <input type="text" name="prenom" class="form-control" value="<?php echo htmlspecialchars_decode($prenom); ?>" id="prenom">
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="email1" class="col-sm-3 control-label">Email : </label>
-			        <div class="col-sm-9">
-			          <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars_decode($email); ?>" id="email" pattern="[0-9a-z-_+.]+@[0-9a-z-_+]+.[a-z]{2,4}">
 			        </div>
 			      </div>
 			      <div class="form-group">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 13 Avril 2017 à 08:03
+-- Généré le :  Ven 14 Avril 2017 à 11:52
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  5.6.30
 
@@ -56,7 +56,8 @@ CREATE TABLE `scan` (
 CREATE TABLE `utilisateur` (
   `id_user` int(11) NOT NULL,
   `nom_user` varchar(50) COLLATE utf8_bin NOT NULL,
-  `prenom_user` varchar(50) COLLATE utf8_bin NOT NULL
+  `prenom_user` varchar(50) COLLATE utf8_bin NOT NULL,
+  `mdp_user` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -67,7 +68,8 @@ CREATE TABLE `utilisateur` (
 -- Index pour la table `article`
 --
 ALTER TABLE `article`
-  ADD PRIMARY KEY (`id_article`);
+  ADD PRIMARY KEY (`id_article`),
+  ADD KEY `id_article` (`id_article`);
 
 --
 -- Index pour la table `scan`
@@ -80,8 +82,18 @@ ALTER TABLE `scan`
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `id_user` (`id_user`);
 
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --

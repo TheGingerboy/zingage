@@ -1,3 +1,4 @@
+//Copy-pasta
 (function(){
 
   var todo = document.querySelector( '#todolist' ),
@@ -31,7 +32,6 @@
     if ( localStorage.todolist ) {
       todo.innerHTML = localStorage.todolist;
       document.getElementById("newitem").value = "";
-      // alert(localStorage.todolist)
     }
   };
 
@@ -43,4 +43,13 @@ document.getElementById('newitem').onblur = function (event) {
     setTimeout(function() {
         blurEl.focus()
     }, 10);
+}
+
+function clearstate() {
+  localStorage.removeItem("todolist");
+  location.reload(); 
+}
+
+function showMeState(){
+  alert(localStorage.todolist);
 }
