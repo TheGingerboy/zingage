@@ -2,7 +2,7 @@
   require_once("header.php");
 ?>
 
-  <div id="formulaire">
+  <div id="inscription-form">
     <h2>Inscription</h2>
     <form action="inscriptionTraitement" method="post" class="form-horizontal">
       <div class="form-group">

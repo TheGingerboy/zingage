@@ -30,7 +30,8 @@ body {
 }
 
 #zingage-form,
-#connexion-form {
+#connexion-form,
+#inscription-form {
   width: 100%;
   background: #00adef;
   color: #fff;
