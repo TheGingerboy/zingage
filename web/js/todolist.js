@@ -1,24 +1,31 @@
 //Copy-pasta
 (function(){
 
-  var todo = document.querySelector( '#todolist' ),
-      form = document.querySelector( 'form.scan' ),
-      field = document.querySelector( '#newitem' );
-      data = document.querySelector( '#data' )
+  list = document.querySelector( '#todolist' );
+  form = document.querySelector( 'form.scan' );
+  field = document.querySelector( '#newitem' );
+  data = document.querySelector( '#data' );
+  sendDataButton = document.querySelector( '#btn-valide' );
+
+  //Maintient le zone de texte vide
+  list.value = "";
     
   form.addEventListener( 'submit', function( ev ) {
-    todo.innerHTML += '<li>' + field.value + '</li>';
+    enableButton (sendDataButton);
+    list.innerHTML += '<li>' + field.value + '</li>';
     field.value = '';
-    field.focus();
     storestate();
     ev.preventDefault();
   }, false);
 
-  todo.addEventListener( 'click', function( ev ) {
+  list.addEventListener( 'click', function( ev ) {
     var t = ev.target;
     if ( t.tagName === 'LI' ) {
         t.parentNode.removeChild( t );
         storestate();
+        if ( list.innerHTML === "" ) {
+            disableButton (sendDataButton);
+        }
     };
     ev.preventDefault();
   }, false);
@@ -26,20 +33,14 @@
   document.addEventListener( 'DOMContentLoaded', retrievestate, false );
   
   function storestate() {
-    localStorage.todolist = todo.innerHTML;
+    localStorage.todolist = list.innerHTML;
     data.value = localStorage.todolist;
   };
 
   function retrievestate() {
-    if ( localStorage.todolist ) {
-      todo.innerHTML = localStorage.todolist;
-      document.getElementById("newitem").value = "";
-      data.value = localStorage.todolist;
-    }
+    list.innerHTML = localStorage.todolist;
+    data.value = localStorage.todolist;
   };
-
-
-
 })();
 
 //Permet de garder le focus (selection) sur le champs à compléter
@@ -51,10 +52,19 @@ document.getElementById('newitem').onblur = function (event) {
 }
 
 function clearstate() {
-  localStorage.removeItem("todolist");
-  document.getElementById("todolist").innerHTML = "";
+  localStorage.todolist = "";
+  disableButton (sendDataButton);
+  list.innerHTML = "";
 }
 
 function showMeState(){
   alert(localStorage.todolist);
+}
+
+function disableButton(e){
+  e.disabled = true;
+}
+
+function enableButton(e){
+  e.disabled = false;
 }

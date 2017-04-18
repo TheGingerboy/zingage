@@ -23,7 +23,7 @@
 
 			<input id="btn-valide" type="submit" value="Envoyer">
 			<input id="btn-clear" type="reset" value="Remettre à 0" onclick="clearstate()">
-			<input id="btn-clear" type="reset" value="Montre moi le storage" onclick="showMeState()">
+			<input id="btn-show" type="button" value="Montre moi le storage" onclick="showMeState()">
 
 		</form>
 
