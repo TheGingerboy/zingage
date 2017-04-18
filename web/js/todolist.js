@@ -2,8 +2,9 @@
 (function(){
 
   var todo = document.querySelector( '#todolist' ),
-      form = document.querySelector( 'form' ),
+      form = document.querySelector( 'form.scan' ),
       field = document.querySelector( '#newitem' );
+      data = document.querySelector( '#data' )
     
   form.addEventListener( 'submit', function( ev ) {
     todo.innerHTML += '<li>' + field.value + '</li>';
@@ -26,14 +27,18 @@
   
   function storestate() {
     localStorage.todolist = todo.innerHTML;
+    data.value = localStorage.todolist;
   };
 
   function retrievestate() {
     if ( localStorage.todolist ) {
       todo.innerHTML = localStorage.todolist;
       document.getElementById("newitem").value = "";
+      data.value = localStorage.todolist;
     }
   };
+
+
 
 })();
 
@@ -47,7 +52,7 @@ document.getElementById('newitem').onblur = function (event) {
 
 function clearstate() {
   localStorage.removeItem("todolist");
-  location.reload(); 
+  document.getElementById("todolist").innerHTML = "";
 }
 
 function showMeState(){
