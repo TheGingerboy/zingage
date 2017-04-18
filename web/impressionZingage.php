@@ -9,13 +9,16 @@
 
   //récupération des valeurs passé
   $list = $_POST['data'];
-  $list = htmlspecialchars($list);
-  $list = substr($list, 10, -11); 
-  echo $list;
 
-  $data = explode( '</li><li>' , $offset );
+    //Permet de retrouver les valeurs contenu entre <li> et </li>
+    preg_match_all ( '#<li>(.*?)</li>#', $list, $matches );
 
-  print_r(array_values ( $data ));
+    //Tableau à deux dimension matches[0] renvoie le résultat avec les li et matches[1] sans
+    print_r($matches[1]);
+
+    foreach($matches[1] as $teto){
+      echo $teto;
+    }
 
 ?>
 
