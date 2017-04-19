@@ -42,7 +42,7 @@ body {
   width: 70%;
   color: black;
   border: 1px solid #8C787C;
-  padding-left: 5px;
+  padding: 6px 12px;
 }
 
 #todolist {
@@ -106,13 +106,16 @@ body {
 }
 
 #btn-zingage {
-    width: 25%;
-    font-weight: bold;
-    color: black;
-    background-color: #00f5ec;
-    border: 1px solid #8C787C;
+  width: 25%;
+  border-radius: 0;
+  border: inset;
+  border-color: #337ab7;
 }
 
 .match-size{
     min-height: 25px;
+}
+
+#data {
+  display: none;
 }

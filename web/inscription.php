@@ -4,7 +4,13 @@
 
   <div id="inscription-form">
     <h2>Inscription</h2>
-    <form action="inscriptionTraitement" method="post" class="form-horizontal">
+    <form class="form-horizontal" action="inscriptionTraitement" method="post">
+      <div class="form-group">
+        <label for="identifiant" class="col-sm-3 control-label">Identifiant : </label>
+        <div class="col-sm-9">
+          <input type="text" name="identifiant" class="form-control" id="identifiant" required>
+        </div>
+      </div>
       <div class="form-group">
         <label for="nom" class="col-sm-3 control-label">Nom : </label>
         <div class="col-sm-9">
@@ -29,6 +35,7 @@
           <input type="password" name="mdp2" class="form-control" id="mdp2" required>
         </div>
       </div>
+      <input type="submit" value="Valider">
     </form>
 
   </div>

@@ -1,31 +1,33 @@
 <?php
-
-	session_start();
-
+	if(!(isset($_SESSION)))
+		session_start();
 	require_once("connexionBD.php");
 
 	//récupération des variables
 	$identifiant = $_POST['identifiant'];
 	$mdp = $_POST['mdp'];
 
+	$identifiant = mysql_real_escape_string(htmlspecialchars($identifiant));
+	$mdp = mysql_real_escape_string(htmlspecialchars($mdp));
+	$mdp = sha1($mdp);
+
 	if ($identifiant) {
-	  $verifid = mysql_query("SELECT identifiant_user FROM gt_user WHERE identifiant_user='$identifiant'");
+	  $verifid = mysqli_query( $conn, "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
 
 	  //Verification de l'existence de l'utilisateur
-	  if ($verifid && mysql_num_rows($verifid) > 0) {
+	  if ($verifid && mysqli_num_rows($verifid) > 0) {
 	  	  //Verification du mot de passe
-	  	  $verifpasswd = mysql_query("SELECT mdp_user FROM gt_user WHERE identifiant_user='$identifiant'");
+	  	  $verifpasswd = mysqli_query( $conn, "SELECT mdp_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
 
-	  	  $mdp2 = mysql_fetch_assoc($verifpasswd);
+	  	  $mdp2 = mysqli_fetch_assoc($verifpasswd);
 
 	  	  if ($mdp == $mdp2['mdp_user']){
 				//Mise en session du compte
-				$_SESSION['identifiant'] = $_POST['identifiant'];
-				$_SESSION['mdp'] = $_POST['mdp'];
-                $connexion=connect_db();
-                $verifadmin = $connexion->query("SELECT admin_user FROM gt_user WHERE identifiant_user='$identifiant'")->fetchColumn();
-
-				$_SESSION['admin'] = intval($verifadmin);
+                
+                $verifadmin = mysqli_query( $conn, "SELECT role_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
+                $admin = mysqli_fetch_assoc($verifadmin);
+				$_SESSION['role_user'] = intval($admin);
+				$_SESSION['identifiant'] = $identifiant;
 				require_once("accueil.php");
 	  	  }
 

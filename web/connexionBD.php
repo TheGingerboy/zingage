@@ -1,22 +1,15 @@
 <?php
+	if (!defined('SERVER') || !defined('USER') || !defined('PASSWD') || !defined('BASE')){
+		define('SERVER', 'localhost');
+		define('USER', 'zingage');
+		define('PASSWD', 'admin');
+		define('BASE', 'zingage');
+	}
 
-	error_reporting( ~E_DEPRECATED & ~E_NOTICE );
-    /* A définir*/
-
-	define('SERVER', 'localhost');
-	define('USER', 'root');
-	define('PASSWD', '');
-	define('BASE', 'zingage');
-
-	$conn = mysql_connect(SERVER,USER,PASSWD,BASE);
-	$dbcon = mysql_select_db(BASE);
+	$conn = mysqli_connect(SERVER,USER,PASSWD,BASE);
 
 	if ( !$conn ) {
 	die("La connexion à échouer :  " . mysql_error());
-	}
-
-	if ( !$dbcon ) {
-	die("La connexion avec la Base de données à échouer :  " . mysql_error());
 	}
 
  ?>

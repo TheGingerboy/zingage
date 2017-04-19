@@ -40,6 +40,9 @@
   function retrievestate() {
     list.innerHTML = localStorage.todolist;
     data.value = localStorage.todolist;
+            if ( list.innerHTML === "" ) {
+            disableButton (sendDataButton);
+        }
   };
 })();
 
@@ -67,4 +70,30 @@ function disableButton(e){
 
 function enableButton(e){
   e.disabled = false;
+}
+
+var confirmed = false;
+function confirmDialog(obj)
+{
+    if(!confirmed)
+    {
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height:140,
+            modal: true,
+            buttons: {
+                "Yes": function()
+                {
+                    $( this ).dialog( "close" );
+                    confirmed = true; obj.click();
+                },
+                "No": function()
+                {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    }
+
+    return confirmed;
 }

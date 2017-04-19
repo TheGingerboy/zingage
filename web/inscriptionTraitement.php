@@ -1,5 +1,6 @@
 <?php
   require_once("header.php");
+  require_once("connexionBD.php");
 ?>
 
 <?php 
@@ -8,6 +9,7 @@
   $err = 0;
 
   //récupération des valeurs passé
+  $identifiant = $_POST['identifiant'];
   $nom = $_POST['nom'];
   $prenom = $_POST['prenom'];
   $mdp = $_POST['mdp'];
@@ -20,13 +22,10 @@
   $nom = mysql_real_escape_string(htmlspecialchars($nom));
   $prenom = mysql_real_escape_string(htmlspecialchars($prenom));
 
-  //connexion à la BDD
-  require_once("connexionBD.php");
-
   //Vérifie la présence d'un doublon
-  $verifid = mysql_query("SELECT identifiant_user FROM user WHERE identifiant_user='$identifiant'");
+  $verifid = mysqli_query($conn, "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'");
 
-  if ($verifid && mysql_num_rows($verifid) > 0) {
+  if ($verifid && mysqli_num_rows($verifid) > 0) {
     echo "<h2>L'identifiant est déja utilisé, veuillez en choisir un autre<br></h2>";
     $err = 1;
   }
@@ -61,16 +60,18 @@
     {
 
       //Cryptage du mot de passe
-      sha1($mdp);
+      $mdp = sha1($mdp);
 
       //Insertion des valeurs dans la table
-      mysql_query("INSERT INTO gt_user VALUES('', '$nom', '$prenom', '$email', '$adresse', '$cpt_adresse', '$ville', '$cp', '$identifiant', '$mdp', '$tel', '0')");
+      $insertUser = mysqli_query( $conn ,"INSERT INTO utilisateur VALUES('', '$identifiant', '$nom', '$prenom', '$mdp', '0')" );
+
       echo "<h2>Votre inscription à bien été prise en compte !</h2>";
     }
 
     else
     {
       echo "<h2>Votre inscription n'a pas été prise en compte, veuillez corriger les erreurs ci-dessus !</h2>";
+      require_once("inscription.php");
     }
 
   }
@@ -78,6 +79,7 @@
   else
   {
     echo "<h2>Les mots de passe ne correspondent pas</h2>";
+    require_once("inscription.php");
   }
 
 ?>

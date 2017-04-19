@@ -1,5 +1,6 @@
 <?php 
-    require('configSite.php');
+  require('configSite.php');
+  if(!(isset($_SESSION)))
     session_start();
 ?> 
 
@@ -25,10 +26,10 @@
     <p class="connexion">
     <?php
     //si une session existe, afficher ce bandeau
-    if ($_SESSION['identifiant']) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>deconnexion">déconnexion</a>
+    if (isset($_SESSION['identifiant'])) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>deconnexion">déconnexion</a>
           <?php
           //si une session existe, afficher ce bandeau
-          if ($_SESSION['identifiant'] == "Admin") {?> 
+          if ($_SESSION['role_user'] == "Admin") {?> 
             | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>inscription">Inscription</a>
           <?php ;} ?>
     <?php ;}
