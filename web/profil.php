@@ -9,32 +9,21 @@
 if ($_SESSION['identifiant']){
 
 	$identifiant = $_SESSION['identifiant'];
-	$mdp = $_SESSION['mdp'];
 
-	$verifid = mysql_query("SELECT identifiant_user FROM gt_user WHERE identifiant_user='$identifiant'");
+	$verifid = mysql_query("SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'");
 
-	  //Verification de l'existence de l'utilisateur
-	  if ($verifid && mysql_num_rows($verifid) > 0) {
+	//Verification de l'existence de l'utilisateur
+	if ($verifid && mysql_num_rows($verifid) > 0) {
 
-	  	  //Verification du mot de passe
-	  	  $verifpasswd = mysql_query("SELECT mdp_user FROM gt_user WHERE identifiant_user='$identifiant'");
-	  	  $mdp2 = mysql_fetch_assoc($verifpasswd);
+		$sql = mysql_query("SELECT * FROM gt_user WHERE identifiant_user='$identifiant'") or die(mysql_error());;
 
-			if ($mdp == $mdp2['mdp_user']){
+		while ($row = mysql_fetch_assoc($sql)) {
 
-				$sql = mysql_query("SELECT * FROM gt_user WHERE identifiant_user='$identifiant'") or die(mysql_error());;
+			$nom = $row['nom_user'];
+			$prenom = $row['prenom_user'];
 
-				while ($row = mysql_fetch_assoc($sql)) {
-
-						$nom = $row['nom_user'];
-						$prenom = $row['prenom_user'];
-						$email = $row['mail_user'];
-						$adresse = $row['rue_user'];
-						$cpt_adresse = $row['complement_user'];
-						$ville = $row['ville_user'];
-						$cp = $row['cp_user'];
-						$tel =$row['tel_user'];
-				}
+		}
+	}
 
 	  	  	?>
 

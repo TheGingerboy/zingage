@@ -63,15 +63,19 @@
       $mdp = sha1($mdp);
 
       //Insertion des valeurs dans la table
-      $insertUser = mysqli_query( $conn ,"INSERT INTO utilisateur VALUES('', '$identifiant', '$nom', '$prenom', '$mdp', '0')" );
+      $insertUser = mysqli_query( $conn ,"INSERT INTO utilisateur VALUES('', '$identifiant', '$nom', '$prenom', '$mdp', '0')" ) or trigger_error("L'accès SQL à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ".mysqli_error(), E_USER_ERROR);
 
       echo "<h2>Votre inscription à bien été prise en compte !</h2>";
+
+      header( "Location: /zingage/" );
+      exit;
     }
 
     else
     {
       echo "<h2>Votre inscription n'a pas été prise en compte, veuillez corriger les erreurs ci-dessus !</h2>";
-      require_once("inscription.php");
+      header( "Location: /zingage/inscription/" );
+      exit;
     }
 
   }
@@ -79,7 +83,8 @@
   else
   {
     echo "<h2>Les mots de passe ne correspondent pas</h2>";
-    require_once("inscription.php");
+    header( "Location: /zingage/inscription/" );
+    exit;
   }
 
 ?>

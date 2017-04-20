@@ -1,7 +1,7 @@
 //Copy-pasta
 (function(){
 
-  list = document.querySelector( '#todolist' );
+  list = document.querySelector( '#toPrintList' );
   form = document.querySelector( 'form.scan' );
   field = document.querySelector( '#newitem' );
   data = document.querySelector( '#data' );

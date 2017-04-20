@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 19 Avril 2017 à 15:05
+-- Généré le :  Jeu 20 Avril 2017 à 19:26
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  5.6.30
 
@@ -36,6 +36,16 @@ CREATE TABLE `article` (
   `poid_article` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Contenu de la table `article`
+--
+
+INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`, `dim_article`, `bac_article`, `poid_article`) VALUES
+(1, 'test', 'test', 0, 0, 'test', 0),
+(2, 'test2', 'test', 0, 0, 'test', 0),
+(3, '42911VFO0000', 'Arm Fr Right Adjust Zingue Blanc', 30, 0, 'T2', 10),
+(5, 'GD4130-BKK1', 'Scanner', 1, 30, 'T2', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +57,13 @@ CREATE TABLE `entreprise` (
   `nom_entreprise` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Contenu de la table `entreprise`
+--
+
+INSERT INTO `entreprise` (`id_entreprise`, `nom_entreprise`) VALUES
+(1, 'Honda France Manufacturing');
+
 -- --------------------------------------------------------
 
 --
@@ -57,7 +74,7 @@ CREATE TABLE `scan` (
   `id_article` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_entreprise` int(11) NOT NULL,
-  `date_scan` date NOT NULL,
+  `date_scan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `of_scan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -75,6 +92,13 @@ CREATE TABLE `utilisateur` (
   `mdp_user` varchar(50) COLLATE utf8_bin NOT NULL,
   `role_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_user`, `identifiant_user`, `nom_user`, `prenom_user`, `mdp_user`, `role_user`) VALUES
+(2, 'Gingerboy', 'PARAT', 'Virgile', '89ed6e89d90d962af7eef526f97e9c8bc698eade', 0);
 
 --
 -- Index pour les tables exportées
@@ -117,17 +141,17 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `entreprise`
 --
 ALTER TABLE `entreprise`
-  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --

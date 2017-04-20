@@ -31,7 +31,8 @@ body {
 
 #zingage-form,
 #connexion-form,
-#inscription-form {
+#inscription-form,
+#ajout-zing-form {
   width: 100%;
   background: #00adef;
   color: #fff;
@@ -45,11 +46,11 @@ body {
   padding: 6px 12px;
 }
 
-#todolist {
+#toPrintList {
   width: 100%;
 }
 
-#todolist li {
+#toPrintList li {
   list-style: none;
   background: #eee;
   padding: 5px 10px;
@@ -58,12 +59,12 @@ body {
   pointer-events: none;
 }
 
-#todolist li:nth-child(2n) {
+#toPrintList li:nth-child(2n) {
   background: #ccc;
 }
 
-#todolist li:after,
-#todolist li.done:after {
+#toPrintList li:after,
+#toPrintList li.done:after {
   content: 'X';
   position: absolute;
   right: 5px;
@@ -79,7 +80,7 @@ body {
   pointer-events: initial;
 }
 
-#todolist li.done:hover:after {
+#toPrintList li.done:hover:after {
   content: 'x';
   font-weight: bold;
   color: #c00;

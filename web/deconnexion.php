@@ -7,5 +7,6 @@
 	//destruction de la session
 	session_destroy();
 	//remise sur la page d'accueil
-	require_once("accueil.php");
+	header( "Location: /zingage/" );
+	exit;
 ?>

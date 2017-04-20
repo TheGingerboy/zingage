@@ -11,7 +11,37 @@ $app['debug']=true;
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 $app->get('/', function () use($app){
-    $content = require_once '/web/accueil.php';
+    $content = require_once '/web/zingage.php';
+    $content = substr($content, 0, -1); 
+    return $content;
+});
+
+$app->get('/zingageScan', function(){
+    $content = require_once '/web/zingageScan.php';
+    $content = substr($content, 0, -1); 
+    return $content;
+});
+
+$app->post('/zingageRecap', function(){
+    $content = require_once '/web/zingageRecap.php';
+    $content = substr($content, 0, -1); 
+    return $content;
+});
+
+$app->post('/zingageImpression', function(){
+    $content = require_once '/web/zingageImpression.php';
+    $content = substr($content, 0, -1); 
+    return $content;
+});
+
+$app->get('/zingageAjout', function(){
+    $content = require_once '/web/zingageAjout.php';
+    $content = substr($content, 0, -1); 
+    return $content;
+});
+
+$app->post('/zingageAjoutTraitement', function(){
+    $content = require_once '/web/zingageAjoutTraitement.php';
     $content = substr($content, 0, -1); 
     return $content;
 });

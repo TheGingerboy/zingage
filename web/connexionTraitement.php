@@ -28,18 +28,21 @@
                 $admin = mysqli_fetch_assoc($verifadmin);
 				$_SESSION['role_user'] = intval($admin);
 				$_SESSION['identifiant'] = $identifiant;
-				require_once("accueil.php");
+				header( "Location: /zingage/" );
+				exit;
 	  	  }
 
 	  	  else{
 		  	echo("Mot de passe incorrect, veuillez réessayer");
-		  	require_once("connexion.php");
+			header( "Location: /zingage/connexion" );
+			exit;
 	  	  }
 	  }
 
 	  else{
 	  	echo("Identifiant introuvable, veuillez réessayer");
-	  	require_once("connexion.php");
+		header( "Location: /zingage/connexion" );
+		exit;
 	  }
 	}
 
