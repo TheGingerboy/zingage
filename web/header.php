@@ -26,17 +26,15 @@
     <p class="connexion">
     <?php
     //si une session existe, afficher ce bandeau
-    if (isset($_SESSION['identifiant'])) {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>profil">Profil (<?php echo $_SESSION['identifiant']; ?>)</a> | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>deconnexion">déconnexion</a>
-          <?php
-          //si une session existe, afficher ce bandeau
-          if ($_SESSION['role_user'] == "Admin") {?> 
-            | <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>inscription">Inscription</a>
-          <?php ;} ?>
-    <?php ;}
-
+    if (isset($_SESSION['identifiant'])) {
+      echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | <a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
+    }
     //sinon le bandeau de connexion
-    else {?> <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>connexion"><button class="btn-connexion btn btn-success">Connexion</button></a> <?php ;}
-    ?>  
+    else {
+      echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
+    } 
+    ?>
+
     </p>
 
     <h1 class="text-center">

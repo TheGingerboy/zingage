@@ -1,6 +1,7 @@
 <?php
   require_once("header.php");
   require_once("connexionBD.php");
+  if ((isset($_SESSION['identifiant']))) {
 ?>
 
 <?php 
@@ -73,11 +74,13 @@
   else
   {
     echo "<h2>Votre article n'a pas été ajouté, veuillez corriger les erreurs ci-dessus !</h2>";
-      require_once("zingageAjout.php");
+    require_once("zingageAjout.php");
   }
 
 ?>
 
 <?php
+  }
+  else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
   require_once("footer.php");
 ?>

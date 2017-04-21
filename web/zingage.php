@@ -27,9 +27,6 @@
 
 				<input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
 				<input id="btn-clear" class="btn btn-warning" type="reset" value="Remettre à 0" onclick="clearstate()">
-				<input id="btn-show" type="button" value="Montre moi le storage" onclick="showMeState()">
-				<input id="btn-show" type="button" value="Bouton de test" onclick="confirmDialog()">
-
 
 			</form>
 
@@ -45,4 +42,22 @@
 <?php
 	require_once("footer.php");
 ?>
+
+<div id="printThis">
+	<div>
+	      <img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/>
+	      <h3> Honda France Manufacturing </h3>
+	</div>
+	<h2>183338-ZT5-0100</h2>
+	<div>
+		<h3>Qté : 80</h3>
+		<h3>OF : 232287</h3>
+	</div>
+	<h4>mercredi 19 avril 2017<h4>
+</div>
+
+<button id="btnPrint">Print</button>
+
+<script type="text/javascript" src="/zingage/web/js/print.js"></script>
+
 

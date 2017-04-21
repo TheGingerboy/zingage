@@ -9,7 +9,7 @@
 
       <div class="form-group">
         <label for="ref_article">Référence : </label>
-        <input type="" name="ref_article" class="form-control">
+        <input id="ref-imput" type="" name="ref_article" class="form-control">
       </div>
 
       <div class="form-group">
@@ -44,21 +44,31 @@
 
   <?php
   }
+  else{ echo "<h2>Vous devez être connecté pour effectuer cette action<h2>"; }
   require_once("footer.php");
 ?>
 
 <script type="text/javascript">
 
-$(document).on('keypress', 'input,select', function (e) {
-    if (e.which == 13) {
-        e.preventDefault();
-        var $next = $('[tabIndex=' + (+this.tabIndex + 1) + ']');
-        console.log($next.length);
-        if (!$next.length) {
-            $next = $('[tabIndex=1]');
+//Permet de de changer de champs en appuyant sur la touche "Entrée"
+$('body').on('keydown', 'input, select', function(e) {
+    var self = $(this)
+      , form = self.parents('form:eq(0)')
+      , focusable
+      , next
+      ;
+    if (e.keyCode == 13) {
+        focusable = form.find('input,a,select,button').filter(':visible');
+        next = focusable.eq(focusable.index(this)+1);
+        if (next.length) {
+            next.focus();
+        } else {
+            form.submit();
         }
-        $next.focus();
+        return false;
     }
 });
+
+$("#ref-imput").focus();
 
 </script>

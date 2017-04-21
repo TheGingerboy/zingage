@@ -37,8 +37,8 @@
 
     if(mysqli_num_rows($result)==0){
       if($err){
-        echo "<div>Attention, un ou plusieurs articles scannés n'ont pas d'étiquette</div>";
-        echo "<div>Voici la liste de ces articles (avec leur référence code-barre) :</div>";
+        echo "<div>Attention, un ou plusieurs articles scannés n'ont pas été enregistré</div>";
+        echo "<div>Voici la liste des référence de ces articles :</div>";
         $err = false;
       }
               echo $ref . "<br>";
@@ -74,8 +74,6 @@
 <?php
   }
   //Si utilisateur non connecté
-  else {
-    echo "<h2> Vous devez être connecté pour effectuer cette action <h2>";
-  }
+  else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
   require_once("footer.php");
 ?>

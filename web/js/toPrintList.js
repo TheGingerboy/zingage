@@ -60,40 +60,10 @@ function clearstate() {
   list.innerHTML = "";
 }
 
-function showMeState(){
-  alert(localStorage.todolist);
-}
-
 function disableButton(e){
   e.disabled = true;
 }
 
 function enableButton(e){
   e.disabled = false;
-}
-
-var confirmed = false;
-function confirmDialog(obj)
-{
-    if(!confirmed)
-    {
-        $( "#dialog-confirm" ).dialog({
-            resizable: false,
-            height:140,
-            modal: true,
-            buttons: {
-                "Yes": function()
-                {
-                    $( this ).dialog( "close" );
-                    confirmed = true; obj.click();
-                },
-                "No": function()
-                {
-                    $( this ).dialog( "close" );
-                }
-            }
-        });
-    }
-
-    return confirmed;
 }

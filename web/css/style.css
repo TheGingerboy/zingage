@@ -3,11 +3,6 @@
     box-sizing: border-box;
 }
 
-#logo {
-    display: inline-block;
-    width: 200px;
-}
-
 * { 
   margin: 0;
   padding: 0;
@@ -21,12 +16,42 @@ body {
   font-family: helvetica, arial, sans-serif;
 }
 
+/*désactive la selection (bleu de base) pour éviter les erreurs d'affichages sur le tactile*/
 ::-moz-selection {
   background: transparent; 
 }
 
 ::selection {
   background: transparent; 
+}
+
+/*Printing option*/
+
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+}
+
+/*Custom CSS*/
+
+#logo {
+    display: inline-block;
+    width: 200px;
 }
 
 #zingage-form,
