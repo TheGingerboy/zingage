@@ -41,7 +41,7 @@
         echo "<div>Voici la liste des référence de ces articles :</div>";
         $err = false;
       }
-              echo $ref . "<br>";
+    echo $ref . "<br>";
     }
 
     else {
@@ -57,7 +57,7 @@
       }
     }
   }
-    echo "</table>";
+  echo "</table>";
   ?>
 
   <div id="formulaire">

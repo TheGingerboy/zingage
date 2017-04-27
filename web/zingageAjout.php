@@ -33,7 +33,7 @@
       </div>
 
       <div class="form-group">
-        <label for="poid_article">Poid Total : </label>
+        <label for="poid_article">Poid Total (Kilos) : </label>
         <input type="" name="poid_article" class="form-control">
       </div>
 
