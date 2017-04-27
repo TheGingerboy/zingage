@@ -24,7 +24,6 @@
 
 				<!-- Permet de contenir les valeurs du scan pour les envoyer au serveur -->
 	      	    <input id="data" name="data" style="display: none;" required>				
-
 				<input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
 				<input id="btn-clear" class="btn btn-warning" type="reset" value="Remettre à 0" onclick="clearstate()">
 

@@ -42,13 +42,13 @@
       //Récupération des arguments pour l'impression sous CodeSoft
       while ($row = mysqli_fetch_array($result)){
         $args = 
-        'LABELNAME = "' . dirname(__FILE__) . "\labelDirectory\\" . $labelname . '"' . "\n" .
-        'NBR_ARTICLE = "' . $row[3] . '"' . "\n" .
-        'NOM_ARTICLE = "' . $row[2] . '"' . "\n" .
-        'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . "\n" .
-        'NUM_OF = "' . $of . '"' . "\n" .
-        'REF_ARTICLE = "' . $row[1] . '"' . "\n" .
-        'LABELQUANTITY = "1"' . "\n";
+        'LABELNAME = "' . dirname(__FILE__) . "\labelDirectory\\" . $labelname . '"' . PHP_EOL .
+        'NBR_ARTICLE = "' . $row[3] . '"' . PHP_EOL .
+        'NOM_ARTICLE = "' . $row[2] . '"' . PHP_EOL .
+        'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . PHP_EOL .
+        'NUM_OF = "' . $of . '"' . PHP_EOL .
+        'REF_ARTICLE = "' . $row[1] . '"' . PHP_EOL .
+        'LABELQUANTITY = "1"' . PHP_EOL;
         // echo 'DIMENSIONS_ARTICLE = "' . $row[4] . '"  <br>';
         // echo 'TYPE_BAC_ARTICLE = "' . $row[5] . '"  <br>';
         // echo 'POIDS_ARTICLE = "' . $row[6] . '"  <br>';
