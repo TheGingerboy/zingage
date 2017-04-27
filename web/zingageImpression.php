@@ -30,35 +30,40 @@
 
   else 
   { 
-    //Si tout c'est bien passé
+    //Si tout c'est bien passé, récupération préparation de la récupération des attributs des items
     foreach ($id_article as $article) {
       $article = mysql_real_escape_string($article);
       $sql = "SELECT * FROM article WHERE id_article='$article'";
       $result = mysqli_query($conn, $sql);
 
+      //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
+      $codesoftArgs = "";
+
       //Récupération des arguments pour l'impression sous CodeSoft
       while ($row = mysqli_fetch_array($result)){
-        echo "<div>";
-        echo 'LABELNAME = "' . dirname(__FILE__) . "\labelDirectory\\" . $labelname . '"' . "<br>" ;
-        echo 'NBR_ARTICLE = "' . $row[3] . '"  <br>';
-        echo 'NOM_ARTICLE = "' . $row[2] . '"  <br>';
-        echo 'NOM_ENTREPRISE = "' . $nom_entreprise . '"  <br>';
-        echo 'NUM_OF = "' . $of . '"  <br>';
-        echo 'REF_ARTICLE = "' . $row[1] . '"<br>';
-        echo 'LABELQUANTITY = "1"' . '<br>';
+        $args = 
+        'LABELNAME = "' . dirname(__FILE__) . "\labelDirectory\\" . $labelname . '"' . "\n" .
+        'NBR_ARTICLE = "' . $row[3] . '"' . "\n" .
+        'NOM_ARTICLE = "' . $row[2] . '"' . "\n" .
+        'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . "\n" .
+        'NUM_OF = "' . $of . '"' . "\n" .
+        'REF_ARTICLE = "' . $row[1] . '"' . "\n" .
+        'LABELQUANTITY = "1"' . "\n";
         // echo 'DIMENSIONS_ARTICLE = "' . $row[4] . '"  <br>';
         // echo 'TYPE_BAC_ARTICLE = "' . $row[5] . '"  <br>';
         // echo 'POIDS_ARTICLE = "' . $row[6] . '"  <br>';
-        echo "</div> ";
-        echo "<br>";
+
+        $codesoftArgs .= $args;
       }
     }
 
     //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
     //Je vais créer le fichier qui sera à éxécuter par CodeSoft
 
-    $my_file = 'file.txt';
-    $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+    $name_file = dirname(__FILE__) . "\watchDirectory\\" . 'print.cmd';
+    $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $my_file);
+    fwrite($print_file, $codesoftArgs);
+    fclose($print_file);
 
   }
 
