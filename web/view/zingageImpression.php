@@ -3,6 +3,7 @@
   require("connexionBD.php");
   //permet de vérifier la bonne connexion de l'utilisateur
   if (isset($_SESSION['identifiant'])) {
+
 ?>
 
 <?php 
@@ -30,14 +31,15 @@
 
   else 
   { 
+    //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
+    $codesoftArgs = "";
+
     //Si tout c'est bien passé, récupération préparation de la récupération des attributs des items
     foreach ($id_article as $article) {
       $article = mysql_real_escape_string($article);
       $sql = "SELECT * FROM article WHERE id_article='$article'";
-      $result = mysqli_query($conn, $sql);
 
-      //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
-      $codesoftArgs = "";
+      $result = mysqli_query($conn, $sql);
 
       //Récupération des arguments pour l'impression sous CodeSoft
       while ($row = mysqli_fetch_array($result)){
@@ -59,9 +61,8 @@
 
     //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
     //Je vais créer le fichier qui sera à éxécuter par CodeSoft
-
-    $name_file = dirname(__FILE__) . "\watchDirectory\\" . 'print.cmd';
-    $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $my_file);
+    $name_file = dirname(__FILE__) . "\..\watchDirectory\\" . 'print.cmd';
+    $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $print_file);
     fwrite($print_file, $codesoftArgs);
     fclose($print_file);
 

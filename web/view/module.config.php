@@ -1,6 +1,5 @@
 <?php
     require("connexionBD.php");
-    require("configSite.php");
 
     function connect_db(){
         $dsn="mysql:dbname=".BASE.";host=".SERVER;

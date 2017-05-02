@@ -38,11 +38,14 @@
   };
 
   function retrievestate() {
-    list.innerHTML = localStorage.todolist;
+    // Permet d'éviter l'erreur "undifined" // Ne fonctionne pas
+    // if(!(localStorage.getItem(todolist) === true))
+    //   { 
+        list.innerHTML = localStorage.todolist;
+      // }
     data.value = localStorage.todolist;
-            if ( list.innerHTML === "" ) {
-            disableButton (sendDataButton);
-        }
+    if ( list.innerHTML === "" ) 
+      { disableButton (sendDataButton); }
   };
 })();
 

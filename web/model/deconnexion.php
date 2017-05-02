@@ -7,6 +7,8 @@
 	//destruction de la session
 	session_destroy();
 	//remise sur la page d'accueil
-	header( "Location: /zingage/" );
-	exit;
+	// header( "Location: /zingage/" );
+	// exit;
+	echo "<h2>Déconnexion prise en compte</h2>";
+
 ?>

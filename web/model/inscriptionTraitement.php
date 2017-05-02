@@ -1,8 +1,3 @@
-<?php
-  require_once("header.php");
-  require_once("connexionBD.php");
-?>
-
 <?php 
   
   //initialisation de la valeur d'erreur 0 = ok
@@ -66,16 +61,23 @@
       $insertUser = mysqli_query( $conn ,"INSERT INTO utilisateur VALUES('', '$identifiant', '$nom', '$prenom', '$mdp', '0')" ) or trigger_error("L'accès SQL à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ".mysqli_error(), E_USER_ERROR);
 
       echo "<h2>Votre inscription à bien été prise en compte !</h2>";
-
-      header( "Location: /zingage/" );
-      exit;
+      $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
+      $accueil = dirname(dirname(__FILE__)) . "\\view\\zingage.php";
+      $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
+      require_once($header);
+      require_once($accueil);
+      require_once($footer);
     }
 
     else
     {
       echo "<h2>Votre inscription n'a pas été prise en compte, veuillez corriger les erreurs ci-dessus !</h2>";
-      header( "Location: /zingage/inscription/" );
-      exit;
+      $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
+      $inscription = dirname(dirname(__FILE__)) . "\\view\\inscription.php";
+      $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
+      require_once($header);
+      require_once($inscription);
+      require_once($footer);
     }
 
   }
@@ -83,12 +85,13 @@
   else
   {
     echo "<h2>Les mots de passe ne correspondent pas</h2>";
-    header( "Location: /zingage/inscription/" );
-    exit;
+      $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
+      $inscription = dirname(dirname(__FILE__)) . "\\view\\inscription.php";
+      $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
+      require_once($header);
+      require_once($inscription);
+      require_once($footer);
   }
 
 ?>
 
-<?php
-  require_once("footer.php");
-?>

@@ -1,6 +1,4 @@
 <?php
-  require_once("header.php");
-  require("connexionBD.php");
   //permet de vérifier la bonne connexion de l'utilisateur
   if (isset($_SESSION['identifiant'])) {
 ?>
@@ -75,5 +73,4 @@
   }
   //Si utilisateur non connecté
   else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
-  require_once("footer.php");
 ?>

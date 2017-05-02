@@ -1,6 +1,6 @@
 <?php
   require_once("header.php");
-  if ((isset($_SESSION['identifiant']))) {
+  if (isset($_SESSION['identifiant'])) {
 ?>
 
   <div id="formulaire">
