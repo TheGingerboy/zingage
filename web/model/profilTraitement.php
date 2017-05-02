@@ -1,92 +1,70 @@
-<?php
-  require_once("header.php");
-?>
-
 <?php 
 
-  //initialisation de la valeur d'erreur 0 = ok
-  $err = 0;
-
   //récupération des valeurs passé
+  $identifiant = $_SESSION['identifiant'];
   $nom = $_POST['nom'];
   $prenom = $_POST['prenom'];
-  $identifiant = $_SESSION['identifiant'];
-  $email = $_POST['email'];
-  $mdp = $_POST['mdp'];
-  $mdp2 = $_POST['mdp2'];
-  $adresse = $_POST['adresse'];
-  $cpt_adresse = $_POST['cpt_adresse'];
-  $cp = $_POST['cp'];
-  $ville = $_POST['ville'];
-  $tel = $_POST['tel'];
+  $mdp_verif = $_POST['mdp_verif'];
+  $new_mdp = $_POST['new_mdp'];
+  $new_mdp2 = $_POST['new_mdp2'];
 
   //normalisation des valeurs pour empécher les injections SQL et retirer les caractère pouvant causé des défauts
-
-  $mdp = mysql_real_escape_string(htmlspecialchars($mdp));
-  $mdp2 = mysql_real_escape_string(htmlspecialchars($mdp2));
   $nom = mysql_real_escape_string(htmlspecialchars($nom));
   $prenom = mysql_real_escape_string(htmlspecialchars($prenom));
-  $email = mysql_real_escape_string(htmlspecialchars($email));
-  $adresse = mysql_real_escape_string(htmlspecialchars($adresse));
-  $cpt_adresse = mysql_real_escape_string(htmlspecialchars($cpt_adresse));
-  $cp = mysql_real_escape_string(htmlspecialchars($cp));
-  $tel = mysql_real_escape_string(htmlspecialchars($tel));
-  $ville = mysql_real_escape_string(htmlspecialchars($ville));
+  $mdp_verif = mysql_real_escape_string(htmlspecialchars($mdp_verif));
+  $new_mdp = mysql_real_escape_string(htmlspecialchars($new_mdp));
+  $new_mdp2 = mysql_real_escape_string(htmlspecialchars($new_mdp2));
 
-  //connexion à la BDD
-  require_once("connexionBD.php");
+  //Préparation requête
+  $sql = mysqli_query($conn, "SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'") or die(mysql_error());
 
-
-  //Verification de l'entrée de toutes les valeurs
-  if(!empty($nom)){  mysql_query("UPDATE gt_user SET nom_user='$nom' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($prenom)){ mysql_query("UPDATE gt_user SET prenom_user='$prenom' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($email)){ mysql_query("UPDATE gt_user SET mail_user='$email' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($adresse)){ mysql_query("UPDATE gt_user SET rue_user='$adresse' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($cpt_adresse)){ mysql_query("UPDATE gt_user SET complement_user='$cpt_adresse' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($cp)){ mysql_query("UPDATE gt_user SET cp_user='$cp' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($tel)){ mysql_query("UPDATE gt_user SET tel_user='$tel' WHERE identifiant_user='$identifiant'"); }
-
-  if(!empty($ville)){ mysql_query("UPDATE gt_user SET ville_user='$ville' WHERE identifiant_user='$identifiant'"); }
-
-
-
-  if($mdp == $mdp2)
-  {
-
-    //Gestion des erreurs 0 = ok, 1 = ko
-    if ($err == 0)
-    {
-
-      //Cryptage du mot de passe
-      sha1($mdp);
-
-      //Insertion des valeurs dans la table
-
-      echo "<h2>Vos changement on bien été pris en compte !</h2>";
-    }
-
-    else
-    {
-      echo "<h2>Vos changement n'ont pas été pris en compte, veuillez corriger les erreurs ci-dessus !</h2>";
-    }
-
+  //Stockage des infos user
+  while ($row = mysqli_fetch_assoc($sql)) {
+    $nom_user = $row['nom_user'];
+    $prenom_user = $row['prenom_user'];
+    $mdp_user = $row['mdp_user'];
   }
 
-  else
-  {
-    echo "<h2>Les mots de passe ne correspondent pas, modification annulé</h2>";
+  //Si vide ou nom identique, ne rien faire
+  if( (!empty($nom)) && ($nom != $nom_user) ){ 
+    mysqli_query($conn, "UPDATE utilisateur SET nom_user='$nom' WHERE identifiant_user='$identifiant'");
+    echo '<h2 class="center">Votre nom à été modifié</h2>';
   }
 
-  require_once("profil.php");
+  //Si vide ou prénom identique, ne rien faire 
+  if( (!empty($prenom)) && ($prenom != $prenom_user) ){ 
+    mysqli_query($conn, "UPDATE utilisateur SET prenom_user='$prenom' WHERE identifiant_user='$identifiant'");
+    echo '<h2 class="center">Votre prénom à été modifié</h2>';
+  }
 
-?>
+  //Cryptage du mot de passe
 
-<?php
-  require_once("footer.php");
+
+  //Si vide ou mdp non identique, ne rien faire
+  if ( !empty($mdp_verif) ) 
+  {
+    $mdp_verif = sha1($mdp_verif);
+    if ($mdp_verif == $mdp_user) 
+    {  
+      if($new_mdp == $new_mdp2)
+      {
+        $new_mdp = sha1($new_mdp);
+        //Insertion des valeurs dans la table
+        mysqli_query($conn, "UPDATE utilisateur SET mdp_user='$new_mdp' WHERE identifiant_user='$identifiant'");
+        echo '<h2 class="center">Changement de mot de passe effectué</h2>';
+        // Retour sur la page profil
+      }
+      else { echo '<h2 class="center">Mot de passe inchangé, les deux mots de passe ne correspondent pas</h2>'; }
+    }
+    else { echo '<h2 class="center">Mot de passe inchangé, mot de passe actuel incorrect</h2>'; }
+  }
+
+  // Retour sur la page profil
+  $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
+  $profil = dirname(dirname(__FILE__)) . "\\view\\profil.php";
+  $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
+  require_once ($header);
+  require_once ($profil);
+  require_once ($footer);
+
 ?>

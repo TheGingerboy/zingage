@@ -28,7 +28,7 @@ $app->post('/zingageRecap', function(){
 $app->post('/zingageImpression', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageImpression.php'), 0, -1);
+    $content .= substr((require_once '/web/model/zingageImpression.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -95,8 +95,10 @@ $app->get('/profil', function(){
 });
 
 $app->post('/profilTraitement', function(){
-    $content = require_once '/web/model/profilTraitement.php';
-    $content = substr($content, 0, -1); 
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/profilTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 

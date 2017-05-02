@@ -18,8 +18,8 @@ if ($_SESSION['identifiant']){
 ?>
 
 <div id="formulaire">
-  <h2>Profil de <?php echo $_SESSION['identifiant'] ?></h2>
-  <form action="profilTraitement" method="post" class="form-horizontal">
+  <h2 class="center">Profil de <?php echo $_SESSION['identifiant'] ?></h2>
+  <form id="profil-form" action="profilTraitement" method="post" class="form-horizontal">
     <div class="form-group">
       <label for="nom" class="col-sm-3 control-label">Nom : </label>
       <div class="col-sm-9">
@@ -32,22 +32,23 @@ if ($_SESSION['identifiant']){
         <input type="text" name="prenom" class="form-control" value="<?php echo htmlspecialchars_decode($prenom); ?>" id="prenom">
       </div>
     </div>
+    <h2 class="center"> Changement de mot de passe</h2>
     <div class="form-group">
       <label for="mdp" class="col-sm-3 control-label">Mot de passe actuel : </label>
       <div class="col-sm-9">
-        <input type="password" name="mdp" class="form-control" id="mdp">
+        <input type="password" name="mdp_verif" class="form-control" id="mdp">
       </div>
     </div>
     <div class="form-group">
       <label for="mdp" class="col-sm-3 control-label">Nouveau mot de passe : </label>
       <div class="col-sm-9">
-        <input type="password" name="mdp" class="form-control" id="mdp">
+        <input type="password" name="new_mdp" class="form-control" id="mdp">
       </div>
     </div>
     <div class="form-group">
       <label for="mdp" class="col-sm-3 control-label">Confirmer le mot de passe : </label>
       <div class="col-sm-9">
-        <input type="password" name="mdp2" class="form-control" id="mdp2">
+        <input type="password" name="new_mdp2" class="form-control" id="mdp2">
       </div>
     </div>
     <div class="col-sm-offset-6 col-sm-6">

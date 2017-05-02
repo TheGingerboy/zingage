@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 27 Avril 2017 à 17:39
--- Version du serveur :  10.1.21-MariaDB
--- Version de PHP :  5.6.30
+-- Généré le :  Mar 02 Mai 2017 à 17:15
+-- Version du serveur :  10.1.19-MariaDB
+-- Version de PHP :  5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,7 +33,7 @@ CREATE TABLE `article` (
   `nb_article` int(11) DEFAULT NULL,
   `dim_article` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `bac_article` varchar(10) COLLATE utf8_bin NOT NULL,
-  `poid_article` int(11) DEFAULT NULL
+  `poid_article` decimal(10,3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -45,7 +45,14 @@ INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`,
 (2, 'test2', 'test', 0, '0', 'test', 0),
 (3, '42911VFO0000', 'Arm Fr Right Adjust Zingue Blanc', 30, '0', 'T2', 10),
 (5, 'GD4130-BKK1', 'Scanner', 1, '30', 'T2', 1),
-(6, 'tata', 'nom de tata', 80, '30x30', 'T2', 250);
+(6, 'tata', 'nom de tata', 80, '30x30', 'T2', 250),
+(7, '183338- ZT5 -0100', 'Arm Fr Right Adjust Zingue Blanc', 80, '30x30', 'T2', 10),
+(8, '42911 VFO 0000', 'Arm Fr Right Adjust Zingue Blanc', 30, '30x30', 'T2', 250),
+(9, 'hello', 'hello_world', 20, '20x50', 'baccalaurÃ', 0),
+(10, 'TOTO', 'TOTO', 0, 'TOTO', 'TOTO', 0),
+(11, 'Tarik', 'Tarik', 0, 'Tarik', 'Tarik', 0),
+(12, '42930VGO0002', 'ARM COMP TENSION ZINGUE', 60, '', 'T1', 8),
+(13, 'GD4130-BKK1-E11A50800', 'SCANNER', 1, '20X30', 'Carton', 0);
 
 -- --------------------------------------------------------
 
@@ -99,7 +106,11 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_user`, `identifiant_user`, `nom_user`, `prenom_user`, `mdp_user`, `role_user`) VALUES
-(2, 'Gingerboy', 'PARAT', 'Virgile', '89ed6e89d90d962af7eef526f97e9c8bc698eade', 0);
+(2, 'Gingerboy', 'PARAT', 'Virgile', '89ed6e89d90d962af7eef526f97e9c8bc698eade', 0),
+(3, 'virgile.parat', 'PARAT', 'Virgile', '89ed6e89d90d962af7eef526f97e9c8bc698eade', 0),
+(4, 'John', 'John', 'John', '356a192b7913b04c54574d18c28d46e6395428ab', 0),
+(5, 'test', 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0),
+(6, 'testo', 'testo', 'testo', 'c0b333c1f24f1494026b629945f32305a1757722', 0);
 
 --
 -- Index pour les tables exportées
@@ -142,7 +153,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `entreprise`
 --
@@ -152,7 +163,7 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Contraintes pour les tables exportées
 --

@@ -57,7 +57,8 @@ body {
 #zingage-form,
 #connexion-form,
 #inscription-form,
-#ajout-zing-form {
+#ajout-zing-form,
+#profil-form {
   width: 100%;
   background: #00adef;
   color: #fff;
@@ -121,6 +122,10 @@ body {
     margin-bottom: 20px;
 }
 
+#data {
+  display: none;
+}
+
 .addBtn:hover {
     background-color: #bbb;
 }
@@ -142,6 +147,7 @@ body {
     min-height: 25px;
 }
 
-#data {
-  display: none;
+.center{
+  text-align: center;
 }
+
