@@ -20,7 +20,7 @@ $app->get('/', function (){
 $app->post('/zingageRecap', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/model/zingageRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -80,7 +80,7 @@ $app->get('/inscription', function(){
 
 $app->post('/inscriptionTraitement', function(){
     // Traitement
-    $content = substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content =  substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/inscriptionTraitement.php'), 0, -1);
     return $content;
 });

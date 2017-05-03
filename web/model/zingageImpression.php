@@ -9,8 +9,8 @@
   $err = false;
 
   //récupération des valeurs passé
-  $identifiant = mysql_real_escape_string($_SESSION['identifiant']);
-  $of = mysql_real_escape_string($_POST['of']);
+  $identifiant = mysqli_real_escape_string($conn, $_SESSION['identifiant']);
+  $of = mysqli_real_escape_string($conn, $_POST['of']);
   $id_article = json_decode($_POST['ref_article']);
 
   //Récupère l'ID de l'utilisateur
@@ -25,46 +25,44 @@
   //Temporaire, todo : voir pour un routage des etiquettes en fonction de la ref
   $labelname = "test.lab";
 
-  if($err) { echo "<h2>Une erreur s'est produite, recommencer l'opération, si l'erreur persiste, contactez votre administrateur réseau</h2>"; }
+  //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
+  $codesoftArgs = "";
 
-  else 
-  { 
-    //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
-    $codesoftArgs = "";
+  //Si tout c'est bien passé, récupération préparation de la récupération des attributs des items
+  foreach ($id_article as $article) {
+    //Empêche les injections SQL
+    $article = mysqli_real_escape_string($conn, htmlspecialchars($article));
+    //Requête et récupération de l'ID
+    $sql = "SELECT * FROM article WHERE id_article='$article'";
+    $result = mysqli_query($conn, $sql);
 
-    //Si tout c'est bien passé, récupération préparation de la récupération des attributs des items
-    foreach ($id_article as $article) {
-      $article = mysql_real_escape_string($article);
-      $sql = "SELECT * FROM article WHERE id_article='$article'";
+    //Récupération des arguments pour l'impression sous CodeSoft
+    while ($row = mysqli_fetch_array($result)){
+      $args = 
+      'LABELNAME = "' . dirname(dirname(__FILE__)) . "\labelDirectory\\" . $labelname . '"' . PHP_EOL .
+      'NBR_ARTICLE = "' . $row[3] . '"' . PHP_EOL .
+      'NOM_ARTICLE = "' . $row[2] . '"' . PHP_EOL .
+      'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . PHP_EOL .
+      'NUM_OF = "' . $of . '"' . PHP_EOL .
+      'REF_ARTICLE = "' . $row[1] . '"' . PHP_EOL .
+      'LABELQUANTITY = "1"' . PHP_EOL;
+      //  D'autres infos potentiellement nécessaire
+      // 'DIMENSIONS_ARTICLE = "' . $row[4] . '"' .  PHP_EOL .
+      // 'TYPE_BAC_ARTICLE = "' . $row[5]  . '"' .  PHP_EOL .
+      // 'POIDS_ARTICLE = "' . $row[6]  . '"' .  PHP_EOL .
 
-      $result = mysqli_query($conn, $sql);
-
-      //Récupération des arguments pour l'impression sous CodeSoft
-      while ($row = mysqli_fetch_array($result)){
-        $args = 
-        'LABELNAME = "' . dirname(dirname(__FILE__)) . "\labelDirectory\\" . $labelname . '"' . PHP_EOL .
-        'NBR_ARTICLE = "' . $row[3] . '"' . PHP_EOL .
-        'NOM_ARTICLE = "' . $row[2] . '"' . PHP_EOL .
-        'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . PHP_EOL .
-        'NUM_OF = "' . $of . '"' . PHP_EOL .
-        'REF_ARTICLE = "' . $row[1] . '"' . PHP_EOL .
-        'LABELQUANTITY = "1"' . PHP_EOL;
-        // echo 'DIMENSIONS_ARTICLE = "' . $row[4] . '"  <br>';
-        // echo 'TYPE_BAC_ARTICLE = "' . $row[5] . '"  <br>';
-        // echo 'POIDS_ARTICLE = "' . $row[6] . '"  <br>';
-
-        $codesoftArgs .= $args;
-      }
+      $codesoftArgs .= $args;
     }
-
-    //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
-    //Je vais créer le fichier qui sera à éxécuter par CodeSoft
-    $name_file = dirname(__FILE__) . "\..\watchDirectory\\" . 'print.cmd';
-    $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $print_file);
-    fwrite($print_file, $codesoftArgs);
-    fclose($print_file);
-
+    
+    $insert_sql = mysqli_query( $conn ,"INSERT INTO scan VALUES('$article', '$id_user', '$id_entreprise', now(), '$of')" ) or trigger_error("L'accès SQL à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ". mysqli_error(), E_USER_ERROR);  
   }
+
+  //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
+  //Je vais créer le fichier qui sera à éxécuter par CodeSoft
+  $name_file = dirname(__FILE__) . "\..\watchDirectory\\" . 'print.cmd';
+  $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $print_file);
+  fwrite($print_file, $codesoftArgs);
+  fclose($print_file);
 
 ?>
 

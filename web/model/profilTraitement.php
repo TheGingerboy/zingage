@@ -2,18 +2,12 @@
 
   //récupération des valeurs passé
   $identifiant = $_SESSION['identifiant'];
-  $nom = $_POST['nom'];
-  $prenom = $_POST['prenom'];
-  $mdp_verif = $_POST['mdp_verif'];
-  $new_mdp = $_POST['new_mdp'];
-  $new_mdp2 = $_POST['new_mdp2'];
-
-  //normalisation des valeurs pour empécher les injections SQL et retirer les caractère pouvant causé des défauts
-  $nom = mysql_real_escape_string(htmlspecialchars($nom));
-  $prenom = mysql_real_escape_string(htmlspecialchars($prenom));
-  $mdp_verif = mysql_real_escape_string(htmlspecialchars($mdp_verif));
-  $new_mdp = mysql_real_escape_string(htmlspecialchars($new_mdp));
-  $new_mdp2 = mysql_real_escape_string(htmlspecialchars($new_mdp2));
+  //et normalisation des valeurs pour empécher les injections SQL et retirer les caractère pouvant causé des défauts
+  $nom = mysqli_real_escape_string($conn, htmlspecialchars($_POST['nom']));
+  $prenom = mysqli_real_escape_string($conn, htmlspecialchars($_POST['prenom']));
+  $mdp_verif = mysqli_real_escape_string($conn, htmlspecialchars($_POST['mdp_verif']));
+  $new_mdp = mysqli_real_escape_string($conn, htmlspecialchars($_POST['new_mdp']));
+  $new_mdp2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['new_mdp2']));
 
   //Préparation requête
   $sql = mysqli_query($conn, "SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'") or die(mysql_error());
@@ -43,12 +37,12 @@
   //Si vide ou mdp non identique, ne rien faire
   if ( !empty($mdp_verif) ) 
   {
-    $mdp_verif = sha1($mdp_verif);
-    if ($mdp_verif == $mdp_user) 
+    $mdp_verif = crypt('ravioliravioligivemetheformioli', $mdp_verif);
+    if (hash_equals($mdp_verif, $mdp_user)) 
     {  
       if($new_mdp == $new_mdp2)
       {
-        $new_mdp = sha1($new_mdp);
+        $new_mdp = crypt('ravioliravioligivemetheformioli', $new_mdp);
         //Insertion des valeurs dans la table
         mysqli_query($conn, "UPDATE utilisateur SET mdp_user='$new_mdp' WHERE identifiant_user='$identifiant'");
         echo '<h2 class="center">Changement de mot de passe effectué</h2>';
@@ -60,11 +54,8 @@
   }
 
   // Retour sur la page profil
-  $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-  $profil = dirname(dirname(__FILE__)) . "\\view\\profil.php";
-  $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
-  require_once ($header);
-  require_once ($profil);
-  require_once ($footer);
+  require_once (dirname(dirname(__FILE__)) . "\\view\\header.php");
+  require_once (dirname(dirname(__FILE__)) . "\\view\\profil.php");
+  require_once (dirname(dirname(__FILE__)) . "\\view\\footer.php");
 
 ?>

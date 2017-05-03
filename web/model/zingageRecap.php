@@ -1,9 +1,6 @@
 <?php
   //permet de vérifier la bonne connexion de l'utilisateur
   if (isset($_SESSION['identifiant'])) {
-?>
-
-<?php 
   
   //initialisation de la valeur d'erreur 0 = ok
   $err = true;

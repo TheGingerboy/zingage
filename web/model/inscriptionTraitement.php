@@ -11,11 +11,11 @@
   $mdp2 = $_POST['mdp2'];
 
   //normalisation des valeurs pour empécher les injections SQL et retirer les caractère pouvant causer des défauts
-  $identifiant = mysql_real_escape_string(htmlspecialchars($identifiant));
-  $mdp = mysql_real_escape_string(htmlspecialchars($mdp));
-  $mdp2 = mysql_real_escape_string(htmlspecialchars($mdp2));
-  $nom = mysql_real_escape_string(htmlspecialchars($nom));
-  $prenom = mysql_real_escape_string(htmlspecialchars($prenom));
+  $identifiant = mysqli_real_escape_string($conn, htmlspecialchars($identifiant));
+  $mdp = mysqli_real_escape_string($conn, htmlspecialchars($mdp));
+  $mdp2 = mysqli_real_escape_string($conn, htmlspecialchars($mdp2));
+  $nom = mysqli_real_escape_string($conn, htmlspecialchars($nom));
+  $prenom = mysqli_real_escape_string($conn, htmlspecialchars($prenom));
 
   //Vérifie la présence d'un doublon
   $verifid = mysqli_query($conn, "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'");
@@ -47,7 +47,7 @@
   }
 
 
-  if($mdp == $mdp2)
+  if(hash_equals($mdp, $mdp2))
   {
 
     //Gestion des erreurs 0 = ok, 1 = ko
@@ -55,7 +55,7 @@
     {
 
       //Cryptage du mot de passe
-      $mdp = sha1($mdp);
+      $mdp = crypt('ravioliravioligivemetheformioli', $mdp);
 
       //Insertion des valeurs dans la table
       $insertUser = mysqli_query( $conn ,"INSERT INTO utilisateur VALUES('', '$identifiant', '$nom', '$prenom', '$mdp', '0')" ) or trigger_error("L'accès SQL à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ".mysqli_error(), E_USER_ERROR);

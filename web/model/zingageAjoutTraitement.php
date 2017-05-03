@@ -16,12 +16,12 @@
   $poid_article = $_POST['poid_article'];
 
   //normalisation des valeurs pour empécher les injections SQL et retirer les caractères pouvant causer des défauts
-  $ref_article = mysql_real_escape_string(htmlspecialchars($ref_article));
-  $nom_article = mysql_real_escape_string(htmlspecialchars($nom_article));
-  $nb_article = mysql_real_escape_string(htmlspecialchars($nb_article));
-  $dim_article = mysql_real_escape_string(htmlspecialchars($dim_article));
-  $bac_article = mysql_real_escape_string(htmlspecialchars($bac_article));
-  $poid_article = mysql_real_escape_string(htmlspecialchars($poid_article));
+  $ref_article = mysqli_real_escape_string(htmlspecialchars($ref_article));
+  $nom_article = mysqli_real_escape_string(htmlspecialchars($nom_article));
+  $nb_article = mysqli_real_escape_string(htmlspecialchars($nb_article));
+  $dim_article = mysqli_real_escape_string(htmlspecialchars($dim_article));
+  $bac_article = mysqli_real_escape_string(htmlspecialchars($bac_article));
+  $poid_article = mysqli_real_escape_string(htmlspecialchars($poid_article));
 
   //Vérifie la présence d'un doublon
   $verif_ref = mysqli_query($conn, "SELECT ref_article FROM article WHERE ref_article='$ref_article'");
