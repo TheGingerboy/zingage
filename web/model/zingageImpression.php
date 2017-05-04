@@ -55,7 +55,7 @@
     }
     
     // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-    $insert_sql = mysqli_query( $conn ,"INSERT INTO scan VALUES('$article', '$id_user', '$id_entreprise', now(), '$of', '1')" ) or trigger_error("L'accès à la base de données à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ". mysqli_error(), E_USER_ERROR);  
+    $insert_sql = mysqli_query( $conn ,"INSERT INTO scan VALUES('$article', '$id_user', '$id_entreprise', now(), '', '$of', '1')" ) or trigger_error("L'accès à la base de données à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ". mysqli_error(), E_USER_ERROR);  
   }
 
   //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents

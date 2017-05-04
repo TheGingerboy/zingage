@@ -2,23 +2,22 @@
   //id_article est passé par l'URL, récupération depuis l'index
   if (isset($_SESSION['identifiant'])) {
 
-    $id_article = mysqli_real_escape_string($conn, htmlspecialchars($id_article));
-    $sql = "SELECT * FROM article WHERE id_article='$id_article'";
+    $id_article = htmlspecialchars($id_article);
+    $sql = $pdo->query("SELECT * FROM article WHERE id_article='$id_article'");
 
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result)==0)
+    if($sql->rowCount() < 0)
     {
       echo '<h3 class="center">Une erreur s\'est produite, si l\'erreur persiste,
       veuillez contacter votre administrateur réseau</h3>';
     }
     else{
-      while ($row = mysqli_fetch_array($result)){
-        $ref_article  = htmlspecialchars_decode($row[1]);
-        $nom_article  = htmlspecialchars_decode($row[2]);
-        $nb_article   = htmlspecialchars_decode($row[3]);
-        $dim_article  = htmlspecialchars_decode($row[4]);
-        $bac_article  = htmlspecialchars_decode($row[5]);
-        $poid_article = htmlspecialchars_decode($row[6]);
+      while ($row = $sql->fetch()){
+        $ref_article  = htmlspecialchars_decode($row['ref_article']);
+        $nom_article  = htmlspecialchars_decode($row['nom_article']);
+        $nb_article   = htmlspecialchars_decode($row['nb_article']);
+        $dim_article  = htmlspecialchars_decode($row['dim_article']);
+        $bac_article  = htmlspecialchars_decode($row['bac_article']);
+        $poid_article = htmlspecialchars_decode($row['poid_article']);
       }
 
 ?>

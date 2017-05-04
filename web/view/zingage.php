@@ -1,5 +1,14 @@
-<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageAjout" ?>">Ajouter un article</a>
-<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticle" ?>">Liste des articles</a>
+<div class="btn">
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageAjout" ?>">Ajouter un article</a>
+</div>
+
+<div class="btn">
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticle" ?>">Liste des articles</a>
+</div>
+
+<div class="btn">
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScan" ?>">Articles scannés</a>
+</div>
 
 
 
@@ -22,7 +31,7 @@
 			<form action="zingageRecap" method="post">
 
 				<!-- Permet de contenir les valeurs du scan pour les envoyer au serveur -->
-	      	    <input id="data" name="data" style="display: none;" required>				
+	      	    <input id="data" name="data" style="display: none;" type="hidden" class="hidden" required>				
 				<input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
 				<input id="btn-clear" class="btn btn-warning" type="reset" value="Remettre à 0" onclick="clearstate()">
 

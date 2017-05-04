@@ -1,30 +1,29 @@
 <?php
 	//Récupération des valeurs
-	$id_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['id_article']));
-	$ref_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['ref_article']));
-	$nom_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['nom_article']));
-	$nb_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['nb_article']));
-	$dim_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['dim_article']));
-	$bac_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['bac_article']));
-	$poid_article = mysqli_real_escape_string($conn, htmlspecialchars($_POST['poid_article']));
+	$id_article = htmlspecialchars($_POST['id_article']);
+	$ref_article = htmlspecialchars($_POST['ref_article']);
+	$nom_article = htmlspecialchars($_POST['nom_article']);
+	$nb_article = htmlspecialchars($_POST['nb_article']);
+	$dim_article = htmlspecialchars($_POST['dim_article']);
+	$bac_article = htmlspecialchars($_POST['bac_article']);
+	$poid_article = htmlspecialchars($_POST['poid_article']);
 
-    $sql = "SELECT * FROM article WHERE id_article='$id_article'";
+    $sql = $pdo->query("SELECT * FROM article WHERE id_article='$id_article'");
 
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result)==0)
+    if($sql->rowCount() < 0)
     {
       echo '<h3 class="center">Une erreur s\'est produite, si l\'erreur persiste,
       veuillez contacter votre administrateur réseau</h3>';
     }
     else{
-		while ($row = mysqli_fetch_array($result))
+		while ($row = $sql->fetch())
 		{
-			$ref_article_current  = $row[1];
-			$nom_article_current  = $row[2];
-			$nb_article_current   = $row[3];
-			$dim_article_current  = $row[4];
-			$bac_article_current  = $row[5];
-			$poid_article_current = $row[6];
+        $ref_article  = htmlspecialchars_decode($row['ref_article']);
+        $nom_article  = htmlspecialchars_decode($row['nom_article']);
+        $nb_article   = htmlspecialchars_decode($row['nb_article']);
+        $dim_article  = htmlspecialchars_decode($row['dim_article']);
+        $bac_article  = htmlspecialchars_decode($row['bac_article']);
+        $poid_article = htmlspecialchars_decode($row['poid_article']);
 		}
     	if ((!empty($ref_article)) && ($ref_article != $ref_article_current)) {
 			mysqli_query($conn, "UPDATE article SET ref_article='$ref_article' WHERE id_article='$id_article'");

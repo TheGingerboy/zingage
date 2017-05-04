@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 03 Mai 2017 à 13:41
+-- Généré le :  Jeu 04 Mai 2017 à 13:58
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -41,18 +41,8 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`, `dim_article`, `bac_article`, `poid_article`) VALUES
-(1, 'test', 'test', 0, '0', 'test', '0.000'),
-(2, 'test2', 'test', 0, '0', 'test', '0.000'),
-(3, '42911VFO0000', 'Arm Fr Right Adjust Zingue Blanc', 30, '0', 'T2', '10.000'),
-(5, 'GD4130-BKK1', 'Scanner', 1, '30', 'T2', '1.000'),
-(6, 'tata', 'nom de tata', 80, '30x30', 'T2', '250.000'),
-(7, '183338- ZT5 -0100', 'Arm Fr Right Adjust Zingue Blanc', 80, '30x30', 'T2', '10.000'),
-(8, '42911 VFO 0000', 'Arm Fr Right Adjust Zingue Blanc', 30, '30x30', 'T2', '250.000'),
-(9, 'hello', 'hello_world', 20, '20x50', 'baccalaurÃ', '0.000'),
-(10, 'TOTO', 'TOTO', 0, 'TOTO', 'TOTO', '0.000'),
-(11, 'Tarik', 'Tarik', 0, 'Tarik', 'Tarik', '0.000'),
-(12, '42930VGO0002', 'ARM COMP TENSION ZINGUE', 60, '', 'T1', '8.000'),
-(14, 'GD4130-BKK1-E11A50800', 'SCANNER', 1, '20X30', 'Carton', '0.200');
+(1, 'test', 'titouti', 0, '0', 'test', '15.000'),
+(17, 'GD4130-BKK1-E11A50800', 'SCANNER', 1, '20X30', 'Carton', '0.200');
 
 -- --------------------------------------------------------
 
@@ -82,10 +72,12 @@ CREATE TABLE `scan` (
   `id_article` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_entreprise` int(11) NOT NULL,
-  `date_scan` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_scan_depart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_scan_retour` datetime DEFAULT NULL,
   `of_scan` int(11) NOT NULL,
   `is_in_zingage` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 -- --------------------------------------------------------
 
@@ -107,7 +99,8 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_user`, `identifiant_user`, `nom_user`, `prenom_user`, `mdp_user`, `role_user`) VALUES
-(9, 'virgile.parat', 'PARAT', 'Virgile', '13m0wA4CrcIoc', 0);
+(9, 'virgile.parat', 'PARAT', 'Virgile', '13m0wA4CrcIoc', 0),
+(10, 'test', 'test', 'test', 'teVUmkBKOadeg', 0);
 
 --
 -- Index pour les tables exportées
@@ -150,7 +143,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `entreprise`
 --
@@ -160,7 +153,7 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Contraintes pour les tables exportées
 --

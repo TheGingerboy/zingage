@@ -3,8 +3,7 @@
 if (isset($_SESSION['identifiant'])) {
 
   //Préparation de la requête
-  $sql = "SELECT * FROM article";
-  $result = mysqli_query($conn, $sql);
+  $sql =  $pdo->query("SELECT * FROM article");
   //Préparation de la direction des chemins
   $edition = (dirname(dirname(__FILE__)) . "\\view\\footer.php") ;
   $suppression = (dirname(dirname(__FILE__)) . "\\view\\footer.php");
@@ -26,24 +25,24 @@ if (isset($_SESSION['identifiant'])) {
   echo "</tr>";
 
   //Si pas de résultat
-  if(mysqli_num_rows($result)==0){  echo '<h3 class="center">Il n\'y a pas d\'article enregistré pour le moment</h3>';  }
+  if($sql->rowCount() < 0){  echo '<h3 class="center">Il n\'y a pas d\'article enregistré pour le moment</h3>';  }
   //Sinon
   else {
-    while ($row = mysqli_fetch_array($result)){
+    while ($row = $sql->fetch()){
       echo "<tr>";
-      echo "<td>". htmlspecialchars_decode($row[1]) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row[2]) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row[3]) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row[4]) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row[5]) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row[6]) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['ref_article']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['nom_article']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['nb_article']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['dim_article']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['bac_article']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['poid_article']) . "</td>";
       //Edition, amène sur la page /zingage/zingageArticleEdition/{id_article}
-      echo '<td class="center"> <a href =' . "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticleEdition/" . $row[0] . ">"
+      echo '<td class="center"> <a href =' . "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticleEdition/" . $row['id_article'] . ">"
       . '<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>' ."</td>";
       //Supression
       echo '<td class="center">';
         echo '<form action="/zingage/zingageArticleSuppression/" method="post" id="form-suppr-article">';
-          echo '<input type="hidden" name="id_article" value="' . $row[0] . '" style="display:none;" class="hidden">';
+          echo '<input type="hidden" name="id_article" value="' . $row['id_article'] . '" style="display:none;" class="hidden">';
           echo '<button type="submit"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></button>' ;
         echo '</form>';
       echo  "</td>";

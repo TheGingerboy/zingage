@@ -83,6 +83,14 @@ $app->post('/zingageArticleSuppression/', function(){
     return $content;
 });
 
+$app->get('/listScan/', function(){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScan.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
 
 $app->get('/connexion', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
