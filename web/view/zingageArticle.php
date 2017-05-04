@@ -1,74 +1,58 @@
 <?php
-  require_once("header.php");
-  if (isset($_SESSION['identifiant'])) {
-?>
+  //permet de vérifier la bonne connexion de l'utilisateur
+if (isset($_SESSION['identifiant'])) {
 
-  <div id="formulaire">
-    <h2>Ajouter un article</h2>
-    <form id="ajout-zing-form" action="zingageAjoutTraitement" method="post">
+  //Préparation de la requête
+  $sql = "SELECT * FROM article";
+  $result = mysqli_query($conn, $sql);
+  //Préparation de la direction des chemins
+  $edition = (dirname(dirname(__FILE__)) . "\\view\\footer.php") ;
+  $suppression = (dirname(dirname(__FILE__)) . "\\view\\footer.php");
 
-      <div class="form-group">
-        <label for="ref_article">Référence : </label>
-        <input id="ref-imput" type="" name="ref_article" class="form-control">
-      </div>
+  echo '<h2 class="center">Liste des articles</h2>';
+  //Tableau à deux dimension matches[0] renvoie le résultat avec les li et matches[1] sans
+  echo "<table id=\"tab-list-article\" class=\"table table-bordered table-striped table-responsive\">";
 
-      <div class="form-group">
-        <label for="nom_article">Désignation : </label>
-        <input type="" name="nom_article" class="form-control">
-      </div>
+  //Déclaration du header tableau
+  echo "<tr>";
+  echo "<th>REFERENCE</th>";
+  echo "<th>NOM</th>";
+  echo "<th>NOMBRE</th>";
+  echo "<th>DIMENSION</th>";
+  echo "<th>BAC ARTICLE</th>";
+  echo "<th>POIDS TOTAL</th>";
+  echo "<th>EDITION</th>";
+  echo "<th>SUPPRESSION</th>";
+  echo "</tr>";
 
-      <div class="form-group">
-        <label for="nb_article">Nombre par bac : </label>
-        <input type="" name="nb_article" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="dim_article">Dimensions : </label>
-        <input type="" name="dim_article" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="bac_article">Type de bac : </label>
-        <input type="" name="bac_article" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="poid_article">Poid Total (Kilos) : </label>
-        <input type="" name="poid_article" class="form-control">
-      </div>
-
-      <button type="submit" class="btn btn-success">Valider</button>
-    </form>
-
-  </div>
-
-  <?php
-  }
-  else{ echo "<h2>Vous devez être connecté pour effectuer cette action<h2>"; }
-  require_once("footer.php");
-?>
-
-<script type="text/javascript">
-
-//Permet de de changer de champs en appuyant sur la touche "Entrée"
-$('body').on('keydown', 'input, select', function(e) {
-    var self = $(this)
-      , form = self.parents('form:eq(0)')
-      , focusable
-      , next
-      ;
-    if (e.keyCode == 13) {
-        focusable = form.find('input,a,select,button').filter(':visible');
-        next = focusable.eq(focusable.index(this)+1);
-        if (next.length) {
-            next.focus();
-        } else {
-            form.submit();
-        }
-        return false;
+  //Si pas de résultat
+  if(mysqli_num_rows($result)==0){  echo '<h3 class="center">Il n\'y a pas d\'article enregistré pour le moment</h3>';  }
+  //Sinon
+  else {
+    while ($row = mysqli_fetch_array($result)){
+      echo "<tr>";
+      echo "<td>". htmlspecialchars_decode($row[1]) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row[2]) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row[3]) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row[4]) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row[5]) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row[6]) . "</td>";
+      //Edition, amène sur la page /zingage/zingageArticleEdition/{id_article}
+      echo '<td class="center"> <a href =' . "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticleEdition/" . $row[0] . ">"
+      . '<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>' ."</td>";
+      //Supression
+      echo '<td class="center">';
+        echo '<form action="/zingage/zingageArticleSuppression/" method="post" id="form-suppr-article">';
+          echo '<input type="hidden" name="id_article" value="' . $row[0] . '" style="display:none;" class="hidden">';
+          echo '<button type="submit"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></button>' ;
+        echo '</form>';
+      echo  "</td>";
+      echo "</tr>";
     }
-});
+  }
+  echo "</table>";
+}
+//Si utilisateur non connecté
+else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
 
-$("#ref-imput").focus();
-
-</script>
+?>

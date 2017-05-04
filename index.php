@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__.'/vendor/autoload.php';
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 global $obj;
 
@@ -20,7 +18,7 @@ $app->get('/', function (){
 $app->post('/zingageRecap', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingageRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -29,6 +27,7 @@ $app->post('/zingageImpression', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/zingageImpression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingage.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -47,6 +46,43 @@ $app->post('/zingageAjoutTraitement', function(){
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
+
+$app->get('/zingageArticle', function(){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageArticle.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/zingageArticleEdition/{id_article}', function($id_article) use($app){
+    $app->escape($id_article);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageArticleEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/zingageArticleEditionTraitement/{id_article}', function($id_article) use($app){
+    $app->escape($id_article);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/zingageArticleEditionTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageArticleEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/zingageArticleSuppression/', function(){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/zingageArticleSuppression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageArticle.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
 
 $app->get('/connexion', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -79,7 +115,6 @@ $app->get('/inscription', function(){
 });
 
 $app->post('/inscriptionTraitement', function(){
-    // Traitement
     $content =  substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/inscriptionTraitement.php'), 0, -1);
     return $content;
@@ -99,59 +134,6 @@ $app->post('/profilTraitement', function(){
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/profilTraitement.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-    return $content;
-});
-
-$app->get('/ficheProduit/{id}', function($id) use ($app){
-    $produit = get_article_by_id($id);
-    if (!$produit) $app->abort(404, "Produit inexistant");
-    else{
-        $content = require_once '/web/view/ficheProduit.php';
-        return json_encode($content);
-    }
-});
-
-$app->get('/adm/admin', function(){
-    $content = require_once '/web/view/admin.php';
-	$content = substr($content, 0, -1); 
-    return $content;
-});
-
-$app->get('/adm/suppadminProduit/id={id}', function($id) use ($app){
-    $user = get_article_by_id($id);
-    if (!$user)
-    	$app->abort(404, "Utilisateur inexistant");
-    else {
-        delete_article_by_id($id);
-        header('Location: /zingage/adm/admin');
-    	return require '/web/view/admin.php';
-    }
-});
-
-$app->post('/adm/admin/modifierArticle/id={id}', function($id,Request $request) use ($app){
-    $data = $request->request->all();
-    modif_article($id, $data);
-    header('Location: /zingage/adm/admin');
-    return require '/web/view/admin.php';
-});
-
-$app->post('/adm/addProduit', function(Request $request) use ($app){
-    $data = $request->request->all();
-    add_article($data);
-    header('Location: /zingage/adm/admin');
-    return require '/web/view/admin.php';
-});
-
-$app->post('/addcom/{id}', function($id, Request $request) use ($app){
-    $data = $request->request->all();
-    add_commentaire($id, $data);
-    header('Location: /zingage/ficheProduit/'.$id);
-    return require '/web/view/ficheProduit.php';
-});
-
-$app->get('/adm/adminUsr', function(){
-    $content = require_once '/web/view/adminUsers.php';
-	$content = substr($content, 0, -1); 
     return $content;
 });
 

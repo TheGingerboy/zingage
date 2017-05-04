@@ -1,4 +1,9 @@
 <?php
+	//Contient la clef de cryptage des mots de passe
+	$key = "ravioliravioligivemetheformioli";
+
+
+	// Contient les informations nécessaire pour se connecter au serveur
 	if (!defined('SERVER') || !defined('USER') || !defined('PASSWD') || !defined('BASE')){
 		define('SERVER', 'localhost');
 		define('USER', 'zingage');

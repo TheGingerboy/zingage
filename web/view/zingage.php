@@ -1,6 +1,8 @@
 <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageAjout" ?>">Ajouter un article</a>
 <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticle" ?>">Liste des articles</a>
 
+
+
 <div id="accueil">
 
 	<div id="zingage-result">

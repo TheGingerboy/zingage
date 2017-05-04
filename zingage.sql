@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 03 Mai 2017 à 11:48
+-- Généré le :  Mer 03 Mai 2017 à 13:41
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -83,23 +83,9 @@ CREATE TABLE `scan` (
   `id_user` int(11) NOT NULL,
   `id_entreprise` int(11) NOT NULL,
   `date_scan` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `of_scan` int(11) NOT NULL
+  `of_scan` int(11) NOT NULL,
+  `is_in_zingage` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Contenu de la table `scan`
---
-
-INSERT INTO `scan` (`id_article`, `id_user`, `id_entreprise`, `date_scan`, `of_scan`) VALUES
-(1, 9, 1, '0000-00-00 00:00:00', 225756),
-(1, 9, 1, '0000-00-00 00:00:00', 225756),
-(1, 9, 1, '0000-00-00 00:00:00', 225756),
-(1, 9, 1, '0000-00-00 00:00:00', 0),
-(1, 9, 1, '0000-00-00 00:00:00', 0),
-(1, 9, 1, '0000-00-00 00:00:00', 0),
-(1, 9, 1, '0000-00-00 00:00:00', 225756),
-(1, 9, 1, '0000-00-00 00:00:00', 225756),
-(1, 9, 1, '0000-00-00 00:00:00', 225756);
 
 -- --------------------------------------------------------
 

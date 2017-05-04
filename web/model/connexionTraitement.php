@@ -15,7 +15,7 @@
 
 	$identifiant = mysqli_real_escape_string($conn, htmlspecialchars($identifiant));
 	$mdp = mysqli_real_escape_string($conn, htmlspecialchars($mdp));
- 	$mdp = crypt('ravioliravioligivemetheformioli', $mdp);
+ 	$mdp = crypt($key, $mdp);
 
 	if ($identifiant) {
 	  $verifid = mysqli_query( $conn, "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );

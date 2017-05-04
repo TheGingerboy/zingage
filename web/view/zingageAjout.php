@@ -1,10 +1,9 @@
 <?php
-  require_once("header.php");
   if (isset($_SESSION['identifiant'])) {
 ?>
 
   <div id="formulaire">
-    <h2>Ajouter un article</h2>
+    <h2 class="center">Ajouter un article</h2>
     <form id="ajout-zing-form" action="zingageAjoutTraitement" method="post">
 
       <div class="form-group">
@@ -45,7 +44,6 @@
   <?php
   }
   else{ echo "<h2>Vous devez être connecté pour effectuer cette action<h2>"; }
-  require_once("footer.php");
 ?>
 
 <script type="text/javascript">

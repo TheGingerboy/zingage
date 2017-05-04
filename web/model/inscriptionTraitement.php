@@ -55,7 +55,7 @@
     {
 
       //Cryptage du mot de passe
-      $mdp = crypt('ravioliravioligivemetheformioli', $mdp);
+      $mdp = crypt($key, $mdp);
 
       //Insertion des valeurs dans la table
       $insertUser = mysqli_query( $conn ,"INSERT INTO utilisateur VALUES('', '$identifiant', '$nom', '$prenom', '$mdp', '0')" ) or trigger_error("L'accès SQL à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ".mysqli_error(), E_USER_ERROR);

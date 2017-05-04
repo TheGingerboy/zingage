@@ -37,12 +37,12 @@
   //Si vide ou mdp non identique, ne rien faire
   if ( !empty($mdp_verif) ) 
   {
-    $mdp_verif = crypt('ravioliravioligivemetheformioli', $mdp_verif);
+    $mdp_verif = crypt($key, $mdp_verif);
     if (hash_equals($mdp_verif, $mdp_user)) 
     {  
-      if($new_mdp == $new_mdp2)
+      if((!empty($new_mdp)) && (!empty($new_mdp2)) && ($new_mdp == $new_mdp2))
       {
-        $new_mdp = crypt('ravioliravioligivemetheformioli', $new_mdp);
+        $new_mdp = crypt($key, $new_mdp);
         //Insertion des valeurs dans la table
         mysqli_query($conn, "UPDATE utilisateur SET mdp_user='$new_mdp' WHERE identifiant_user='$identifiant'");
         echo '<h2 class="center">Changement de mot de passe effectué</h2>';
