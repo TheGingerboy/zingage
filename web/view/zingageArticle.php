@@ -53,5 +53,3 @@ if (isset($_SESSION['identifiant'])) {
 }
 //Si utilisateur non connecté
 else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
-
-?>

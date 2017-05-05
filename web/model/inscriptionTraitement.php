@@ -87,6 +87,3 @@
       require_once($inscription);
       require_once($footer);
   }
-
-?>
-

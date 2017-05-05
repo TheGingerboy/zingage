@@ -12,9 +12,7 @@
   //Permet de retrouver les valeurs contenu entre <li> et </li>
   preg_match_all ( '#<li>(.*?)</li>#', $data, $ref_list );
 
-?>
-<h2>Récapitualtif de l'impression</h2>
-<?php
+  echo "<h2>Récapitualtif de l'impression</h2>";
 
   //Tableau à deux dimension matches[0] renvoie le résultat avec les li et matches[1] sans
   echo "<table class=\"table table-bordered table-striped table-responsive\">";
@@ -67,8 +65,7 @@
     </form>
   </div>
 
-<?php
+  <?php
   }
   //Si utilisateur non connecté
   else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
-?>

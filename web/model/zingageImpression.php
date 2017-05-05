@@ -2,9 +2,6 @@
   //permet de vérifier la bonne connexion de l'utilisateur
   if (isset($_SESSION['identifiant'])) {
 
-?>
-
-<?php 
   //Déclaration variable
   $err = false;
 
@@ -55,7 +52,7 @@
     }
     
     // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-    $insert_sql = "INSERT INTO scan VALUES(?, ?, ?, now(), ?, ?, ?)";
+    $insert_sql = "INSERT INTO scan VALUES('', ?, ?, ?, now(), ?, ?, ?)";
     $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, '', $of, '1']);  
   }
 
@@ -68,15 +65,13 @@
 
 ?>
 
-<script type="text/javascript">
-    
-  (function() {
-   localStorage.todolist = "";
-  })();
+  <script type="text/javascript">
+      
+    (function() {
+     localStorage.todolist = "";
+    })();
 
-</script>
+  </script>
 
 <?php
-  } 
-  else {echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }
-?>
+  } else {echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }

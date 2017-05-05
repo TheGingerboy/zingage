@@ -1,7 +1,3 @@
-<?php
-  require_once("header.php");
-?>
-
   <div id="inscription-form">
     <h2>Inscription</h2>
     <form class="form-horizontal" action="inscriptionTraitement" method="post">
@@ -39,7 +35,3 @@
     </form>
 
   </div>
-
-<?php
-  require_once("footer.php");
-?>

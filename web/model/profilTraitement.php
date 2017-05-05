@@ -60,5 +60,3 @@
   require_once (dirname(dirname(__FILE__)) . "\\view\\header.php");
   require_once (dirname(dirname(__FILE__)) . "\\view\\profil.php");
   require_once (dirname(dirname(__FILE__)) . "\\view\\footer.php");
-
-?>

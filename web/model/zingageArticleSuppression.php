@@ -14,5 +14,3 @@
 		$pdo->prepare($sql)->execute([$id_article]);
 		echo '<h3 class="center">L\'article à été supprimer</h3>';
 	}
-
-?>

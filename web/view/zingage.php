@@ -7,7 +7,11 @@
 </div>
 
 <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScan" ?>">Articles scannés</a>
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanDepart" ?>">Articles scannés départ</a>
+</div>
+
+<div class="btn">
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanRetour" ?>">Articles scannés retour</a>
 </div>
 
 

@@ -56,6 +56,3 @@
 		require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
 	  }
 	}
-
-
-?>
