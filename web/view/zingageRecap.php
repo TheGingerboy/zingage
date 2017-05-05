@@ -27,10 +27,9 @@
   echo "<th>POIDS TOTAL</th></tr>";
 
   foreach($ref_list[1] as $ref){
-    $sql = "SELECT * FROM article WHERE ref_article='$ref'";
-    $result = mysqli_query($conn, $sql);
+    $verif_ref = $pdo->query("SELECT * FROM article WHERE ref_article='$ref'");
 
-    if(mysqli_num_rows($result)==0){
+    if($verif_ref->rowCount() == 0){
       if($err){
         echo "<div>Attention, un ou plusieurs articles scannés n'ont pas été enregistré</div>";
         echo "<div>Voici la liste des référence de ces articles :</div>";
@@ -41,14 +40,16 @@
 
     else {
       //affichage d'une ligne de tableau sur l'article
-      while ($row = mysqli_fetch_array($result)){
-        $ref_article[] = $row[0];
-        echo "<tr><td>{$row[1]}</td>";
-        echo "<td>{$row[2]}</td>";
-        echo "<td>{$row[3]}</td>";
-        echo "<td>{$row[4]}</td>";
-        echo "<td>{$row[5]}</td>";
-        echo "<td>{$row[6]}</td></tr>";
+      while ($row = $verif_ref->fetch()){
+        $ref_article[] = $row['id_article'];
+        echo "<tr>"; 
+        echo "<td>{$row['ref_article']}</td>";
+        echo "<td>{$row['nom_article']}</td>";
+        echo "<td>{$row['nb_article']}</td>";
+        echo "<td>{$row['dim_article']}</td>";
+        echo "<td>{$row['bac_article']}</td>";
+        echo "<td>{$row['poid_article']}</td>";
+        echo "</tr>";
       }
     }
   }
@@ -59,7 +60,7 @@
     <h2>Numéro d'OF</h2>
     <form action="zingageImpression" method="post">
       <div>
-        <input style="display: none;" type="" name="ref_article" class="form-control" value="<?php echo htmlspecialchars(json_encode($ref_article)) ?>">
+        <input style="display: none;" type="" name="ref_article" class="form-control" value="<?php echo json_encode($ref_article) ?>">
         <input type="" name="of" class="form-control" id="of" pattern="[0-9]{6,8}" title="saisissez votre numéro d'OF (entre 6 et 8 chiffres)" required>
         <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
       </div>

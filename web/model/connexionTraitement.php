@@ -10,31 +10,33 @@
 
 
 	//récupération des variables
-	$identifiant = $_POST['identifiant'];
-	$mdp = $_POST['mdp'];
+	$identifiant = htmlspecialchars($_POST['identifiant']);
+	$mdp = htmlspecialchars($_POST['mdp']);
 
-	$identifiant = mysqli_real_escape_string($conn, htmlspecialchars($identifiant));
-	$mdp = mysqli_real_escape_string($conn, htmlspecialchars($mdp));
  	$mdp = crypt($key, $mdp);
 
 	if ($identifiant) {
-	  $verifid = mysqli_query( $conn, "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
+	  $verifid = $pdo->query( "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
 
 		//Verification de l'existence de l'utilisateur
-		if ($verifid && mysqli_num_rows($verifid) > 0) {
-			//Verification du mot de passe
-			$verifpasswd = mysqli_query( $conn, "SELECT mdp_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
-			$mdp2 = mysqli_fetch_assoc($verifpasswd);
-
-			if (hash_equals($mdp, $mdp2['mdp_user']))
+		if ($verifid && $verifid->rowCount() > 0) {
+			//Récupération du mot de passe
+			$sql_passwd = $pdo->query("SELECT mdp_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
+			while ($row = $sql_passwd->fetch()){
+				$verifpasswd  = $row['mdp_user'];
+			}
+			//Vérification du mot de passe
+			if (hash_equals($mdp, $verifpasswd))
 			{
-			//Mise en session du compte
-			$verifadmin = mysqli_query( $conn, "SELECT role_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
-			$admin = mysqli_fetch_assoc($verifadmin);
-			$_SESSION['role_user'] = intval($admin);
-			$_SESSION['identifiant'] = $identifiant;
-			header( "Location: /zingage/" );
-			exit;
+				//Mise en session du compte
+				$sql_admin = $pdo->query("SELECT role_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
+				while ($row = $sql_admin->fetch()){
+					$verifpasswd  = $row['role_user'];
+				}
+				$_SESSION['role_user'] = intval($admin);
+				$_SESSION['identifiant'] = $identifiant;
+				header( "Location: /zingage/" );
+				exit;
 			}
 
 			else

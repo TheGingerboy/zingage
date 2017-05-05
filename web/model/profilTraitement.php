@@ -3,17 +3,17 @@
   //récupération des valeurs passé
   $identifiant = $_SESSION['identifiant'];
   //et normalisation des valeurs pour empécher les injections SQL et retirer les caractère pouvant causé des défauts
-  $nom = mysqli_real_escape_string($conn, htmlspecialchars($_POST['nom']));
-  $prenom = mysqli_real_escape_string($conn, htmlspecialchars($_POST['prenom']));
-  $mdp_verif = mysqli_real_escape_string($conn, htmlspecialchars($_POST['mdp_verif']));
-  $new_mdp = mysqli_real_escape_string($conn, htmlspecialchars($_POST['new_mdp']));
-  $new_mdp2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['new_mdp2']));
+  $nom = htmlspecialchars($_POST['nom']);
+  $prenom = htmlspecialchars($_POST['prenom']);
+  $mdp_verif = htmlspecialchars($_POST['mdp_verif']);
+  $new_mdp = htmlspecialchars($_POST['new_mdp']);
+  $new_mdp2 = htmlspecialchars($_POST['new_mdp2']);
 
   //Préparation requête
-  $sql = mysqli_query($conn, "SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'") or die(mysql_error());
+  $sql = $pdo->query("SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'") or die(mysql_error());
 
   //Stockage des infos user
-  while ($row = mysqli_fetch_assoc($sql)) {
+  while ($row =  $sql->fetch()) {
     $nom_user = $row['nom_user'];
     $prenom_user = $row['prenom_user'];
     $mdp_user = $row['mdp_user'];
@@ -21,14 +21,16 @@
 
   //Si vide ou nom identique, ne rien faire
   if( (!empty($nom)) && ($nom != $nom_user) ){ 
-    mysqli_query($conn, "UPDATE utilisateur SET nom_user='$nom' WHERE identifiant_user='$identifiant'");
-    echo '<h2 class="center">Votre nom à été modifié</h2>';
+    $sql_nom = "UPDATE utilisateur SET nom_user = ? WHERE identifiant_user = ? ";
+    $pdo->prepare($sql_nom)->execute([$nom, $identifiant]);
+    echo '<h2 class="center">Changement de nom effectué</h2>';
   }
 
   //Si vide ou prénom identique, ne rien faire 
   if( (!empty($prenom)) && ($prenom != $prenom_user) ){ 
-    mysqli_query($conn, "UPDATE utilisateur SET prenom_user='$prenom' WHERE identifiant_user='$identifiant'");
-    echo '<h2 class="center">Votre prénom à été modifié</h2>';
+    $sql_prenom = "UPDATE utilisateur SET prenom_user = ? WHERE identifiant_user = ? ";
+    $pdo->prepare($sql_prenom)->execute([$prenom, $identifiant]);
+    echo '<h2 class="center">Changement de prénom effectué</h2>';
   }
 
   //Cryptage du mot de passe
@@ -44,7 +46,8 @@
       {
         $new_mdp = crypt($key, $new_mdp);
         //Insertion des valeurs dans la table
-        mysqli_query($conn, "UPDATE utilisateur SET mdp_user='$new_mdp' WHERE identifiant_user='$identifiant'");
+        $sql_pass = "UPDATE utilisateur SET mdp_user = ? WHERE identifiant_user = ? ";
+        $pdo->prepare($sql_pass)->execute([$new_mdp, $identifiant]);
         echo '<h2 class="center">Changement de mot de passe effectué</h2>';
         // Retour sur la page profil
       }

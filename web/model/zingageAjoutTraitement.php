@@ -16,17 +16,17 @@
   $poid_article = $_POST['poid_article'];
 
   //normalisation des valeurs pour empécher les injections SQL et retirer les caractères pouvant causer des défauts
-  $ref_article = mysqli_real_escape_string($conn, htmlspecialchars($ref_article));
-  $nom_article = mysqli_real_escape_string($conn, htmlspecialchars($nom_article));
-  $nb_article = mysqli_real_escape_string($conn, htmlspecialchars($nb_article));
-  $dim_article = mysqli_real_escape_string($conn, htmlspecialchars($dim_article));
-  $bac_article = mysqli_real_escape_string($conn, htmlspecialchars($bac_article));
-  $poid_article = mysqli_real_escape_string($conn, htmlspecialchars($poid_article));
+  $ref_article = htmlspecialchars($ref_article);
+  $nom_article = htmlspecialchars($nom_article);
+  $nb_article = htmlspecialchars($nb_article);
+  $dim_article = htmlspecialchars($dim_article);
+  $bac_article = htmlspecialchars($bac_article);
+  $poid_article = htmlspecialchars($poid_article);
 
   //Vérifie la présence d'un doublon
-  $verif_ref = mysqli_query($conn, "SELECT ref_article FROM article WHERE ref_article='$ref_article'");
+  $verif_ref = $pdo->query("SELECT ref_article FROM article WHERE ref_article='$ref_article'");
 
-  if ($verif_ref && mysqli_num_rows($verif_ref) > 0) {
+  if ($verif_ref && $verif_ref->rowCount() < 0) {
     echo "<h3>La référence est déja entrée dans le système<br></h3>";
     $err = true;
   }
@@ -56,7 +56,9 @@
   //Gestion des erreurs false = ok (pas d'erreur), true = ko (erreur présente)
   if ($err == false)
   {  //Insertion des valeurs dans la table
-    $zingAjout = mysqli_query( $conn ,"INSERT INTO article VALUES('', '$ref_article', '$nom_article', '$nb_article', '$dim_article', '$bac_article', '$poid_article')" ) or trigger_error("L'accès SQL à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ".mysqli_error(), E_USER_ERROR);
+    $zingAjout = "INSERT INTO article VALUES('', ?, ?, ?, ?, ?, ?)";
+    $pdo->prepare($zingAjout)->execute([$ref_article, $nom_article, $nb_article, $dim_article, $bac_article, $poid_article]);
+
     echo "<h3>Votre article est maintenant ajouté dans la base !</h3>";
     $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
     $ajout = dirname(dirname(__FILE__)) . "\\view\\zingageAjout.php";

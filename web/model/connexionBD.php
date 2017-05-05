@@ -3,27 +3,13 @@
 	$key = "ravioliravioligivemetheformioli";
 
 	// Contient les informations nécessaire pour se connecter au serveur
-	if (!defined('SERVER') || !defined('USER') || !defined('PASSWD') || !defined('BASE')){
-		define('SERVER', 'localhost');
-		define('USER', 'zingage');
-		define('PASSWD', 'admin');
-		define('BASE', 'zingage');
-	}
-
-	// MYSQLI (dépérécié)
-	$conn = mysqli_connect(SERVER,USER,PASSWD,BASE);
-
-	if ( !$conn ) {
-	die("La connexion à échouer :  " . mysql_error());
-	}
-
-	// PDO
-	$host = 'localhost';//server
-	$db   = 'zingage';//base
-	$user = 'zingage';//user
-	$pass = 'admin';//passwd
+	$host = 'localhost';
+	$db   = 'zingage';
+	$user = 'zingage';
+	$pass = 'admin';
 	$charset = 'utf8';
-
+	
+	// PDO
 	$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 	$opt = [
 	PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

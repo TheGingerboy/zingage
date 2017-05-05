@@ -9,14 +9,15 @@
   $err = false;
 
   //récupération des valeurs passé
-  $identifiant = mysqli_real_escape_string($conn, $_SESSION['identifiant']);
-  $of = mysqli_real_escape_string($conn, $_POST['of']);
+  $identifiant_user = htmlspecialchars($_SESSION['identifiant']);
+  $of = htmlspecialchars($_POST['of']);
   $id_article = json_decode($_POST['ref_article']);
 
   //Récupère l'ID de l'utilisateur
-  $sql_userid = "SELECT id_user FROM utilisateur WHERE identifiant_user='$identifiant'";
-  $getID_user = mysqli_fetch_assoc(mysqli_query($conn, $sql_userid));
-  $id_user = $getID_user['id_user'];
+  $sql = $pdo->query("SELECT id_user FROM utilisateur WHERE identifiant_user='$identifiant_user'");
+  while ($row = $sql->fetch()){
+    $id_user  = $row['id_user'];
+  }
 
   //Temporaire, todo : Faire la list deroulante table d'entreprise et recuperer l'ID
   $id_entreprise = "1";
@@ -28,34 +29,34 @@
   //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
   $codesoftArgs = "";
 
-  //Si tout c'est bien passé, récupération préparation de la récupération des attributs des items
+  //Si tout c'est bien passé, préparation de la récupération des attributs des items
   foreach ($id_article as $article) {
-    //Empêche les injections SQL
-    $article = mysqli_real_escape_string($conn, htmlspecialchars($article));
+    //Normalise le numéro pour éviter un défaut
+    $article = htmlspecialchars($article);
     //Requête et récupération de l'ID
-    $sql = "SELECT * FROM article WHERE id_article='$article'";
-    $result = mysqli_query($conn, $sql);
+    $sql =  $pdo->query("SELECT * FROM article WHERE id_article='$article'");
 
-    //Récupération des arguments pour l'impression sous CodeSoft
-    while ($row = mysqli_fetch_array($result)){
+    //Récupération des valeurs pour l'impression sous CodeSoft
+    while ($row = $sql->fetch()){
       $args = 
       'LABELNAME = "' . dirname(dirname(__FILE__)) . "\labelDirectory\\" . $labelname . '"' . PHP_EOL .
-      'NBR_ARTICLE = "' . $row[3] . '"' . PHP_EOL .
-      'NOM_ARTICLE = "' . $row[2] . '"' . PHP_EOL .
+      'NBR_ARTICLE = "' . $row['nb_article'] . '"' . PHP_EOL .
+      'NOM_ARTICLE = "' . $row['nom_article'] . '"' . PHP_EOL .
       'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . PHP_EOL .
       'NUM_OF = "' . $of . '"' . PHP_EOL .
-      'REF_ARTICLE = "' . $row[1] . '"' . PHP_EOL .
+      'REF_ARTICLE = "' . $row['ref_article'] . '"' . PHP_EOL .
       'LABELQUANTITY = "1"' . PHP_EOL;
       //  D'autres infos potentiellement nécessaire
-      // 'DIMENSIONS_ARTICLE = "' . $row[4] . '"' .  PHP_EOL .
-      // 'TYPE_BAC_ARTICLE = "' . $row[5]  . '"' .  PHP_EOL .
-      // 'POIDS_ARTICLE = "' . $row[6]  . '"' .  PHP_EOL .
+      // 'DIMENSIONS_ARTICLE = "' . $row[dim_article] . '"' .  PHP_EOL .
+      // 'TYPE_BAC_ARTICLE = "' . $row[bac_article]  . '"' .  PHP_EOL .
+      // 'POIDS_ARTICLE = "' . $row[poid_article]  . '"' .  PHP_EOL .
 
       $codesoftArgs .= $args;
     }
     
     // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-    $insert_sql = mysqli_query( $conn ,"INSERT INTO scan VALUES('$article', '$id_user', '$id_entreprise', now(), '', '$of', '1')" ) or trigger_error("L'accès à la base de données à échouer, veuillez communiquer cette erreur à votre administrateur réseau : ". mysqli_error(), E_USER_ERROR);  
+    $insert_sql = "INSERT INTO scan VALUES(?, ?, ?, now(), ?, ?, ?)";
+    $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, '', $of, '1']);  
   }
 
   //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents

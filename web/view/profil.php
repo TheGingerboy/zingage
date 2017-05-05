@@ -3,16 +3,16 @@
 if ($_SESSION['identifiant']){
 
 	$identifiant = $_SESSION['identifiant'];
-	$verif_id = mysqli_query($conn, "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'");
+	$verif_id = $pdo->query("SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'");
 
 	//Verification de l'existence de l'utilisateur
-	if ($verif_id && mysqli_num_rows($verif_id) > 0) {
+	if ($verif_id && $verif_id->rowCount() != 0) {
 
-		$sql = mysqli_query($conn, "SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'") or die(mysql_error());;
+		$sql = $pdo->query("SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'");
 
-		while ($row = mysqli_fetch_assoc($sql)) {
-			$nom = $row['nom_user'];
-			$prenom = $row['prenom_user'];
+		while ($row = $sql->fetch()) {
+			$nom = htmlspecialchars_decode($row['nom_user']);
+			$prenom = htmlspecialchars_decode($row['prenom_user']);
 		}
 
 ?>
@@ -23,13 +23,13 @@ if ($_SESSION['identifiant']){
     <div class="form-group">
       <label for="nom" class="col-sm-3 control-label">Nom : </label>
       <div class="col-sm-9">
-        <input type="text" name="nom" class="form-control" value="<?php echo htmlspecialchars_decode($nom); ?>" id="nom">
+        <input type="text" name="nom" class="form-control" value="<?php echo $nom; ?>" id="nom">
       </div>
     </div>
     <div class="form-group">
       <label for="prenom" class="col-sm-3 control-label">Prénom : </label>
       <div class="col-sm-9">
-        <input type="text" name="prenom" class="form-control" value="<?php echo htmlspecialchars_decode($prenom); ?>" id="prenom">
+        <input type="text" name="prenom" class="form-control" value="<?php echo $prenom; ?>" id="prenom">
       </div>
     </div>
     <h2 class="center"> Changement de mot de passe</h2>
