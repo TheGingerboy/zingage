@@ -52,8 +52,9 @@
     }
     
     // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-    $insert_sql = "INSERT INTO scan VALUES('', ?, ?, ?, now(), ?, ?, ?)";
-    $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, '', $of, '1']);  
+    $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, date_scan_depart, of_scan, is_in_zingage) 
+                   VALUES(?, ?, ?, now(), ?, ?)";
+    $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, $of, '1']);  
   }
 
   //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
