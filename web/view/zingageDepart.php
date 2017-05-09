@@ -7,23 +7,23 @@
 </div>
 
 <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanDepart" ?>">Articles scannés départ</a>
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanDepart" ?>">Articles scannés</a>
 </div>
 
-<div class="btn">
+<!-- <div class="btn">
 	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanRetour" ?>">Articles scannés retour</a>
-</div>
+</div> -->
 
 
 
-<div id="accueil">
+<div id="body-scan">
 
 	<div id="zingage-result">
 
 			<form class="scan">
 
-				<div id="zingage-form">
-					<label id="label-zing" for="newitem">Zingage</label>
+				<div id="depart-form">
+					<label id="label-zing" for="newitem">Départ</label>
 					<div class="match-size">    
 						<input type="text" autofocus="autofocus" name="newitem" id="newitem" placeholder="En attente de scan..." autocomplete="off" required>
 						<input id="btn-zingage" class="btn btn-primary" type="submit" value="Ajouter">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 05 Mai 2017 à 12:04
+-- Généré le :  Mar 09 Mai 2017 à 10:01
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -71,22 +71,14 @@ INSERT INTO `entreprise` (`id_entreprise`, `nom_entreprise`) VALUES
 CREATE TABLE `scan` (
   `id_scan` int(11) NOT NULL,
   `id_article` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_user_depart` int(5) NOT NULL,
+  `id_user_retour` int(5) DEFAULT NULL,
   `id_entreprise` int(11) NOT NULL,
   `date_scan_depart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_scan_retour` datetime DEFAULT NULL,
   `of_scan` int(11) NOT NULL,
   `is_in_zingage` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Contenu de la table `scan`
---
-
-INSERT INTO `scan` (`id_scan`, `id_article`, `id_user`, `id_entreprise`, `date_scan_depart`, `date_scan_retour`, `of_scan`, `is_in_zingage`) VALUES
-(11, 1, 9, 1, '2017-05-05 11:26:45', '0000-00-00 00:00:00', 225756, 1),
-(12, 1, 9, 1, '2017-05-05 11:27:10', '0000-00-00 00:00:00', 2000000, 1),
-(13, 1, 9, 1, '2017-05-05 11:27:10', '0000-00-00 00:00:00', 2000000, 1);
 
 -- --------------------------------------------------------
 
@@ -136,7 +128,8 @@ ALTER TABLE `scan`
   ADD PRIMARY KEY (`id_scan`),
   ADD KEY `id_scan` (`id_scan`),
   ADD KEY `id_article` (`id_article`),
-  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_user_depart` (`id_user_depart`),
+  ADD KEY `id_user_retour` (`id_user_retour`),
   ADD KEY `id_entreprise` (`id_entreprise`);
 
 --
@@ -154,7 +147,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT pour la table `entreprise`
 --
@@ -179,8 +172,9 @@ ALTER TABLE `utilisateur`
 --
 ALTER TABLE `scan`
   ADD CONSTRAINT `scan_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`),
-  ADD CONSTRAINT `scan_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `utilisateur` (`id_user`),
-  ADD CONSTRAINT `scan_ibfk_3` FOREIGN KEY (`id_entreprise`) REFERENCES `entreprise` (`id_entreprise`);
+  ADD CONSTRAINT `scan_ibfk_2` FOREIGN KEY (`id_user_depart`) REFERENCES `utilisateur` (`id_user`),
+  ADD CONSTRAINT `scan_ibfk_3` FOREIGN KEY (`id_user_retour`) REFERENCES `utilisateur` (`id_user`),
+  ADD CONSTRAINT `scan_ibfk_4` FOREIGN KEY (`id_entreprise`) REFERENCES `entreprise` (`id_entreprise`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

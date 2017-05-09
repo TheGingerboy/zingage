@@ -1,9 +1,6 @@
 /* Include the padding and border in an element's total width and height */
 * {
-    box-sizing: border-box;
-}
-
-* { 
+  box-sizing: border-box; 
   margin: 0;
   padding: 0;
 }
@@ -32,13 +29,73 @@ body {
     width: 200px;
 }
 
-#zingage-form,
+#scan form {
+  background-color: #fff;
+}
+
+#depart-form,
 #connexion-form,
 #inscription-form,
 #ajout-zing-form,
 #profil-form {
   width: 100%;
   background: #00adef;
+  color: #fff;
+  padding: 40px;
+}
+
+/*****************Accueil*********************/
+
+#accueil {
+  background: #111;
+  color: #FFF;
+  font-family:'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16pt;
+}
+#accueil a {
+  color: #FFF;
+  text-decoration: none;
+}
+#accueil .menu {
+  width: 380px;
+  margin: 30px auto;
+}
+#accueil .menu a {
+  width: 180px;
+  line-height: 180px;
+  display: block;
+  margin: 4px;
+  text-align: center;
+  float:left;
+}
+
+#accueil .blue { background: #009fe3;  }
+#accueil .blue img { width: 65px; }
+#accueil .yellow { background: #fdd22a; }
+#accueil .yellow img { width: 100px; }
+#accueil .purple { background: #574696; opacity: 0.3; }
+#accueil .orange { background: #ee7202; opacity: 0.3;}
+#accueil .pink { background: #e61c67; opacity: 0.3;}
+#accueil .green { background: #96c11f; opacity: 0.3;}
+
+#accueil .menu-block {
+  position: relative;
+}
+
+#accueil .menu-block img  {
+  position: absolute;
+  bottom: 10px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+#retour-form{
+  width: 100%;
+  background: #d7bd00;
   color: #fff;
   padding: 40px;
 }
@@ -140,3 +197,5 @@ body {
 .center{
   text-align: center;
 }
+
+

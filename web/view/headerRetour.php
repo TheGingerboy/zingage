@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/style.css"/>
 
   </head>
-  <!-- body fermé dans le footer -->
   <body>
 
     <header>
@@ -39,7 +38,7 @@
     </p>
 
     <h1 class="text-center">
-      <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>"><img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/></a>
+      <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>"><img id="logo" class="img-responsive" src="/zingage/web/images/logo-gold.png" alt="AEML"/></a>
       
     </h1>
 

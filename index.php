@@ -10,7 +10,14 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 
 $app->get('/', function (){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingage.php'), 0, -1);
+    $content .= substr((require_once '/web/view/accueil.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/depart', function (){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageDepart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -27,10 +34,26 @@ $app->post('/zingageImpression', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/zingageImpression.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingage.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageDepart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
+
+$app->get('/retour', function (){
+    $content =  substr((require_once '/web/view/headerRetour.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageRetour.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/retourRecap', function (){
+    $content =  substr((require_once '/web/view/headerRetour.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/zingageRetourRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
 
 $app->get('/zingageAjout', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -91,13 +114,22 @@ $app->get('/listScanDepart/', function(){
     return $content;
 });
 
-$app->get('/listScanRetour/', function(){
+$app->post('/zingageScanSuppression/', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/listScanRetour.php'), 0, -1);
+    $content .= substr((require_once '/web/model/zingageScanSuppression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScanDepart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
+
+// $app->get('/listScanRetour/', function(){
+//     $content =  substr((require_once '/web/view/header.php'), 0, -1);
+//     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+//     $content .= substr((require_once '/web/view/listScanRetour.php'), 0, -1);
+//     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+//     return $content;
+// });
 
 
 $app->get('/connexion', function(){
