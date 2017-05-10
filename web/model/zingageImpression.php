@@ -2,19 +2,26 @@
   //permet de vérifier la bonne connexion de l'utilisateur
   if (isset($_SESSION['identifiant'])) {
 
-  //Déclaration variable
+  /****************** Déclaration et récupération de variable ***********/
   $err = false;
-
-  //récupération des valeurs passé
   $identifiant_user = htmlspecialchars($_SESSION['identifiant']);
   $of = htmlspecialchars($_POST['of']);
   $id_article = json_decode($_POST['ref_article']);
 
+  /******************************* Déclaration SQL ************************************/
+  // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
+  $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, date_scan_depart, of_scan, is_in_zingage) 
+                 VALUES(?, ?, ?, now(), ?, ?)";
+
   //Récupère l'ID de l'utilisateur
-  $sql = $pdo->query("SELECT id_user FROM utilisateur WHERE identifiant_user='$identifiant_user'");
-  while ($row = $sql->fetch()){
+  $get_id = $pdo->query("SELECT id_user FROM utilisateur WHERE identifiant_user='$identifiant_user'");
+  while ($row = $get_id->fetch()){
     $id_user  = $row['id_user'];
   }
+  //Récupère les infos de l'articles
+  $get_article =  $pdo->prepare("SELECT * FROM article WHERE id_article= ? ");
+
+
 
   //Temporaire, todo : Faire la list deroulante table d'entreprise et recuperer l'ID
   $id_entreprise = "1";
@@ -26,15 +33,15 @@
   //Contiendra tous les arguments nécessaire pour l'impression CodeSoft
   $codesoftArgs = "";
 
-  //Si tout c'est bien passé, préparation de la récupération des attributs des items
+  //Si tout s'est bien passé, préparation de la récupération des attributs des items
   foreach ($id_article as $article) {
     //Normalise le numéro pour éviter un défaut
     $article = htmlspecialchars($article);
     //Requête et récupération de l'ID
-    $sql =  $pdo->query("SELECT * FROM article WHERE id_article='$article'");
+    $get_article->execute([$article]);
 
     //Récupération des valeurs pour l'impression sous CodeSoft
-    while ($row = $sql->fetch()){
+    while ($row = $get_article->fetch()){
       $args = 
       'LABELNAME = "' . dirname(dirname(__FILE__)) . "\labelDirectory\\" . $labelname . '"' . PHP_EOL .
       'NBR_ARTICLE = "' . $row['nb_article'] . '"' . PHP_EOL .
@@ -51,9 +58,7 @@
       $codesoftArgs .= $args;
     }
     
-    // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-    $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, date_scan_depart, of_scan, is_in_zingage) 
-                   VALUES(?, ?, ?, now(), ?, ?)";
+
     $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, $of, '1']);  
   }
 

@@ -40,14 +40,14 @@ $app->post('/zingageImpression', function(){
 });
 
 $app->get('/retour', function (){
-    $content =  substr((require_once '/web/view/headerRetour.php'), 0, -1);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/view/zingageRetour.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
 $app->post('/retourRecap', function (){
-    $content =  substr((require_once '/web/view/headerRetour.php'), 0, -1);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/view/zingageRetourRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
@@ -150,7 +150,7 @@ $app->post('/connexionTraitement', function(){
 $app->get('/deconnexion', function(){
     $content =  substr((require_once '/web/model/deconnexion.php'), 0, -1);
     $content .= substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingage.php'), 0, -1);
+    $content .= substr((require_once '/web/view/accueil.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });

@@ -14,7 +14,7 @@ if (isset($_SESSION['identifiant'])) {
       depart.identifiant_user user_depart, 
       retour.identifiant_user user_retour
     FROM scan
-    JOIN article
+    JOIN article ON scan.id_article = article.id_article
     JOIN entreprise
     JOIN utilisateur depart ON depart.id_user = scan.id_user_depart
     LEFT JOIN utilisateur retour ON retour.id_user = scan.id_user_retour

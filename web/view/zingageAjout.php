@@ -28,7 +28,15 @@
 
       <div class="form-group">
         <label for="bac_article">Type de bac : </label>
-        <input type="" name="bac_article" class="form-control">
+         <select name="bac_article">
+            <option value="Aucun">Aucun</option>
+            <option value="Carton">Carton</option>
+            <option value="T1">T1</option>
+            <option value="T2">T2</option>
+            <option value="T3">T3</option>
+            <option value="T4">T4</option>
+            <option value="T5">T5</option>
+          </select> 
       </div>
 
       <div class="form-group">

@@ -39,10 +39,24 @@ body {
 #ajout-zing-form,
 #profil-form {
   width: 100%;
-  background: #00adef;
   color: #fff;
   padding: 40px;
 }
+
+#depart-form,
+#connexion-form,
+#inscription-form,
+#ajout-zing-form {
+  background: #00adef;
+}
+
+
+#connexion-form,
+#profil-form{
+  background: #96c11f;
+}
+
+
 
 /*****************Accueil*********************/
 
@@ -74,10 +88,12 @@ body {
 #accueil .blue img { width: 65px; }
 #accueil .yellow { background: #fdd22a; }
 #accueil .yellow img { width: 100px; }
+#accueil .green { background: #96c11f; }
+#accueil .green img { width: 65px; }
 #accueil .purple { background: #574696; opacity: 0.3; }
 #accueil .orange { background: #ee7202; opacity: 0.3;}
 #accueil .pink { background: #e61c67; opacity: 0.3;}
-#accueil .green { background: #96c11f; opacity: 0.3;}
+
 
 #accueil .menu-block {
   position: relative;
@@ -95,7 +111,7 @@ body {
 
 #retour-form{
   width: 100%;
-  background: #d7bd00;
+  background: #fdd22a;
   color: #fff;
   padding: 40px;
 }
@@ -165,7 +181,16 @@ body {
   width: 25%;
   border-radius: 0;
   border: inset;
+}
+
+#depart-form #btn-zingage {
   border-color: #337ab7;
+  background-color: #337ab7;
+}
+
+#retour-form #btn-zingage {
+  border-color: #CCA722;
+  background-color: #CCA722;
 }
 
 #tab-list-article i {
@@ -188,6 +213,7 @@ body {
     right: 0;
     top: 0;
     position: absolute;
+    background-color: #96c11f;
 }
 
 .match-size{

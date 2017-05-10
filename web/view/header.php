@@ -26,21 +26,30 @@
 
     <p class="connexion">
     <?php
-    //si une session existe, afficher ce bandeau
-    if (isset($_SESSION['identifiant'])) {
-      echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | <a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
-    }
-    //sinon le bandeau de connexion
-    else {
-      echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
-    } 
+      //si une session existe, afficher ce bandeau
+      if (isset($_SESSION['identifiant']))
+        echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | <a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
+      //sinon le bandeau de connexion
+      else
+        echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
     ?>
-
     </p>
-
     <h1 class="text-center">
-      <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>"><img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/></a>
-      
+      <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>">
+      <?php
+        $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
+        //GOLD
+        if ($host == $_SERVER['SERVER_NAME'] . "/zingage/retour")
+          echo '<img id="logo" class="img-responsive" src="/zingage/web/images/logo-gold.png" alt="AEML"/>';
+        //GREEN
+        elseif (($host == $_SERVER['SERVER_NAME'] . "/zingage/profil") ||($host == $_SERVER['SERVER_NAME'] . "/zingage/connexion") ||($host == $_SERVER['SERVER_NAME'] . "/zingage/profilTraitement") )
+          echo '<img id="logo" class="img-responsive" src="/zingage/web/images/logo-green.png" alt="AEML"/>';
+        //BLUE
+        else
+          echo '<img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/>';
+      ?>
+      </a>
     </h1>
-
     </header>
+
+
