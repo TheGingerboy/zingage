@@ -1,20 +1,14 @@
 <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageAjout" ?>">Ajouter un article</a>
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout" ?>">Ajouter un article</a>
 </div>
 
 <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticle" ?>">Liste des articles</a>
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article" ?>">Liste des articles</a>
 </div>
 
 <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanDepart" ?>">Articles scannés</a>
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan" ?>">Articles scannés</a>
 </div>
-
-<!-- <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/listScanRetour" ?>">Articles scannés retour</a>
-</div> -->
-
-
 
 <div id="body-scan">
 
@@ -22,8 +16,8 @@
 
 			<form class="scan">
 
-				<div id="depart-form">
-					<label id="label-zing" for="newitem">Départ</label>
+				<div id="retour-form">
+					<label id="label-zing" for="newitem">Retour</label>
 					<div class="match-size">    
 						<input type="text" autofocus="autofocus" name="newitem" id="newitem" placeholder="En attente de scan..." autocomplete="off" required>
 						<input id="btn-zingage" class="btn btn-primary" type="submit" value="Ajouter">
@@ -32,7 +26,7 @@
 				
 			</form>
 
-			<form action="zingageRecap" method="post">
+			<form action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/recap" ?>" method="post">
 
 				<!-- Permet de contenir les valeurs du scan pour les envoyer au serveur -->
 	      	    <input id="data" name="data" style="display: none;" type="hidden" class="hidden" required>				

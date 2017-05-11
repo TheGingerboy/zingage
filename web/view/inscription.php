@@ -1,6 +1,6 @@
   <div id="inscription-form">
     <h2>Inscription</h2>
-    <form class="form-horizontal" action="inscriptionTraitement" method="post">
+    <form class="form-horizontal" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/inscription/traitement" ?>" method="post">
       <div class="form-group">
         <label for="identifiant" class="col-sm-3 control-label">Identifiant : </label>
         <div class="col-sm-9">

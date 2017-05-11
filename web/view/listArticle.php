@@ -37,11 +37,11 @@ if (isset($_SESSION['identifiant'])) {
       echo "<td>". htmlspecialchars_decode($row['bac_article']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['poid_article']) . "</td>";
       //Edition, amène sur la page /zingage/zingageArticleEdition/{id_article}
-      echo '<td class="center"> <a href =' . "http://" . $_SERVER['SERVER_NAME'] . "/zingage/zingageArticleEdition/" . $row['id_article'] . ">"
+      echo '<td class="center"> <a href =' . "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/edition/" . $row['id_article'] . ">"
       . '<i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>' ."</td>";
       //Supression
       echo '<td class="center">';
-        echo '<form action="/zingage/zingageArticleSuppression/" method="post" id="form-suppr-article">';
+        echo '<form action="'. "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/suppression" . '" method="post" id="form-suppr-article">';
           echo '<input type="hidden" name="id_article" value="' . $row['id_article'] . '" style="display:none;" class="hidden">';
           echo '<button type="submit"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></button>' ;
         echo '</form>';

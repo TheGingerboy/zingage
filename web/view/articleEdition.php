@@ -24,7 +24,7 @@
 
   <div id="formulaire">
     <h2 class="center">Modifier l'article :</h2>
-    <form id="ajout-zing-form" action="/zingage/zingageArticleEditionTraitement/ <?php echo $id_article; ?>" method="post">
+    <form id="ajout-zing-form" action=" <?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/edition/traitement/" . $id_article; ?>" method="post">
     <!-- Caché pour permettre un passage de l'ID article -->
     <input style="display: none" type="hidden" name="id_article" value="<?php echo $id_article; ?>" class="form-control hidden">
 

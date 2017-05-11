@@ -10,5 +10,5 @@
 	else {
 		$sql = "DELETE FROM scan WHERE id_scan = ? ";
 		$pdo->prepare($sql)->execute([$id_scan]);
-		echo "<h3 class=\"center\">L'article à été supprimer</h3>";
+		echo "<h3 class=\"center\">Le mouvement d'article à été supprimer</h3>";
 	}

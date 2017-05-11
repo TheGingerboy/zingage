@@ -17,120 +17,136 @@ $app->get('/', function (){
 
 $app->get('/depart', function (){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageDepart.php'), 0, -1);
+    $content .= substr((require_once '/web/view/depart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->post('/zingageRecap', function(){
+$app->post('/depart/recap', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/view/departRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->post('/zingageImpression', function(){
+$app->post('/depart/recap/impression', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingageImpression.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageDepart.php'), 0, -1);
+    $content .= substr((require_once '/web/model/departScanImpression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/depart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
 $app->get('/retour', function (){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageRetour.php'), 0, -1);
+    $content .= substr((require_once '/web/view/retour.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->post('/retourRecap', function (){
+$app->post('/retour/recap', function (){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageRetourRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/view/retourRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-
-$app->get('/zingageAjout', function(){
-    $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageAjout.php'), 0, -1);
-    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-    return $content;
-});
-
-$app->post('/zingageAjoutTraitement', function(){
+$app->post('/retour/insert', function (){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingageAjoutTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/model/retourInsert.php'), 0, -1);
+    $content .= substr((require_once '/web/view/retour.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->get('/zingageArticle', function(){
+
+$app->get('/article/ajout', function(){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/view/articleAjout.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/traitement', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageArticle.php'), 0, -1);
+    $content .= substr((require_once '/web/model/articleAjoutTraitement.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->get('/zingageArticleEdition/{id_article}', function($id_article) use($app){
+$app->get('/article', function(){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listArticle.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/article/edition/{id_article}', function($id_article) use($app){
     $app->escape($id_article);
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageArticleEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/view/articleEdition.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->post('/zingageArticleEditionTraitement/{id_article}', function($id_article) use($app){
+$app->post('/article/edition/traitement/{id_article}', function($id_article) use($app){
     $app->escape($id_article);
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingageArticleEditionTraitement.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageArticleEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/model/articleEditionTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/view/articleEdition.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->post('/zingageArticleSuppression/', function(){
+$app->post('/article/suppression', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingageArticleSuppression.php'), 0, -1);
-    $content .= substr((require_once '/web/view/zingageArticle.php'), 0, -1);
+    $content .= substr((require_once '/web/model/articleSuppression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listArticle.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->get('/listScanDepart/', function(){
+$app->get('/scan', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/listScanDepart.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScan.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-$app->post('/zingageScanSuppression/', function(){
+$app->get('/scan/edition/{id_scan}', function($id_scan) use($app){
+    $app->escape($id_scan);
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingageScanSuppression.php'), 0, -1);
-    $content .= substr((require_once '/web/view/listScanDepart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
 
-// $app->get('/listScanRetour/', function(){
-//     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-//     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-//     $content .= substr((require_once '/web/view/listScanRetour.php'), 0, -1);
-//     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-//     return $content;
-// });
+$app->get('/scan/edition/traitement/{id_scan}', function($id_scan) use($app){
+    $app->escape($id_scan);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
 
+$app->post('/scan/suppression', function(){
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/scanSuppression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScan.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
 
 $app->get('/connexion', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -139,7 +155,7 @@ $app->get('/connexion', function(){
     return $content;
 });
 
-$app->post('/connexionTraitement', function(){
+$app->post('/connexion/traitement', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionTraitement.php'), 0, -1);
@@ -162,7 +178,7 @@ $app->get('/inscription', function(){
     return $content;
 });
 
-$app->post('/inscriptionTraitement', function(){
+$app->post('/inscription/traitement', function(){
     $content =  substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/inscriptionTraitement.php'), 0, -1);
     return $content;

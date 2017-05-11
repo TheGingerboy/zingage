@@ -4,7 +4,7 @@
 
   <div id="formulaire">
     <h2>Connexion</h2>
-    <form id="connexion-form" action="connexionTraitement" method="post">
+    <form id="connexion-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/connexion/traitement" ?>" method="post">
       <div class="form-group">
         <label for="identifiant">Identifiant : </label>
         <input type="text" id="identifiant" name="identifiant" class="form-control" id="identifiant">

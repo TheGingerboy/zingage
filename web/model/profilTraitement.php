@@ -10,7 +10,7 @@
   $new_mdp2 = htmlspecialchars($_POST['new_mdp2']);
 
   //Préparation requête
-  $sql = $pdo->query("SELECT * FROM utilisateur WHERE identifiant_user='$identifiant'") or die(mysql_error());
+  $sql = $pdo->query("SELECT nom_user, prenom_user, mdp_user FROM utilisateur WHERE identifiant_user='$identifiant'");
 
   //Stockage des infos user
   while ($row =  $sql->fetch()) {
@@ -23,14 +23,14 @@
   if( (!empty($nom)) && ($nom != $nom_user) ){ 
     $sql_nom = "UPDATE utilisateur SET nom_user = ? WHERE identifiant_user = ? ";
     $pdo->prepare($sql_nom)->execute([$nom, $identifiant]);
-    echo '<h2 class="center">Changement de nom effectué</h2>';
+    echo '<h3 class="center">Changement de nom effectué</h3>';
   }
 
   //Si vide ou prénom identique, ne rien faire 
   if( (!empty($prenom)) && ($prenom != $prenom_user) ){ 
     $sql_prenom = "UPDATE utilisateur SET prenom_user = ? WHERE identifiant_user = ? ";
     $pdo->prepare($sql_prenom)->execute([$prenom, $identifiant]);
-    echo '<h2 class="center">Changement de prénom effectué</h2>';
+    echo '<h3 class="center">Changement de prénom effectué</h3>';
   }
 
   //Cryptage du mot de passe
@@ -48,12 +48,12 @@
         //Insertion des valeurs dans la table
         $sql_pass = "UPDATE utilisateur SET mdp_user = ? WHERE identifiant_user = ? ";
         $pdo->prepare($sql_pass)->execute([$new_mdp, $identifiant]);
-        echo '<h2 class="center">Changement de mot de passe effectué</h2>';
+        echo '<h3 class="center">Changement de mot de passe effectué</h3>';
         // Retour sur la page profil
       }
-      else { echo '<h2 class="center">Mot de passe inchangé, les deux mots de passe ne correspondent pas</h2>'; }
+      else { echo '<h3 class="center">Mot de passe inchangé, les deux mots de passe ne correspondent pas</h3>'; }
     }
-    else { echo '<h2 class="center">Mot de passe inchangé, mot de passe actuel incorrect</h2>'; }
+    else { echo '<h3 class="center">Mot de passe inchangé, mot de passe actuel incorrect</h3>'; }
   }
 
   // Retour sur la page profil

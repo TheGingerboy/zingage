@@ -4,7 +4,7 @@
 
   <div id="formulaire">
     <h2 class="center">Ajouter un article</h2>
-    <form id="ajout-zing-form" action="zingageAjoutTraitement" method="post">
+    <form id="ajout-zing-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout/traitement" ?>" method="post">
 
       <div class="form-group">
         <label for="ref_article">Référence : </label>
@@ -28,8 +28,8 @@
 
       <div class="form-group">
         <label for="bac_article">Type de bac : </label>
-         <select name="bac_article">
-            <option value="Aucun">Aucun</option>
+         <select class="form-control" name="bac_article">
+            <option selected="selected" value="Aucun">Aucun</option>
             <option value="Carton">Carton</option>
             <option value="T1">T1</option>
             <option value="T2">T2</option>

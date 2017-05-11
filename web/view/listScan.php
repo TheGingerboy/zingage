@@ -29,10 +29,10 @@ if (isset($_SESSION['identifiant'])) {
   echo "<th>REFERENCE</th>";
   echo "<th>NOM</th>";
   echo "<th>ENTREPRISE</th>";
-  echo "<th>DATE DEPART</th>";
-  echo "<th>DATE RETOUR</th>";
   echo "<th>UTILISATEUR DEPART</th>";
+  echo "<th>DATE DEPART</th>";
   echo "<th>UTILISATEUR RETOUR</th>";
+  echo "<th>DATE RETOUR</th>";
   echo "<th>EDITION</th>";
   echo "<th>SUPPRESSION</th>";
   echo "</tr>";
@@ -46,18 +46,18 @@ if (isset($_SESSION['identifiant'])) {
       echo "<td>". htmlspecialchars_decode($row['ref_article']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['nom_article']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['nom_entreprise']) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row['date_scan_depart']) . "</td>";
-      echo "<td>". htmlspecialchars_decode($row['date_scan_retour']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['user_depart']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['date_scan_depart']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['user_retour']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['date_scan_retour']) . "</td>";
       //Edition, amène sur la page /zingage/zingageArticleEdition/{id_article}
       echo ' <td class="center"> ';
-        echo ' <a href = http://' . $_SERVER['SERVER_NAME'] . "/zingage/zingageScanEdition/" . $row['id_scan'] . ">";
+        echo ' <a href = http://' . $_SERVER['SERVER_NAME'] . "/zingage/scan/edition/" . $row['id_scan'] . ">";
         echo ' <i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>';
       echo '</td>';
       //Supression
       echo '<td class="center">';
-        echo '<form action="/zingage/zingageScanSuppression/" method="post" id="form-suppr-article">';
+        echo '<form action="'. "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan/suppression" .'" method="post" id="form-suppr-article">';
           echo '<input type="hidden" name="id_scan" value="' . $row['id_scan'] . '" style="display:none;" class="hidden">';
           echo '<button type="submit"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></button>' ;
         echo '</form>';
