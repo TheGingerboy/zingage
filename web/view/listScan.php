@@ -33,7 +33,6 @@ if (isset($_SESSION['identifiant'])) {
   echo "<th>DATE DEPART</th>";
   echo "<th>UTILISATEUR RETOUR</th>";
   echo "<th>DATE RETOUR</th>";
-  echo "<th>EDITION</th>";
   echo "<th>SUPPRESSION</th>";
   echo "</tr>";
 
@@ -50,11 +49,6 @@ if (isset($_SESSION['identifiant'])) {
       echo "<td>". htmlspecialchars_decode($row['date_scan_depart']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['user_retour']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['date_scan_retour']) . "</td>";
-      //Edition, amène sur la page /zingage/zingageArticleEdition/{id_article}
-      echo ' <td class="center"> ';
-        echo ' <a href = http://' . $_SERVER['SERVER_NAME'] . "/zingage/scan/edition/" . $row['id_scan'] . ">";
-        echo ' <i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i>';
-      echo '</td>';
       //Supression
       echo '<td class="center">';
         echo '<form action="'. "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan/suppression" .'" method="post" id="form-suppr-article">';

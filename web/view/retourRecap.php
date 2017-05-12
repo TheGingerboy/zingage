@@ -17,9 +17,6 @@ if (isset($_SESSION['identifiant'])) {
     ");
 
   /***** Permet d'obtenir l'ID de l'article en fonction de sa ref ***/
-  $get_id = $pdo->prepare("SELECT id_article FROM article WHERE ref_article = ?");
-
-  /***** Permet d'obtenir l'ID de l'article en fonction de sa ref ***/
   $show_ref = $pdo->prepare("
     SELECT * FROM scan
     JOIN article ON article.id_article = scan.id_article
@@ -31,23 +28,19 @@ if (isset($_SESSION['identifiant'])) {
   /**************************     VAR       *****************************/
   $data = $_POST['data'];
   $nb_occu = array();
+  $id_list_article = array();
 
   //Permet de retrouver les valeurs contenu entre <li> et </li> dans $ref_list[]
   preg_match_all ( '#<li>(.*?)</li>#', $data, $ref_list );
-  echo "<pre>";
-  var_dump($ref_list[1]);
-  echo "</pre>";
-
-  //Permet de compter le nombre d'occurence d'une variable
-  foreach($ref_list[1] as $ref){
-    if (isset($nb_occu[$ref])) { $nb_occu[$ref]++ ; }
-    else{ $nb_occu[$ref] = 1 ; }
-  }
 
   /************ Permet de s'assurer de la présence d'une ref ************/
   //Si la ref n'est pas présente, la valeur d'occurence dans le tableau est mise à 0
-  foreach($ref_list[1] as $ref)
-  {
+  foreach($ref_list[1] as $ref){
+
+    //Permet de compter le nombre d'occurence d'une variable
+    if (isset($nb_occu[$ref])) { $nb_occu[$ref]++ ; }
+    else{ $nb_occu[$ref] = 1 ; }
+
     $verif_ref->execute([$ref]);
     if(!($verif_ref->rowCount()))
     { 
@@ -62,14 +55,12 @@ if (isset($_SESSION['identifiant'])) {
   {
     $dispo_ref->execute([$ref]);
     $nb_dispo = $dispo_ref->rowCount();
-
-    if ( ($nb_dispo < $nb_occu[$ref]) )
+    if ( $nb_occu[$ref] > $nb_dispo )
     {
       echo '<h3>La référence <span style="font-weight:bold">' .$ref. "</span> a été scanné ". $nb_occu[$ref] . " fois alors qu'il n'y a que ". $nb_dispo ." bac actuellement indiqué comme étant au zingage</h3>";
+      $nb_occu[$ref] = 0;
     }
-
   }
-
 
   echo "<h2>Récapitualtif de l'impression</h2>";
 
@@ -83,31 +74,30 @@ if (isset($_SESSION['identifiant'])) {
   echo "<th>BAC ARTICLE</th>";
   echo "<th>POIDS TOTAL</th></tr>";
 
+  //Pour chaque ref entrée dans le système
   foreach($ref_list[1] as $ref)
-  {
-    
+  { //Si la ref n'apparait pas 0 fois (mis à 0 si condition non respecté)
+    if ($nb_occu[$ref] > 0) {
+      $show_ref->execute([$ref]);
+      $row = $show_ref->fetch();
+      $id_list_article[] = $row['id_article'];
+      echo "<tr>"; 
+      echo "<td>{$row['ref_article']}</td>";
+      echo "<td>{$row['nom_article']}</td>";
+      echo "<td>{$row['nb_article']}</td>";
+      echo "<td>{$row['dim_article']}</td>";
+      echo "<td>{$row['bac_article']}</td>";
+      echo "<td>{$row['poid_article']}</td>";
+    }
   }
-
-  // $ref_article[] = $row['id_article'];
-  // echo "<tr>"; 
-  // echo "<td>{$row['ref_article']}</td>";
-  // echo "<td>{$row['nom_article']}</td>";
-  // echo "<td>{$row['nb_article']}</td>";
-  // echo "<td>{$row['dim_article']}</td>";
-  // echo "<td>{$row['bac_article']}</td>";
-  // echo "<td>{$row['poid_article']}</td>";
-  // echo "</tr>";
-
-
-
   echo "</table>";
   ?>
 
   <div id="formulaire">
     <h2>Numéro d'OF</h2>
-    <form action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/insert" ?>" method="post">
+    <form action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/recap/insert" ?>" method="post">
       <div>
-        <input type="" name="ref_article" class="form-control" value="<!-- <?php echo json_encode($ref_article) ?> -->">
+        <input type="" name="ref_article" class="form-control" value=" <?php echo json_encode($id_list_article) ?> ">
         <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
       </div>
     </form>

@@ -54,7 +54,7 @@ $app->post('/retour/recap', function (){
     return $content;
 });
 
-$app->post('/retour/insert', function (){
+    $app->post('/retour/recap/insert', function (){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/retourInsert.php'), 0, -1);

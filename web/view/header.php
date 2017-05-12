@@ -35,19 +35,32 @@
     ?>
     </p>
     <h1 class="text-center">
-      <a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>">
+
       <?php
-        $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
+        $host = $_SERVER['REQUEST_URI'];
         //GOLD
-        if ($host == $_SERVER['SERVER_NAME'] . "/zingage/retour")
-          echo '<img id="logo" class="img-responsive" src="/zingage/web/images/logo-gold.png" alt="AEML"/>';
+        if  ( ($host == "/zingage/retour") || ($host == "/zingage/retour/recap") || ($host == "/zingage/retour/insert") ){
+          $home_page =  "/zingage/retour";
+          $logo_page = "logo-gold.png";
+        }
         //GREEN
-        elseif (($host == $_SERVER['SERVER_NAME'] . "/zingage/profil") ||($host == $_SERVER['SERVER_NAME'] . "/zingage/connexion") ||($host == $_SERVER['SERVER_NAME'] . "/zingage/profilTraitement") )
-          echo '<img id="logo" class="img-responsive" src="/zingage/web/images/logo-green.png" alt="AEML"/>';
+        elseif ( ($host == "/zingage/profil") || ($host == "/zingage/connexion") ||($host == "/zingage/profilTraitement") ){
+          $home_page =  "/zingage";
+          $logo_page = "logo-green.png";
+        }
         //BLUE
-        else
-          echo '<img id="logo" class="img-responsive" src="/zingage/web/images/logo.png" alt="AEML"/>';
+        elseif ( ($host == "/zingage/depart") || ($host == "/zingage/depart/recap") ||($host == "/zingage/depart/recap/impression") ){
+          $home_page =  "/zingage/depart";
+          $logo_page = "logo.png";
+        }
+        else{
+          $home_page =  "/zingage";
+          $logo_page = "logo.png";
+        }
       ?>
+
+      <a href="<?php echo 'http://' . $_SERVER['SERVER_NAME'] . $home_page ?>">
+        <img id="logo" class="img-responsive" src="<?php echo "/zingage/web/images/" . $logo_page ?>" alt="AEML"/>
       </a>
     </h1>
     </header>
