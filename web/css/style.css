@@ -47,7 +47,7 @@ body {
 #connexion-form,
 #inscription-form,
 #ajout-zing-form {
-  background: #00adef;
+  background: #009fe3;
 }
 
 
@@ -94,6 +94,17 @@ body {
 #accueil .orange { background: #ee7202; opacity: 0.3;}
 #accueil .pink { background: #e61c67; opacity: 0.3;}
 
+#bandeau-retour .txt,
+#bandeau-retour img {
+  display: inline-flex;
+}
+
+#bandeau-retour .txt {
+  color: white;
+}
+#bandeau-retour img {
+  max-width: 40px;
+}
 
 #accueil .menu-block {
   position: relative;

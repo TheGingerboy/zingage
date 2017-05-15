@@ -19,7 +19,7 @@
 
   <div id="formulaire">
     <h2 class="center">Profil de <?php echo $_SESSION['identifiant'] ?></h2>
-    <form id="profil-form" action="profilTraitement" method="post" class="form-horizontal">
+    <form id="profil-form" action="profil/traitement" method="post" class="form-horizontal">
       <div class="form-group">
         <label for="nom" class="col-sm-3 control-label">Nom : </label>
         <div class="col-sm-9">
