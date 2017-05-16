@@ -45,13 +45,13 @@ body {
 
 #depart-form,
 #connexion-form,
-#inscription-form,
 #ajout-zing-form {
   background: #009fe3;
 }
 
 
 #connexion-form,
+#inscription-form,
 #profil-form{
   background: #96c11f;
 }
@@ -94,16 +94,37 @@ body {
 #accueil .orange { background: #ee7202; opacity: 0.3;}
 #accueil .pink { background: #e61c67; opacity: 0.3;}
 
+#bandeau-retour{
+  display: inline-block;
+  position: fixed;
+  overflow: hidden;
+  z-index: 100;
+  top: 24px;
+  width: 50%;
+  right: 30px;
+}
+
 #bandeau-retour .txt,
+#bandeau-retour img{
+  display: inline-block;
+  float: left;
+  height: 30px;
+  width: auto;
+}
+
 #bandeau-retour img {
-  display: inline-flex;
+  width: 90px;
 }
 
 #bandeau-retour .txt {
   color: white;
+  font-size: 1.4em;
+  vertical-align: baseline;
 }
-#bandeau-retour img {
-  max-width: 40px;
+
+#bandeau-retour .txt-container {
+  color: white;
+  display: flex;
 }
 
 #accueil .menu-block {
@@ -221,10 +242,12 @@ body {
 }
 
 .btn-connexion {
-    right: 0;
-    top: 0;
-    position: absolute;
+    position: fixed;
     background-color: #96c11f;
+    right: 30px;
+    top: 70px;
+    width: 50%;
+    z-index: 100;
 }
 
 .match-size{

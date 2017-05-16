@@ -29,6 +29,9 @@ html { height: 100%;}
     overflow-y: auto;
     overflow-x: hidden;
     background: #060066;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 16pt;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -108,12 +111,9 @@ html { height: 100%;}
     padding: 10px 15px 10px 30px;    
 }
 
-.sidebar-nav li a img {
-    display: flex;
-    color: #ddd;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;    
+.sidebar-nav  img {
+	width: 150px;
+	margin: 0 auto;
 }
 
 .sidebar-nav li a:hover,
@@ -164,7 +164,7 @@ html { height: 100%;}
   z-index: 999;
   display: block;
   width: 32px;
-  height: 32px;
+  height: 38px;
   margin-left: 15px;
   background: transparent;
   border: none;
@@ -192,7 +192,7 @@ html { height: 100%;}
 .hamburger.is-open .hamb-bottom {
   position: absolute;
   left: 0;
-  height: 4px;
+  height: 5px;
   width: 100%;
 }
 .hamburger.is-closed .hamb-top,

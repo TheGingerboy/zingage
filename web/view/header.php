@@ -23,11 +23,25 @@
   </head>
   <!-- body fermé dans le footer -->
 
+  <!-- Bandeau de retour, permet de renvoyer à une page spécifié dans l'index -->
+  <?php 
+  if ( isset($arrow_return) && isset($arrow_color) && isset($page_color) ) 
+  {
+    echo '<a id="bandeau-retour" href="http://' . $_SERVER['SERVER_NAME'] . $arrow_return . '">';
+    echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
+      echo '<div class="txt-container" style="background-color : ' . $page_color . ' ; ">';
+        echo '<div class="txt">Retour</div>';
+      echo '</div>';
+    echo '</a>';
+  echo '</header>';
+  }
+  ?>
+
   <div id="wrapper">
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
-            <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . $logo_page ?>">
+            <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/zingage/' ?>">
                 <img class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML"/>
             </a>
             <li>
@@ -40,7 +54,7 @@
               <?php
                 //si une session existe, afficher ce bandeau
                 if (isset($_SESSION['identifiant']))
-                  echo '<a href="/zingage/profil">Profil (' . $_SESSION['identifiant'] . ')</a>';
+                  echo '<a href="/zingage/profil">Votre profil </a>';
                 else
                   echo '<a href="/zingage/connexion">Connexion</a>';
               ?>
@@ -56,19 +70,19 @@
             </li>
         </ul>
     </nav>
-
+    <!-- Affichage du 'bouton hamburger' -->
     <div id="page-content-wrapper">
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
+            <span class="hamb-top" style="background-color: <?= $page_color ?>;"></span>
+            <span class="hamb-middle" style="background-color: <?= $page_color ?>;"></span>
+            <span class="hamb-bottom" style="background-color: <?= $page_color ?>;"></span>
         </button>
 
       <body>
 
         <header>
-
-        <p class="connexion">
+        <!-- Affichage de la situation de connexion -->
+        <p class="connexion center">
         <?php
           //si une session existe, afficher ce bandeau
           if (isset($_SESSION['identifiant']))
@@ -81,18 +95,8 @@
         <h1 class="text-center">
 
           <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . $logo_page ?>">
-            <img id="logo" class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML"/>
+            <img id="logo" class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML">
           </a>
 
         </h1>
 
-        <?php if ( ($_SERVER['REQUEST_URI']!="/zingage/") && ($_SERVER['REQUEST_URI']!="/zingage") ) { ?>
-          <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . $page_return ?>">
-            <div id="bandeau-retour" style="background-color: <?= $page_color ?>;">
-              <img class="img-responsive" src="<?= "/zingage/web/images/arrow.png" ?>" alt="AEML"/>
-              <div class="txt">Retour</div>
-            </div>
-          </a>
-        <?php } ?>
-
-        </header>

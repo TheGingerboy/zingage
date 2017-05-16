@@ -9,10 +9,14 @@
 
   //Maintient le zone de texte vide
   list.value = "";
+
+  // Permet d'éviter l'erreur "undifined" en initialisant la valeur 
+  if ( ( localStorage.todolist === 'undefined' ) || ( localStorage.todolist === null ) )
+    {  localStorage.todolist = "" ;  }
     
   form.addEventListener( 'submit', function( ev ) {
     enableButton (sendDataButton);
-    list.innerHTML += '<li>' + field.value + '</li>';
+    list.innerHTML = '<li>' + field.value + '</li>' + list.innerHTML;
     field.value = '';
     storestate();
     ev.preventDefault();
@@ -38,11 +42,7 @@
   };
 
   function retrievestate() {
-    // Permet d'éviter l'erreur "undifined" // Ne fonctionne pas
-    // if(!(localStorage.getItem(todolist) === true))
-    //   { 
-        list.innerHTML = localStorage.todolist;
-      // }
+    list.innerHTML = localStorage.todolist;
     data.value = localStorage.todolist;
     if ( list.innerHTML === "" ) 
       { disableButton (sendDataButton); }
