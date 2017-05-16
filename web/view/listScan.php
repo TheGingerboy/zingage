@@ -28,7 +28,7 @@ if (isset($_SESSION['identifiant'])) {
   echo "<tr>";
   echo "<th>REFERENCE</th>";
   echo "<th>NOM</th>";
-  echo "<th>ENTREPRISE</th>";
+  echo "<th>CLIENT</th>";
   echo "<th>UTILISATEUR DEPART</th>";
   echo "<th>DATE DEPART</th>";
   echo "<th>UTILISATEUR RETOUR</th>";

@@ -11,6 +11,7 @@
     $dim_article = $_POST['dim_article'];
     $bac_article = $_POST['bac_article'];
     $poid_article = $_POST['poid_article'];
+    $of_article = $_POST['of_article'];
 
     //normalisation des valeurs pour empécher les injections SQL et retirer les caractères pouvant causer des défauts
     $ref_article = htmlspecialchars($ref_article);
@@ -23,7 +24,7 @@
     //Vérifie la présence d'un doublon
     $verif_ref = $pdo->query("SELECT ref_article FROM article WHERE ref_article='$ref_article'");
 
-    if ($verif_ref && $verif_ref->rowCount() < 0) {
+    if ($verif_ref && $verif_ref->rowCount() != 0) {
       echo "<h3>La référence est déja entrée dans le système<br></h3>";
       $err = true;
     }
@@ -53,8 +54,10 @@
     //Gestion des erreurs false = ok (pas d'erreur), true = ko (erreur présente)
     if ($err == false)
     {  //Insertion des valeurs dans la table
-      $zingAjout = "INSERT INTO article VALUES('', ?, ?, ?, ?, ?, ?)";
-      $pdo->prepare($zingAjout)->execute([$ref_article, $nom_article, $nb_article, $dim_article, $bac_article, $poid_article]);
+      $zingAjout = "INSERT INTO article VALUES('', ?, ?, ?, ?, ?, ?, ?)";
+      $pdo->prepare($zingAjout)->execute(
+        [$ref_article, $nom_article, $nb_article, $dim_article, $bac_article, $poid_article, $of_article]
+      );
 
       echo "<h3>Votre article est maintenant ajouté dans la base !</h3>";
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";

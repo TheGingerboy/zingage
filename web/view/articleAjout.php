@@ -44,6 +44,11 @@
         <input type="" name="poid_article" class="form-control">
       </div>
 
+      <div class="form-group">
+        <label for="poid_article">Numéro d'OF : </label>
+        <input type="" name="of_article" class="form-control" id="of" pattern="[0-9]{6,8}" title="Numéro d'OF (6 à 8 chiffres)" required> 
+      </div>
+
       <button type="submit" class="btn btn-success">Valider</button>
     </form>
 

@@ -5,7 +5,6 @@
   /****************** Déclaration et récupération de variable ***********/
   $err = false;
   $identifiant_user = htmlspecialchars($_SESSION['identifiant']);
-  $of = htmlspecialchars($_POST['of']);
   $id_article = json_decode($_POST['ref_article']);
 
   /******************************* Déclaration SQL ************************************/
@@ -20,8 +19,6 @@
   }
   //Récupère les infos de l'articles
   $get_article =  $pdo->prepare("SELECT * FROM article WHERE id_article= ? ");
-
-
 
   //Temporaire, todo : Faire la list deroulante table d'entreprise et recuperer l'ID
   $id_entreprise = "1";
@@ -47,7 +44,7 @@
       'NBR_ARTICLE = "' . $row['nb_article'] . '"' . PHP_EOL .
       'NOM_ARTICLE = "' . $row['nom_article'] . '"' . PHP_EOL .
       'NOM_ENTREPRISE = "' . $nom_entreprise . '"' . PHP_EOL .
-      'NUM_OF = "' . $of . '"' . PHP_EOL .
+      'NUM_OF = "' . $row['of_article'] . '"' . PHP_EOL .
       'REF_ARTICLE = "' . $row['ref_article'] . '"' . PHP_EOL .
       'LABELQUANTITY = "1"' . PHP_EOL;
       //  D'autres infos potentiellement nécessaire
@@ -59,7 +56,7 @@
     }
     
 
-    $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, $of, '1']);  
+    $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, '1']);  
   }
 
   //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
@@ -68,6 +65,8 @@
   $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $print_file);
   fwrite($print_file, $codesoftArgs);
   fclose($print_file);
+  echo "<h3>Article(s) ajouté(s) avec succès, les étiquettes devraient sortir maintenant></h3>";
+  echo "<h3>Si vos étiquettes ne sont pas sortis, vérifiez l'imprimante et le lancement du logiciel CodeSoft</h3>";
 
 ?>
 

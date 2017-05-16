@@ -42,22 +42,25 @@
 
   if(hash_equals($mdp, $mdp2))
   {
-
     //Gestion des erreurs 0 = ok, 1 = ko
     if ($err == 0)
     {
-
       //Cryptage du mot de passe
       $mdp = crypt($key, $mdp);
 
       //Insertion des valeurs dans la table
       $insertUser = "INSERT INTO utilisateur VALUES('', ?, ?, ?, ?, ?)";
       $pdo->prepare($insertUser)->execute([$identifiant, $nom, $prenom, $mdp, '0']);
-
-
       echo "<h2>Votre inscription à bien été prise en compte !</h2>";
+
+      // Permet un affichage correct du header
+      $logo_page =  "/zingage";
+      $logo_img = "logo.png";
+      $page_color = '#009fe3';
+
+      //Renvoie vers l'accueil // reussite
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-      $accueil = dirname(dirname(__FILE__)) . "\\view\\zingage.php";
+      $accueil = dirname(dirname(__FILE__)) . "\\view\\accueil.php";
       $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
       require_once($header);
       require_once($accueil);
@@ -66,6 +69,14 @@
 
     else
     {
+      // Permet un affichage correct du header
+      $logo_page =  "/zingage";
+      $logo_img = "logo-green.png";
+      $page_color = '#96c11f';
+      $arrow_return = '/zingage';
+      $arrow_color = "arrow-green.png";
+
+      //Renvoie vers l'inscription // echec
       echo "<h2>Votre inscription n'a pas été prise en compte, veuillez corriger les erreurs ci-dessus !</h2>";
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
       $inscription = dirname(dirname(__FILE__)) . "\\view\\inscription.php";
@@ -74,12 +85,19 @@
       require_once($inscription);
       require_once($footer);
     }
-
   }
 
   else
   {
-    echo "<h2>Les mots de passe ne correspondent pas</h2>";
+      // Permet un affichage correct du header
+      $logo_page =  "/zingage";
+      $logo_img = "logo-green.png";
+      $page_color = '#96c11f';
+      $arrow_return = '/zingage';
+      $arrow_color = "arrow-green.png";
+
+      //Renvoie vers l'inscription // echec
+      echo "<h2>Les mots de passe ne correspondent pas</h2>";
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
       $inscription = dirname(dirname(__FILE__)) . "\\view\\inscription.php";
       $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";

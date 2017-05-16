@@ -23,80 +23,83 @@
   </head>
   <!-- body fermé dans le footer -->
 
-  <!-- Bandeau de retour, permet de renvoyer à une page spécifié dans l'index -->
-  <?php 
-  if ( isset($arrow_return) && isset($arrow_color) && isset($page_color) ) 
-  {
-    echo '<a id="bandeau-retour" href="http://' . $_SERVER['SERVER_NAME'] . $arrow_return . '">';
-    echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
-      echo '<div class="txt-container" style="background-color : ' . $page_color . ' ; ">';
-        echo '<div class="txt">Retour</div>';
-      echo '</div>';
-    echo '</a>';
-  echo '</header>';
-  }
-  ?>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+          <ul class="nav sidebar-nav">
+              <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/zingage/' ?>">
+                  <img class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML"/>
+              </a>
+              <li>
+                  <a href="/zingage/depart">Zingage Départ</a>
+              </li>
+              <li>
+                  <a href="/zingage/retour">Zingage Retour</a>
+              </li>
+              <li>
+                <?php
+                  //si une session existe, afficher ce bandeau
+                  if (isset($_SESSION['identifiant']))
+                    echo '<a href="/zingage/profil">Votre profil </a>';
+                  else
+                    echo '<a href="/zingage/connexion">Connexion</a>';
+                ?>
+              </li>
+              <li>
+                  <a href="#">A venir</a>
+              </li>
+              <li>
+                  <a href="#">A venir</a>
+              </li>
+              <li>
+                  <a href="#">A venir</a>
+              </li>
+          </ul>
+      </nav>
 
-  <div id="wrapper">
-    <!-- Sidebar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
-            <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/zingage/' ?>">
-                <img class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML"/>
-            </a>
-            <li>
-                <a href="/zingage/depart">Zingage Départ</a>
-            </li>
-            <li>
-                <a href="/zingage/retour">Zingage Retour</a>
-            </li>
-            <li>
-              <?php
-                //si une session existe, afficher ce bandeau
-                if (isset($_SESSION['identifiant']))
-                  echo '<a href="/zingage/profil">Votre profil </a>';
-                else
-                  echo '<a href="/zingage/connexion">Connexion</a>';
-              ?>
-            </li>
-            <li>
-                <a href="/zingage/inscription">A venir</a>
-            </li>
-            <li>
-                <a href="/zingage/inscription">A venir</a>
-            </li>
-            <li>
-                <a href="/zingage/inscription">A venir</a>
-            </li>
-        </ul>
-    </nav>
-    <!-- Affichage du 'bouton hamburger' -->
-    <div id="page-content-wrapper">
-        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-            <span class="hamb-top" style="background-color: <?= $page_color ?>;"></span>
-            <span class="hamb-middle" style="background-color: <?= $page_color ?>;"></span>
-            <span class="hamb-bottom" style="background-color: <?= $page_color ?>;"></span>
-        </button>
+    <!-- Bandeau de retour, permet de renvoyer à une page spécifié dans l'index -->
+      <?php 
+      if ( isset($arrow_return) && isset($arrow_color) && isset($page_color) ) 
+      {
+      echo '<header>';
+        echo '<a id="bandeau-retour" href="http://' . $_SERVER['SERVER_NAME'] . $arrow_return . '">';
+        echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
+          echo '<div class="txt-container" style="background-color : ' . $page_color . ' ; ">';
+            echo '<div class="txt">Retour</div>';
+          echo '</div>';
+        echo '</a>';
+      echo '</header>';
+      }
+      ?>
 
-      <body>
+      <!-- Affichage du 'bouton hamburger' -->
+      <div id="page-content-wrapper">
+          <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+              <span class="hamb-top" style="background-color: <?= $page_color ?>;"></span>
+              <span class="hamb-middle" style="background-color: <?= $page_color ?>;"></span>
+              <span class="hamb-bottom" style="background-color: <?= $page_color ?>;"></span>
+          </button>
 
-        <header>
-        <!-- Affichage de la situation de connexion -->
-        <p class="connexion center">
-        <?php
-          //si une session existe, afficher ce bandeau
-          if (isset($_SESSION['identifiant']))
-            echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | <a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
-          //sinon le bandeau de connexion
-          else
+
+        <body>
+      <?php
+        //Affichage de la situation de connexion 
+        echo '<p class="connexion center">';
+        //si une session existe, afficher ce bandeau
+        if ( isset($_SESSION['identifiant']) ){
+          echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | ' .
+               '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
+        }
+        //sinon le bandeau de connexion
+        else
+          if( !isset($hide_conect_btn) ){
             echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
-        ?>
-        </p>
-        <h1 class="text-center">
+            echo '</p>';     
+          }
 
-          <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . $logo_page ?>">
-            <img id="logo" class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML">
-          </a>
-
-        </h1>
-
+        //Affichage du logo, dépendant des paramètres dans index.php 
+        echo '<h1 class="text-center">';
+          echo '<a href="http://' . $_SERVER['SERVER_NAME'] . $logo_page . '>';
+            echo '<img id="logo" class="img-responsive" src="' . "/zingage/web/images/" . $logo_img . '" alt="AEML">';
+          echo '</a>';
+        echo '</h1>';

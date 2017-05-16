@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 16 Mai 2017 à 16:57
+-- Généré le :  Mar 16 Mai 2017 à 19:20
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -33,21 +33,16 @@ CREATE TABLE `article` (
   `nb_article` int(11) DEFAULT NULL,
   `dim_article` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `bac_article` varchar(10) COLLATE utf8_bin NOT NULL,
-  `poid_article` decimal(10,3) DEFAULT NULL
+  `poid_article` decimal(10,3) DEFAULT NULL,
+  `of_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Contenu de la table `article`
 --
 
-INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`, `dim_article`, `bac_article`, `poid_article`) VALUES
-(20, 'XO250OX', 'prototype', 250, '1mètre sur 4', 'Aucun', '40.000'),
-(21, 'TOTO', 'TOTO', 1, '20X30', 'T3', '0.200'),
-(22, 'test', 'test', 0, 'test', 'T2', '0.000'),
-(23, 'GD4130-BKK1-E11A50800', 'SCANNER', 1, '20X30', 'Carton', '15.000'),
-(25, '40267470', 'UHU Stick', 60, '10 x 3cm', 'Carton', '2.000'),
-(26, '42930VGO0003', 'ARM ', 30, '', 'T1', '12.000'),
-(27, '42921VFO0000', 'ARM FR LEFT ADJUST ZINGUE BLANC', 30, '', 'T2', '10.000');
+INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`, `dim_article`, `bac_article`, `poid_article`, `of_article`) VALUES
+(1, 'GD4130-BKK1-E11A50800', 'TOTO', 5, '20X30', 'T4', '0.200', 125565);
 
 -- --------------------------------------------------------
 
@@ -81,29 +76,8 @@ CREATE TABLE `scan` (
   `id_entreprise` int(11) NOT NULL,
   `date_scan_depart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_scan_retour` datetime DEFAULT NULL,
-  `of_scan` int(11) NOT NULL,
   `is_in_zingage` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Contenu de la table `scan`
---
-
-INSERT INTO `scan` (`id_scan`, `id_article`, `id_user_depart`, `id_user_retour`, `id_entreprise`, `date_scan_depart`, `date_scan_retour`, `of_scan`, `is_in_zingage`) VALUES
-(191, 22, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(192, 22, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(193, 22, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(194, 22, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(195, 25, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(196, 25, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(197, 25, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(198, 20, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(199, 20, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(200, 20, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(201, 26, 12, NULL, 1, '2017-05-16 15:55:55', NULL, 444444, 1),
-(202, 27, 12, 12, 1, '2017-05-16 15:55:55', '2017-05-16 15:58:17', 444444, 1),
-(203, 27, 12, 12, 1, '2017-05-16 15:55:55', '2017-05-16 15:58:17', 444444, 1),
-(204, 27, 12, 12, 1, '2017-05-16 15:55:55', '2017-05-16 15:58:17', 444444, 1);
 
 -- --------------------------------------------------------
 
@@ -125,10 +99,8 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_user`, `identifiant_user`, `nom_user`, `prenom_user`, `mdp_user`, `role_user`) VALUES
-(9, 'virgile.parat', 'PARAT', 'Virgile', '13m0wA4CrcIoc', 0),
-(10, 'test', 'test', 'test', 'teVUmkBKOadeg', 0),
-(11, 'otherdude', 'dude', 'other', 'ot0x9XP.7Nf/A', 0),
-(12, 'nico', 'CHAPOCHNIKOFF', 'Nicolas', '00MI0gKiKuQ/I', 0);
+(1, 'virgile.parat', 'PARAT', 'virgile', '13m0wA4CrcIoc', 0),
+(2, 'Gingerboy', 'PARAT', 'Gingerboy', '13m0wA4CrcIoc', 0);
 
 --
 -- Index pour les tables exportées
@@ -174,7 +146,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `entreprise`
 --
@@ -184,12 +156,12 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `scan`
 --
 ALTER TABLE `scan`
-  MODIFY `id_scan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id_scan` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --

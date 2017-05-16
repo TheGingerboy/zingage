@@ -55,11 +55,10 @@
   ?>
 
   <div id="formulaire">
-    <h2>Numéro d'OF</h2>
+    <h3>Vérifiez bien vos scan puis valider vos opérations avec le bouton "envoyer"</h3>
     <form action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart/recap/impression" ?>" method="post">
       <div>
         <input style="display: none;" type="" name="ref_article" class="form-control" value="<?php echo json_encode($ref_article) ?>">
-        <input type="" name="of" class="form-control" id="of" pattern="[0-9]{6,8}" title="saisissez votre numéro d'OF (entre 6 et 8 chiffres)" required>
         <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
       </div>
     </form>

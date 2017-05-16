@@ -12,6 +12,7 @@ $app->get('/', function (){
     $logo_page =  "/zingage";
     $logo_img = "logo.png";
     $page_color = '#009fe3';
+    $hide_conect_btn = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/view/accueil.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
@@ -237,6 +238,7 @@ $app->get('/connexion', function(){
     $page_color = '#96c11f';
     $arrow_return = '/zingage';
     $arrow_color = "arrow-green.png";
+    $hide_conect_btn = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/view/connexion.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
@@ -249,6 +251,7 @@ $app->post('/connexion/traitement', function(){
     $page_color = '#96c11f';
     $arrow_return = '/zingage';
     $arrow_color = "arrow-green.png";
+    $hide_conect_btn = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionTraitement.php'), 0, -1);
@@ -273,6 +276,7 @@ $app->get('/inscription', function(){
     $page_color = '#96c11f';
     $arrow_return = '/zingage';
     $arrow_color = "arrow-green.png";
+    $hide_conect_btn = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/view/inscription.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
@@ -281,6 +285,7 @@ $app->get('/inscription', function(){
 
 $app->post('/inscription/traitement', function(){
     //Spécifié lors de l'acceptation / refus de la page
+    $hide_conect_btn = true;
     $content =  substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/inscriptionTraitement.php'), 0, -1);
     return $content;
