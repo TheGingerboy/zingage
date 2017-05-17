@@ -82,15 +82,29 @@ body {
   float:left;
 }
 
-#accueil .blue { background: #009fe3;  }
-#accueil .blue img { width: 65px; }
-#accueil .yellow { background: #fdd22a; }
-#accueil .yellow img { width: 100px; }
-#accueil .green { background: #96c11f; }
-#accueil .green img { width: 60px; }
-#accueil .purple { background: #574696; opacity: 0.3; }
-#accueil .orange { background: #ee7202; opacity: 0.3;}
-#accueil .pink { background: #e61c67; opacity: 0.3;}
+#accueil .menu-block.blue         { background: #009fe3;  }
+#accueil .menu-block.blue img     { width: 65px; }
+#accueil .menu-block.yellow       { background: #fdd22a; }
+#accueil .menu-block.yellow img   { width: 100px; }
+#accueil .menu-block.green        { background: #96c11f; }
+#accueil .menu-block.green img    { width: 60px; }
+#accueil .menu-block.red          { background: #a82626;  }
+#accueil .menu-block.red img      { width: 50%; }
+#accueil .menu-block.orange       { background: #ee7202; width: 180px; height: 180px; }
+#accueil .menu-block.orange span  { position: absolute; bottom: -30px; left: 0; right: 0; margin-left: auto; margin-right: auto; width: 100px; }
+#accueil .menu-block.orange img   { width: 100%; bottom: 0; }
+#accueil .menu-block.darkgreen    { background: #1fb316; }
+#accueil .menu-block.darkgreen img{ width: 85px;}
+
+#accueil .menu-block img  {
+  position: absolute;
+  bottom: 10px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
 
 #bandeau-retour{
   display: inline-block;
@@ -127,16 +141,6 @@ body {
 
 #accueil .menu-block {
   position: relative;
-}
-
-#accueil .menu-block img  {
-  position: absolute;
-  bottom: 10px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
 }
 
 #retour-form{

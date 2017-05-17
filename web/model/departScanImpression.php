@@ -9,8 +9,8 @@
 
   /******************************* Déclaration SQL ************************************/
   // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-  $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, date_scan_depart, of_scan, is_in_zingage) 
-                 VALUES(?, ?, ?, now(), ?, ?)";
+  $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, date_scan_depart, is_in_zingage) 
+                 VALUES(?, ?, ?, now(), ?)";
 
   //Récupère l'ID de l'utilisateur
   $get_id = $pdo->query("SELECT id_user FROM utilisateur WHERE identifiant_user='$identifiant_user'");
@@ -55,17 +55,23 @@
       $codesoftArgs .= $args;
     }
     
-
-    $pdo->prepare($insert_sql)->execute([$article, $id_user, $id_entreprise, '1']);  
+    try{
+      $prepare_insert_sql = $pdo->prepare($insert_sql);
+      $prepare_insert_sql->execute([$article, $id_user, $id_entreprise, '1']);
+    }
+    catch (PDOException $ex) {
+        echo  $ex->getMessage();
+    }
   }
 
   //Des vérification ont déja été effectué, en conséquence, je ne vérifie pas la validité des arguments précédents
   //Je vais créer le fichier qui sera à éxécuter par CodeSoft
   $name_file = dirname(__FILE__) . "\..\watchDirectory\\" . 'print.cmd';
-  $print_file = fopen($name_file, 'a+') or die('Cannot open file:  ' . $print_file);
+  $print_file = fopen($name_file, 'a+') 
+    or die('L\'impression n\'a pas pu se faire, si l\'erreur persiste, contactez votre administratuer réseau');
   fwrite($print_file, $codesoftArgs);
   fclose($print_file);
-  echo "<h3>Article(s) ajouté(s) avec succès, les étiquettes devraient sortir maintenant></h3>";
+  echo "<h3>Article(s) ajouté(s) avec succès, les étiquettes devraient sortir maintenant</h3>";
   echo "<h3>Si vos étiquettes ne sont pas sortis, vérifiez l'imprimante et le lancement du logiciel CodeSoft</h3>";
 
 ?>

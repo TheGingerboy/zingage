@@ -1,5 +1,5 @@
 <?php 
-  if(!(isset($_SESSION)))
+  if(!isset($_SESSION))
     session_start();
 ?> 
 
@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Zingage | Scan</title>
+    <title>Zingage | AEML</title>
     <!-- Font awesome and minified CSS -->
     <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/components/font-awesome/css/font-awesome.min.css"/>
     <!-- Bootstrap latest compiled and minified CSS -->
@@ -31,12 +31,15 @@
                   <img class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML"/>
               </a>
               <li>
-                  <a href="/zingage/depart">Zingage Départ</a>
+                  <div class="small-rectangle blue"></div>
+                  <a class="title" href="/zingage/depart">Zingage Départ</a>
               </li>
               <li>
+                  <div class="small-rectangle yellow"></div>
                   <a href="/zingage/retour">Zingage Retour</a>
               </li>
               <li>
+                  <div class="small-rectangle green"></div>
                 <?php
                   //si une session existe, afficher ce bandeau
                   if (isset($_SESSION['identifiant']))
@@ -46,12 +49,15 @@
                 ?>
               </li>
               <li>
+                  <div class="small-rectangle rose"></div>
                   <a href="#">A venir</a>
               </li>
               <li>
+                  <div class="small-rectangle purple"></div>
                   <a href="#">A venir</a>
               </li>
               <li>
+                  <div class="small-rectangle idk"></div>
                   <a href="#">A venir</a>
               </li>
           </ul>
@@ -74,32 +80,32 @@
 
       <!-- Affichage du 'bouton hamburger' -->
       <div id="page-content-wrapper">
+
           <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-              <span class="hamb-top" style="background-color: <?= $page_color ?>;"></span>
+              <span class="hamb-top"    style="background-color: <?= $page_color ?>;"></span>
               <span class="hamb-middle" style="background-color: <?= $page_color ?>;"></span>
               <span class="hamb-bottom" style="background-color: <?= $page_color ?>;"></span>
           </button>
 
-
         <body>
-      <?php
-        //Affichage de la situation de connexion 
-        echo '<p class="connexion center">';
-        //si une session existe, afficher ce bandeau
-        if ( isset($_SESSION['identifiant']) ){
-          echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | ' .
-               '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
-        }
-        //sinon le bandeau de connexion
-        else
-          if( !isset($hide_conect_btn) ){
-            echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
-            echo '</p>';     
-          }
+          <?php
+            //Affichage de la situation de connexion 
+            echo '<p class="connexion center">';
+            //si une session existe, afficher ce bandeau
+            if ( isset($_SESSION['identifiant']) ){
+              echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | ' .
+                   '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
+            }
+            //sinon le bandeau de connexion
+            else
+              if( !isset($hide_conect_btn) ){
+                echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
+                echo '</p>';     
+              }
 
-        //Affichage du logo, dépendant des paramètres dans index.php 
-        echo '<h1 class="text-center">';
-          echo '<a href="http://' . $_SERVER['SERVER_NAME'] . $logo_page . '>';
-            echo '<img id="logo" class="img-responsive" src="' . "/zingage/web/images/" . $logo_img . '" alt="AEML">';
-          echo '</a>';
-        echo '</h1>';
+            //Affichage du logo, dépendant des paramètres dans index.php 
+            echo '<h1 class="text-center">';
+              echo '<a href="http://' . $_SERVER['SERVER_NAME'] . $logo_page . '">';
+                echo '<img id="logo" class="img-responsive" src="' . "/zingage/web/images/" . $logo_img . '" alt="AEML">';
+              echo '</a>';
+            echo '</h1>';

@@ -29,6 +29,7 @@ if (isset($_SESSION['identifiant'])) {
   $data = $_POST['data'];
   $nb_occu = array();
   $id_list_article = array();
+  $err = false;
 
   //Permet de retrouver les valeurs contenu entre <li> et </li> dans $ref_list[]
   preg_match_all ( '#<li>(.*?)</li>#', $data, $ref_list );
@@ -44,6 +45,10 @@ if (isset($_SESSION['identifiant'])) {
     $verif_ref->execute([$ref]);
     if(!($verif_ref->rowCount()))
     { 
+      if (!$err) {
+        $err = true;
+        echo '<h2 class="center text-danger">ATTENTION<h2>';
+      }
       $nb_occu[$ref] = 0; 
       echo '<h3>La référence <span style="font-weight:bold">' .$ref. "</span> n'a pas été trouvé dans la base de données</h3>";
     }
@@ -57,12 +62,16 @@ if (isset($_SESSION['identifiant'])) {
     $nb_dispo = $dispo_ref->rowCount();
     if ( $nb_occu[$ref] > $nb_dispo )
     {
+      if (!$err) {
+        $err = true;
+        echo '<h2 class="center text-danger">ATTENTION<h2>';
+      }      
       echo '<h3>La référence <span style="font-weight:bold">' .$ref. "</span> a été scanné ". $nb_occu[$ref] . " fois alors qu'il n'y a que ". $nb_dispo ." bac actuellement indiqué comme étant au zingage</h3>";
       $nb_occu[$ref] = 0;
     }
   }
 
-  echo "<h2>Récapitualtif de l'impression</h2>";
+  echo '<h2 class="center">Récapitualtif de l\'impression</h2>';
 
   //Tableau à deux dimension matches[0] renvoie le résultat avec les li et matches[1] sans
   echo "<table class=\"table table-bordered table-striped table-responsive\">";
@@ -91,19 +100,22 @@ if (isset($_SESSION['identifiant'])) {
     }
   }
   echo "</table>";
+  //Si la liste est vide, retirer le bouton de validation
+  if (!empty($id_list_article)) {
   ?>
 
-  <div id="formulaire">
-    <h2>Numéro d'OF</h2>
-    <form action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/recap/insert" ?>" method="post">
-      <div>
-        <input type="" name="ref_article" class="form-control" value=" <?php echo json_encode($id_list_article) ?> ">
-        <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
-      </div>
-    </form>
-  </div>
+    <div id="formulaire">
+      <form action="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/recap/insert" ?>" method="post">
+          <input type="hidden" name="ref_article" class="form-control" value=" <?php echo json_encode($id_list_article) ?> ">
+          <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
+      </form>
+    </div>
 
   <?php
   }
-  //Si utilisateur non connecté
+  else{
+    echo "<h3>Vous ne pouvez pas envoyer une liste d'article vide</h3>";
+  }
+//Si utilisateur non connecté
+}
 else { echo "<h2> Vous devez être connecté pour effectuer cette action <h2>"; }

@@ -12,7 +12,7 @@
   //Permet de retrouver les valeurs contenu entre <li> et </li>
   preg_match_all ( '#<li>(.*?)</li>#', $data, $ref_list );
 
-  echo "<h2>Récapitualtif de l'impression</h2>";
+
 
   //Tableau à deux dimension matches[0] renvoie le résultat avec les li et matches[1] sans
   echo "<table class=\"table table-bordered table-striped table-responsive\">";
@@ -29,11 +29,13 @@
 
     if($verif_ref->rowCount() == 0){
       if($err){
-        echo "<div>Attention, un ou plusieurs articles scannés n'ont pas été enregistré</div>";
-        echo "<div>Voici la liste des référence de ces articles :</div>";
+
+        echo '<h2 class="center text-danger">Attention</h2>';
+        echo '<h2 class="center">Un ou plusieurs articles scannés n\'ont pas été enregistré</h2>';
+        echo '<h3 class="text-warning">Voici la liste des référence de ces articles :</h3>';
         $err = false;
       }
-    echo $ref . "<br>";
+    echo "<h3>" . $ref . "</h3><br>";
     }
 
     else {
@@ -51,14 +53,17 @@
       }
     }
   }
+  echo '<h2 class="center text-success">Récapitualtif de l\'impression</h2>';
   echo "</table>";
+
+
   ?>
 
   <div id="formulaire">
     <h3>Vérifiez bien vos scan puis valider vos opérations avec le bouton "envoyer"</h3>
     <form action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart/recap/impression" ?>" method="post">
       <div>
-        <input style="display: none;" type="" name="ref_article" class="form-control" value="<?php echo json_encode($ref_article) ?>">
+        <input type="hidden" name="ref_article" class="form-control" value="<?php echo json_encode($ref_article) ?>">
         <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
       </div>
     </form>

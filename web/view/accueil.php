@@ -6,11 +6,11 @@
 
 	<div class="menu">
 		<a class="menu-block blue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart" ?>">
-			<img class="img-responsive" src="/zingage/web/images/plane-blue-min.png" alt="Départ"/>
+			<img class="img-responsive" src="/zingage/web/images/plane-blue-min.png" alt=""/>
 			Zingage Départ
 		</a>
 		<a class="menu-block yellow" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour" ?>">
-			<img class="img-responsive" src="/zingage/web/images/yellow-boat-min.png" alt="Retour"/>
+			<img class="img-responsive" src="/zingage/web/images/yellow-boat-min.png" alt=""/>
 			Zingage Retour
 		</a>
 
@@ -21,7 +21,7 @@
 			else
 				{echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/connexion";} 
 		?>">
-		<img class="img-responsive" src="/zingage/web/images/human-green-min.png" alt="Connexion"/>
+		<img class="img-responsive" src="/zingage/web/images/human-green-min.png" alt=""/>
 			<?php
 				if (isset($_SESSION['identifiant']))
 					echo "Profil";
@@ -29,14 +29,17 @@
 					echo "Connexion";
 			?> 
 		</a>
-		<a class="menu-block pink" href="#">
-			A venir
+		<a class="menu-block darkgreen" href="#">
+			Gestion utilisateur
+			<img src="/zingage/web/images/green-user-caught-min.png" alt=""/>
 		</a>
-		<a class="menu-block purple" href="#">
-			A venir
+		<a class="menu-block red" href="#">
+			<img src="/zingage/web/images/red-bird-min.png" alt=""/>
+			Article
 		</a>
 		<a class="menu-block orange" href="#">
-			A venir
+			<img src="/zingage/web/images/orange-circle-bird-min.png" alt=""/>
+			Liste des <span>scans</span>
 		</a>
 	</div>
 
