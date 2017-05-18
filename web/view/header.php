@@ -39,6 +39,14 @@
                   <a href="/zingage/retour">Zingage Retour</a>
               </li>
               <li>
+                  <div class="small-rectangle red"></div>
+                  <a href="/zingage/article">Article</a>
+              </li>
+              <li>
+                  <div class="small-rectangle orange"></div>
+                  <a href="/zingage/scan">Historique</a>
+              </li>
+              <li>
                   <div class="small-rectangle green"></div>
                 <?php
                   //si une session existe, afficher ce bandeau
@@ -49,15 +57,7 @@
                 ?>
               </li>
               <li>
-                  <div class="small-rectangle rose"></div>
-                  <a href="#">A venir</a>
-              </li>
-              <li>
-                  <div class="small-rectangle purple"></div>
-                  <a href="#">A venir</a>
-              </li>
-              <li>
-                  <div class="small-rectangle idk"></div>
+                  <div class="small-rectangle darkgreen"></div>
                   <a href="#">A venir</a>
               </li>
           </ul>

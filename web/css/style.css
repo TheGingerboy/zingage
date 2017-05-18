@@ -7,11 +7,14 @@
 footer, section, header, aside, figure {
   display: block;
 }
-body {
+@media (min-width: 600px){
+  body {
   padding: 2em;
   font-size: 15px;
   font-family: helvetica, arial, sans-serif;
 }
+}
+
 
 /*désactive la selection (bleu de base) pour éviter les erreurs d'affichages sur le tactile*/
 /*::-moz-selection {
@@ -88,13 +91,12 @@ body {
 #accueil .menu-block.yellow img   { width: 100px; }
 #accueil .menu-block.green        { background: #96c11f; }
 #accueil .menu-block.green img    { width: 60px; }
-#accueil .menu-block.red          { background: #a82626;  }
+#accueil .menu-block.red          { background: #e43535;  }
 #accueil .menu-block.red img      { width: 50%; }
 #accueil .menu-block.orange       { background: #ee7202; width: 180px; height: 180px; }
-#accueil .menu-block.orange span  { position: absolute; bottom: -30px; left: 0; right: 0; margin-left: auto; margin-right: auto; width: 100px; }
-#accueil .menu-block.orange img   { width: 100%; bottom: 0; }
-#accueil .menu-block.darkgreen    { background: #1fb316; }
-#accueil .menu-block.darkgreen img{ width: 85px;}
+#accueil .menu-block.orange img   { width: 35%; bottom: 0; }
+#accueil .menu-block.darkgreen    { background: #1fb316; opacity: 0.3; cursor: unset;}
+#accueil .menu-block.darkgreen img{ width: 130px;}
 
 #accueil .menu-block img  {
   position: absolute;

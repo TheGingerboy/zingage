@@ -14,6 +14,16 @@
 			Zingage Retour
 		</a>
 
+		<a class="menu-block orange" href="#">
+			<img src="/zingage/web/images/fox.png" alt=""/>
+			Historique
+		</a>
+
+		<a class="menu-block red" href="#">
+			<img src="/zingage/web/images/fish-min.png" alt=""/>
+			Article
+		</a>
+
 		<a class="menu-block green" href="
 		<?php 
 			if (isset($_SESSION['identifiant']))
@@ -21,7 +31,7 @@
 			else
 				{echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/connexion";} 
 		?>">
-		<img class="img-responsive" src="/zingage/web/images/human-green-min.png" alt=""/>
+		<img class="img-responsive" src="/zingage/web/images/arbre-min.png" alt=""/>
 			<?php
 				if (isset($_SESSION['identifiant']))
 					echo "Profil";
@@ -30,16 +40,8 @@
 			?> 
 		</a>
 		<a class="menu-block darkgreen" href="#">
-			Gestion utilisateur
-			<img src="/zingage/web/images/green-user-caught-min.png" alt=""/>
-		</a>
-		<a class="menu-block red" href="#">
-			<img src="/zingage/web/images/red-bird-min.png" alt=""/>
-			Article
-		</a>
-		<a class="menu-block orange" href="#">
-			<img src="/zingage/web/images/orange-circle-bird-min.png" alt=""/>
-			Liste des <span>scans</span>
+			<img class="img-responsive" src="/zingage/web/images/foret-min.png" alt=""/>
+			A venir
 		</a>
 	</div>
 

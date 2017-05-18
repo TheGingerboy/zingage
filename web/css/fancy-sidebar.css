@@ -83,9 +83,9 @@ html { height: 100%;}
 .sidebar-nav .blue    { background-color: #009fe3; }
 .sidebar-nav .yellow  { background-color: #fdd22a; }
 .sidebar-nav .green   { background-color: #96c11f; }
-.sidebar-nav .rose    { background-color: #e61c67; }
-.sidebar-nav .purple  { background-color: #574696; }
-.sidebar-nav .idk     { background-color: #ee7202; }
+.sidebar-nav .red    { background-color: #e43535; }
+.sidebar-nav .orange  { background-color: #ee7202; }
+.sidebar-nav .darkgreen     { background-color: #1fb316; }
  
 }
 .sidebar-nav li:hover:before,
