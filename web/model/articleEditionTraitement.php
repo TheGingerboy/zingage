@@ -7,6 +7,7 @@
 	$dim_article = htmlspecialchars($_POST['dim_article']);
 	$bac_article = htmlspecialchars($_POST['bac_article']);
 	$poid_article = htmlspecialchars($_POST['poid_article']);
+	$of_article = htmlspecialchars($_POST['of_article']);
 
     $sql = $pdo->query("SELECT * FROM article WHERE id_article='$id_article'");
 
@@ -24,6 +25,7 @@
         $dim_article_current = htmlspecialchars_decode($row['dim_article']);
         $bac_article_current  = htmlspecialchars_decode($row['bac_article']);
         $poid_article_current = htmlspecialchars_decode($row['poid_article']);
+        $of_article_current = htmlspecialchars_decode($row['of_article']);
 		}
     	if ((!empty($ref_article)) && ($ref_article != $ref_article_current)) {
 			$sql ="UPDATE article SET ref_article = ? WHERE id_article = ?";
@@ -54,6 +56,11 @@
 			$sql ="UPDATE article SET poid_article = ? WHERE id_article = ?";
 			$pdo->prepare($sql)->execute([$poid_article, $id_article]);
 			echo '<h3 class="center">Le poids de l\'article à été modifié</h3>';
+		}
+    	if ($of_article != $of_article_current) {
+			$sql ="UPDATE article SET of_article = ? WHERE id_article = ?";
+			$pdo->prepare($sql)->execute([$of_article, $id_article]);
+			echo '<h3 class="center">Le numéro d\'OF de l\'article à été modifié</h3>';
 		}
     }
 ?>

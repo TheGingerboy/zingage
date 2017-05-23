@@ -71,8 +71,8 @@
     or die('L\'impression n\'a pas pu se faire, si l\'erreur persiste, contactez votre administratuer réseau');
   fwrite($print_file, $codesoftArgs);
   fclose($print_file);
-  echo "<h3>Article(s) ajouté(s) avec succès, les étiquettes devraient sortir maintenant</h3>";
-  echo "<h3>Si vos étiquettes ne sont pas sortis, vérifiez l'imprimante et le lancement du logiciel CodeSoft</h3>";
+  echo "<h3>Article(s) ajouté(s) avec succès, les étiquettes devraient maintenant sortir.</h3>";
+  echo "<h3>Si vos étiquettes ne sont pas sortis, vérifiez l'imprimante et le lancement du logiciel d'impression (CodeSoft).</h3>";
 
 ?>
 

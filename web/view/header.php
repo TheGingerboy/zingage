@@ -22,7 +22,6 @@
 
   </head>
   <!-- body fermé dans le footer -->
-
     <div id="wrapper">
       <!-- Sidebar -->
       <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
@@ -81,7 +80,7 @@
       <!-- Affichage du 'bouton hamburger' -->
       <div id="page-content-wrapper">
 
-          <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+          <button type="button" id="hamburger" class="hamburger is-closed" data-toggle="offcanvas">
               <span class="hamb-top"    style="background-color: <?= $page_color ?>;"></span>
               <span class="hamb-middle" style="background-color: <?= $page_color ?>;"></span>
               <span class="hamb-bottom" style="background-color: <?= $page_color ?>;"></span>

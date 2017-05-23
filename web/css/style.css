@@ -241,6 +241,11 @@ footer, section, header, aside, figure {
   padding     : 0px;
 }
 
+.recap-alert{
+  background-color: #ffe6ba;
+  padding: 10px;
+}
+
 .addBtn:hover {
     background-color: #bbb;
 }
@@ -260,6 +265,11 @@ footer, section, header, aside, figure {
 
 .center{
   text-align: center;
+}
+
+.fixed{
+  position:fixed;
+  width:100%;
 }
 
 

@@ -59,7 +59,7 @@ $app->post('/depart/recap', function(){
     $logo_page =  "/zingage/depart";
     $logo_img = "logo.png";
     $page_color = '#009fe3';
-    $arrow_return = '/zingage';
+    $arrow_return = '/zingage/depart';
     $arrow_color = "arrow.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
@@ -294,7 +294,7 @@ $app->post('/connexion/traitement', function(){
 $app->get('/deconnexion', function(){
     $logo_page =  "/zingage";
     $logo_img = "logo.png";
-    $page_color = '#96c11f';
+    $page_color = '#009fe3';
     $hide_conect_btn = true;
     $content =  substr((require_once '/web/model/deconnexion.php'), 0, -1);
     $content .= substr((require_once '/web/view/header.php'), 0, -1);

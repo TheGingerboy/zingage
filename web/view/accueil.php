@@ -14,12 +14,12 @@
 			Zingage Retour
 		</a>
 
-		<a class="menu-block orange" href="#">
+		<a class="menu-block orange" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan" ?>">
 			<img src="/zingage/web/images/fox.png" alt=""/>
 			Historique
 		</a>
 
-		<a class="menu-block red" href="#">
+		<a class="menu-block red" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article" ?>">
 			<img src="/zingage/web/images/fish-min.png" alt=""/>
 			Article
 		</a>

@@ -36,6 +36,7 @@ if (isset($_SESSION['identifiant'])) {
 
   /************ Permet de s'assurer de la présence d'une ref ************/
   //Si la ref n'est pas présente, la valeur d'occurence dans le tableau est mise à 0
+
   foreach($ref_list[1] as $ref){
 
     //Permet de compter le nombre d'occurence d'une variable
@@ -45,43 +46,52 @@ if (isset($_SESSION['identifiant'])) {
     $verif_ref->execute([$ref]);
     if(!($verif_ref->rowCount()))
     { 
+      echo '<div class="recap-alert">';
       if (!$err) {
         $err = true;
-        echo '<h2 class="center text-danger">ATTENTION<h2>';
+        echo '<h2 class="center text-danger">ATTENTION</h2>';
+        echo '<h2 class="center">Un ou plusieurs articles scannés n\'ont pas été enregistré</h2>';
+        echo '<h2 class="center text-warning">Veuillez corriger les erreurs ci-dessous :</h3>';
+
       }
       $nb_occu[$ref] = 0; 
-      echo '<h3>La référence <span style="font-weight:bold">' .$ref. "</span> n'a pas été trouvé dans la base de données</h3>";
+      echo '<h3 class="center">La référence <span style="font-weight:bold">' .$ref. "</span> n'a pas été trouvé dans la base de données</h3>";
+      echo "</div>";
     }
   }
 
   /************ Permet de s'assurer du bon nombre de ref dispo dans la BDD ************/
   //Si la ref est présente mais qu'elle n'est pas au zingage en ce moment, afficher une erreur
+
   foreach($nb_occu as $ref => $value)
   {
     $dispo_ref->execute([$ref]);
     $nb_dispo = $dispo_ref->rowCount();
     if ( $nb_occu[$ref] > $nb_dispo )
     {
+      echo '<div class="recap-alert">';
       if (!$err) {
         $err = true;
         echo '<h2 class="center text-danger">ATTENTION<h2>';
       }      
       echo '<h3>La référence <span style="font-weight:bold">' .$ref. "</span> a été scanné ". $nb_occu[$ref] . " fois alors qu'il n'y a que ". $nb_dispo ." bac actuellement indiqué comme étant au zingage</h3>";
       $nb_occu[$ref] = 0;
+      echo '</div>';
     }
   }
+
 
   echo '<h2 class="center">Récapitualtif de l\'impression</h2>';
 
   //Tableau à deux dimension matches[0] renvoie le résultat avec les li et matches[1] sans
   echo "<table class=\"table table-bordered table-striped table-responsive\">";
 
-  echo "<tr><th>REFERENCE</th>";
-  echo "<th>NOM</th>";
+  echo "<tr>";
   echo "<th>NOMBRE</th>";
-  echo "<th>DIMENSION</th>";
-  echo "<th>BAC ARTICLE</th>";
-  echo "<th>POIDS TOTAL</th></tr>";
+  echo "<th>REFERENCE</th>";
+  echo "<th>DESIGNATION</th>";
+  echo "<th>BAC</th>";
+  echo "</tr>";
 
   //Pour chaque ref entrée dans le système
   foreach($ref_list[1] as $ref)
@@ -90,31 +100,40 @@ if (isset($_SESSION['identifiant'])) {
       $show_ref->execute([$ref]);
       $row = $show_ref->fetch();
       $id_list_article[] = $row['id_article'];
-      echo "<tr>"; 
-      echo "<td>{$row['ref_article']}</td>";
-      echo "<td>{$row['nom_article']}</td>";
-      echo "<td>{$row['nb_article']}</td>";
-      echo "<td>{$row['dim_article']}</td>";
-      echo "<td>{$row['bac_article']}</td>";
-      echo "<td>{$row['poid_article']}</td>";
     }
   }
+
+  foreach($nb_occu as $ref => $value)
+  {
+    if ($nb_occu[$ref] > 0) {
+          $show_ref->execute([$ref]);
+          $row = $show_ref->fetch();
+          echo "<tr>"; 
+          echo "<td>{$nb_occu[$ref]}</td>";
+          echo "<td>{$row['ref_article']}</td>";
+          echo "<td>{$row['nom_article']}</td>";
+          echo "<td>{$row['bac_article']}</td>";
+          echo "</tr>"; 
+    }
+  }
+
   echo "</table>";
   //Si la liste est vide, retirer le bouton de validation
   if (!empty($id_list_article)) {
-  ?>
+    ?>
 
-    <div id="formulaire">
-      <form action="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/recap/insert" ?>" method="post">
-          <input type="hidden" name="ref_article" class="form-control" value=" <?php echo json_encode($id_list_article) ?> ">
-          <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
-      </form>
-    </div>
+      <div id="formulaire" class="center">
+        <h3>Vérifiez bien vos scans puis validez vos opérations avec le bouton "envoyer"</h3>
+        <form action="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/retour/recap/insert" ?>" method="post">
+            <input type="hidden" name="ref_article" class="form-control" value=" <?= json_encode($id_list_article) ?> ">
+            <input id="btn-valide" class="btn btn-success" type="submit" value="Envoyer">
+        </form>
+      </div>
 
-  <?php
+    <?php
   }
   else{
-    echo "<h3>Vous ne pouvez pas envoyer une liste d'article vide</h3>";
+    echo '<h3 class="center">Vous ne pouvez pas envoyer une liste d\'article vide</h3>';
   }
 //Si utilisateur non connecté
 }

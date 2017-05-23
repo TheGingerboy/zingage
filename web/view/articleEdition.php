@@ -18,7 +18,7 @@
         $dim_article  = htmlspecialchars_decode($row['dim_article']);
         $bac_article  = htmlspecialchars_decode($row['bac_article']);
         $poid_article = htmlspecialchars_decode($row['poid_article']);
-        $of_article = htmlspecialchars_decode($row['of_article']);
+        $of_article   = htmlspecialchars_decode($row['of_article']);
       }
 
 ?>
@@ -51,7 +51,14 @@
 
       <div class="form-group">
         <label for="bac_article">Type de bac : </label>
-        <input type="" name="bac_article" value="<?= $bac_article; ?>" class="form-control">
+         <select id="mySelect" class="form-control" name="bac_article">
+            <option selected="selected" value="Aucun">Aucun</option>
+            <option value="Carton">Carton</option>
+            <option value="T1">T1</option>
+            <option value="T2">T2</option>
+            <option value="T3">T3</option>
+            <option value="T4">T4</option>
+          </select> 
       </div>
 
       <div class="form-group">
@@ -69,8 +76,11 @@
 
   </div>
 
+  <script type="text/javascript">
+    document.getElementById("mySelect").value = "<?= $bac_article ?>"; 
+  </script>
+
   <?php
     }
   }
   else{ echo "<h2>Vous devez être connecté pour effectuer cette action<h2>"; }
-?>

@@ -4,22 +4,14 @@
     //initialisation de la valeur d'erreur 0 = ok
     $err = false;
 
-    //récupération des valeurs passé
-    $ref_article = $_POST['ref_article'];
-    $nom_article = $_POST['nom_article'];
-    $nb_article = $_POST['nb_article'];
-    $dim_article = $_POST['dim_article'];
-    $bac_article = $_POST['bac_article'];
-    $poid_article = $_POST['poid_article'];
-    $of_article = $_POST['of_article'];
-
-    //normalisation des valeurs pour empécher les injections SQL et retirer les caractères pouvant causer des défauts
-    $ref_article = htmlspecialchars($ref_article);
-    $nom_article = htmlspecialchars($nom_article);
-    $nb_article = htmlspecialchars($nb_article);
-    $dim_article = htmlspecialchars($dim_article);
-    $bac_article = htmlspecialchars($bac_article);
-    $poid_article = htmlspecialchars($poid_article);
+    //récupération et normalisation des valeurs passé
+    $ref_article = htmlspecialchars($_POST['ref_article']);
+    $nom_article = htmlspecialchars($_POST['nom_article']);
+    $nb_article = htmlspecialchars($_POST['nb_article']);
+    $dim_article = htmlspecialchars($_POST['dim_article']);
+    $bac_article = htmlspecialchars($_POST['bac_article']);
+    $poid_article = htmlspecialchars($_POST['poid_article']);
+    $of_article = htmlspecialchars($_POST['of_article']);
 
     //Vérifie la présence d'un doublon
     $verif_ref = $pdo->query("SELECT ref_article FROM article WHERE ref_article='$ref_article'");

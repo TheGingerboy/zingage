@@ -5,6 +5,7 @@
   form = document.querySelector( 'form.scan' );
   field = document.querySelector( '#newitem' );
   data = document.querySelector( '#data' );
+  hamburger = document.querySelector( '#hamburger' );
   sendDataButton = document.querySelector( '#btn-valide' );
 
   //Maintient le zone de texte vide
@@ -49,13 +50,31 @@
   };
 })();
 
-//Permet de garder le focus (selection) sur le champs à compléter
+//Permet de garder le focus (selection) sur le champs à compléter SI la sidebarre n'est pas dérouler
 document.getElementById('newitem').onblur = function (event) { 
-    var blurEl = this;
+  if(hamburger.className === 'hamburger is-closed'){
+    var blurEl = document.getElementById('newitem');
     setTimeout(function() {
         blurEl.focus()
     }, 10);
+  }
 }
+
+//Si le menu est ouvert, déplacer le focus vert un élément inutile (ici le bouton hamburger)
+hamburger.addEventListener( 'click', function(){
+  if(hamburger.className === 'hamburger is-open'){
+    var blurEl = document.getElementById('newitem');
+    setTimeout(function() {
+    blurEl.focus()
+    }, 10);
+  }
+  else {
+    var blurEl = document.getElementById('hamburger');
+    setTimeout(function() {
+    blurEl.focus()
+    }, 10);
+  }
+}, false);
 
 function clearstate() {
   localStorage.todolist = "";
