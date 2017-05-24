@@ -21,16 +21,16 @@ if (isset($_SESSION['identifiant'])) {
     UPDATE scan 
     SET 
       date_scan_retour = now(),
-      id_user_retour = ? 
+      id_user_retour = ? ,
+      is_in_zingage = ?
     WHERE id_article = ?
     AND id_user_retour IS NULL
     LIMIT 1");
 
-  echo "<h2>Récapitualtif du scan</h2>";
-
   //Permet de compter le nombre d'occurence d'une variable
   foreach($id_list as $id)
-    { $insert_ref->execute([$id_user, $id]); }
+    { $insert_ref->execute([$id_user, 0, $id]); }
+    echo "<h3>Retour effectué avec succès.</h3>";
 ?>
 <script type="text/javascript">
   (function() {

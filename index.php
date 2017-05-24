@@ -264,6 +264,19 @@ $app->post('/scan/suppression', function(){
     return $content;
 });
 
+$app->get('/scan/detail', function(){
+    $logo_page =  "/zingage/scan";
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = '/zingage';
+    $arrow_color = "arrow.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScanDetail.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
 $app->get('/connexion', function(){
     $logo_page =  "/zingage";
     $logo_img = "logo-green.png";

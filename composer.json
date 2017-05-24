@@ -20,6 +20,7 @@
         "swiftmailer/swiftmailer": "5.*",
         "twbs/bootstrap": "^3.3",
         "components/jquery": "^3.2",
-        "components/font-awesome": "^4.7"
+        "components/font-awesome": "^4.7",
+        "bootstrap-select/bootstrap-select": "^1.12"
     }
 }

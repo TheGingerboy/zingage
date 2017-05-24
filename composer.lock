@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "139483b91b5d147aa686ee45f658ade7",
+    "content-hash": "b4c3fe4b0195eb4946b4f8a75a6369e6",
     "packages": [
+        {
+            "name": "bootstrap-select/bootstrap-select",
+            "version": "1.12.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silviomoreto/bootstrap-select.git",
+                "reference": "4eb040b7097fd8eab8184e54efe973ce8468e9b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silviomoreto/bootstrap-select/zipball/4eb040b7097fd8eab8184e54efe973ce8468e9b2",
+                "reference": "4eb040b7097fd8eab8184e54efe973ce8468e9b2",
+                "shasum": ""
+            },
+            "suggest": {
+                "components/jquery": ">=1.8",
+                "twbs/bootstrap": "~3.0.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Silvio Moreto",
+                    "homepage": "https://github.com/silviomoreto"
+                }
+            ],
+            "description": "Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements.",
+            "homepage": "http://silviomoreto.github.io/bootstrap-select",
+            "keywords": [
+                "bootstrap",
+                "form",
+                "replacement",
+                "select"
+            ],
+            "time": "2017-01-30T20:23:32+00:00"
+        },
         {
             "name": "components/font-awesome",
             "version": "4.7.0",
@@ -420,7 +459,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-09-15T11:48:05+00:00"
+            "time": "2014-09-15 11:48:05"
         },
         {
             "name": "doctrine/inflector",

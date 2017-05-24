@@ -16,6 +16,14 @@
 		<script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/js/enter_to_tab.js"></script>
 	<?php }	?>
 
+	<!-- Bootstrap Select -->
+	<script src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/bootstrap-select/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+	<!-- Bootstrap Select Traduction-->
+	<script src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/bootstrap-select/bootstrap-select/dist/js/i18n/defaults-fr_FR.js"></script>
+
+
+
 
 
 </body>

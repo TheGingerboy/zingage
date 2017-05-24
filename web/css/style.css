@@ -27,6 +27,8 @@ footer, section, header, aside, figure {
 
 /*Custom CSS*/
 
+/*****************form & general*********************/
+
 #logo {
     display: inline-block;
     width: 200px;
@@ -59,6 +61,18 @@ footer, section, header, aside, figure {
   background: #96c11f;
 }
 
+.match-size{
+    min-height: 25px;
+}
+
+.center{
+  text-align: center;
+}
+
+.fixed{
+  position:fixed;
+  width:100%;
+}
 
 
 /*****************Accueil*********************/
@@ -85,6 +99,10 @@ footer, section, header, aside, figure {
   float:left;
 }
 
+#accueil .menu-block {
+  position: relative;
+}
+
 #accueil .menu-block.blue         { background: #009fe3;  }
 #accueil .menu-block.blue img     { width: 65px; }
 #accueil .menu-block.yellow       { background: #fdd22a; }
@@ -107,6 +125,8 @@ footer, section, header, aside, figure {
   left: 0;
   right: 0;
 }
+
+/*****************Bandeau retour*********************/
 
 #bandeau-retour{
   display: inline-block;
@@ -141,9 +161,8 @@ footer, section, header, aside, figure {
   display: flex;
 }
 
-#accueil .menu-block {
-  position: relative;
-}
+/*****************Depart / Retour*********************/
+
 
 #retour-form{
   width: 100%;
@@ -201,6 +220,13 @@ footer, section, header, aside, figure {
   right: 5px;    
 }
 
+.recap-alert{
+  background-color: #ffe6ba;
+  padding: 10px;
+}
+
+/*****************Scan*********************/
+
 
 #label-zing{
     width: 100%;
@@ -234,21 +260,20 @@ footer, section, header, aside, figure {
 }
 
 #form-suppr-article button {
-  background  : none;
+  background : none;
   cursor  : pointer;
-  border  : none;
-  margin      : 0px;
-  padding     : 0px;
+  border : none;
+  margin : 0px;
+  padding : 0px;
 }
 
-.recap-alert{
-  background-color: #ffe6ba;
-  padding: 10px;
-}
 
 .addBtn:hover {
     background-color: #bbb;
 }
+
+/*****************Connexion / Profil*********************/
+
 
 .btn-connexion {
     position: fixed;
@@ -257,19 +282,6 @@ footer, section, header, aside, figure {
     top: 70px;
     width: 50%;
     z-index: 100;
-}
-
-.match-size{
-    min-height: 25px;
-}
-
-.center{
-  text-align: center;
-}
-
-.fixed{
-  position:fixed;
-  width:100%;
 }
 
 

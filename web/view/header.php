@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
     <!-- Fancy Sidebar -->
     <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/fancy-sidebar.css"/>
+    <!-- Bootstrap Select -->
+    <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/bootstrap-select/bootstrap-select/dist/css/bootstrap-select.min.css"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/style.css"/>
 
