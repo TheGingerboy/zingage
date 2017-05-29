@@ -74,6 +74,10 @@ footer, section, header, aside, figure {
   width:100%;
 }
 
+.padding-all-small{
+  padding: 5px;
+}
+
 
 /*****************Accueil*********************/
 
@@ -283,5 +287,3 @@ footer, section, header, aside, figure {
     width: 50%;
     z-index: 100;
 }
-
-
