@@ -4,14 +4,11 @@ if (isset($_SESSION['identifiant'])) {
 
   /************Variables**********/
 
-  $cur_day_date = date("d/m/Y") ;
+  $cur_week_date = date('Ymd', strtotime('-'. date('w') .' days'));
 
-  $week_start = date('d/m/Y', strtotime('-'. date('w') .' days'));
+  $cur_month_date = date("Ym01") ;
 
-  $cur_month_date = date("01/m/Y") ;
-
-  $cur_year_date = date("01/01/Y") ;
-
+  $cur_year_date = date("Y0101") ;
 
   /**************SQL**************/
   //Permet de récupérer les articles dans une liste déroulante pour afficher des infos sur un article particulier
@@ -33,6 +30,8 @@ if (isset($_SESSION['identifiant'])) {
       is_in_zingage = '1' 
     GROUP BY
       ref_article
+    ORDER BY
+      nb_article_is_zing
     ");
 
   //Récupère l'article le plus ancien actuellement au zingage
@@ -49,7 +48,7 @@ if (isset($_SESSION['identifiant'])) {
     LIMIT 1
     ");
 
-  $sql_date_return = $pdo->query("
+  $sql_date_return = $pdo->prepare("
     SELECT 
       COUNT(scan.id_article) AS nb_article_is_zing,
       ref_article,
@@ -61,11 +60,13 @@ if (isset($_SESSION['identifiant'])) {
     LEFT JOIN 
       scan ON article.id_article = scan.id_article
     WHERE 
-      is_in_zingage = '0'
+      is_in_zingage = 0
     AND
-      scan.date_scan_retour > 20170501
+      date(scan.date_scan_retour) > date(?)
     GROUP BY
       ref_article
+    ORDER BY
+      nb_article_is_zing
     ");
 
 ?>
@@ -150,6 +151,23 @@ if (isset($_SESSION['identifiant'])) {
                 <th>POIDS CUMULE</th>
                 <th>QUANTITE CUMULE</th>
               </tr>
+
+              <?php
+                //Passage du paramètre de temps
+                $sql_date_return->execute([$cur_week_date]);
+                //Récupère les articles encore au zingage
+                while ($row = $sql_date_return->fetch()) 
+                {
+                  echo "<tr>";
+                  echo '<td>' . $row['nb_article_is_zing'] . '</td>';
+                  echo '<td>' . $row['ref_article'] . '</td>';
+                  echo '<td>' . $row['nom_article'] . '</td>';
+                  echo '<td>' . $row['poids_cumule'] . '</td>';
+                  echo '<td>' . $row['quantite_cumule'] . '</td>';
+                  echo "</tr>";
+                } 
+              ?>
+
             </table>
           </div>
 
@@ -163,6 +181,23 @@ if (isset($_SESSION['identifiant'])) {
                 <th>POIDS CUMULE</th>
                 <th>QUANTITE CUMULE</th>
               </tr>
+
+              <?php
+                //Passage du paramètre de temps
+                $sql_date_return->execute([$cur_month_date]);
+                //Récupère les articles encore au zingage
+                while ($row = $sql_date_return->fetch()) 
+                {
+                  echo "<tr>";
+                  echo '<td>' . $row['nb_article_is_zing'] . '</td>';
+                  echo '<td>' . $row['ref_article'] . '</td>';
+                  echo '<td>' . $row['nom_article'] . '</td>';
+                  echo '<td>' . $row['poids_cumule'] . '</td>';
+                  echo '<td>' . $row['quantite_cumule'] . '</td>';
+                  echo "</tr>";
+                } 
+              ?>
+
             </table>
           </div>
 
@@ -176,6 +211,23 @@ if (isset($_SESSION['identifiant'])) {
                 <th>POIDS CUMULE</th>
                 <th>QUANTITE CUMULE</th>
               </tr>
+
+              <?php
+                //Passage du paramètre de temps
+                $sql_date_return->execute([$cur_year_date]);
+                //Récupère les articles encore au zingage
+                while ($row = $sql_date_return->fetch()) 
+                {
+                  echo "<tr>";
+                  echo '<td>' . $row['nb_article_is_zing'] . '</td>';
+                  echo '<td>' . $row['ref_article'] . '</td>';
+                  echo '<td>' . $row['nom_article'] . '</td>';
+                  echo '<td>' . $row['poids_cumule'] . '</td>';
+                  echo '<td>' . $row['quantite_cumule'] . '</td>';
+                  echo "</tr>";
+                } 
+              ?>
+
             </table>
           </div>
 

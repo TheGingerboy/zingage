@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 16 Mai 2017 à 19:20
+-- Généré le :  Jeu 01 Juin 2017 à 16:27
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -42,7 +42,10 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`, `dim_article`, `bac_article`, `poid_article`, `of_article`) VALUES
-(1, 'GD4130-BKK1-E11A50800', 'TOTO', 5, '20X30', 'T4', '0.200', 125565);
+(1, 'GD4130-BKK1-E11A50800', 'TOTO', 5, '20X30', 'T2', '0.200', 256895),
+(2, '42930VGO0002', 'ARM COMP TENSION ZINGUE', 0, 'test', 'Aucun', '0.000', 7777777),
+(3, 'test', 'SCANNER', 1, '20X30', 'T2', '15.000', 125565),
+(4, 'Test', 'Ceci est un test', 666, '2x2cm', 'T3', '0.000', 67457234);
 
 -- --------------------------------------------------------
 
@@ -79,6 +82,35 @@ CREATE TABLE `scan` (
   `is_in_zingage` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Contenu de la table `scan`
+--
+
+INSERT INTO `scan` (`id_scan`, `id_article`, `id_user_depart`, `id_user_retour`, `id_entreprise`, `date_scan_depart`, `date_scan_retour`, `is_in_zingage`) VALUES
+(29, 3, 1, 1, 1, '2017-05-23 11:14:29', '2017-04-11 12:06:46', 0),
+(31, 1, 1, 1, 1, '2017-05-23 11:14:29', '2017-03-01 12:06:46', 0),
+(32, 3, 1, 1, 1, '2017-05-23 11:14:29', '2017-02-01 12:06:46', 0),
+(33, 3, 1, 1, 1, '2017-05-23 11:14:29', '2017-05-23 12:06:46', 0),
+(34, 3, 1, 1, 1, '2017-05-23 11:14:29', '2017-05-23 18:19:11', 0),
+(35, 3, 1, NULL, 1, '2017-05-23 14:41:42', NULL, 1),
+(37, 4, 1, 1, 1, '2017-05-23 14:45:37', '2017-05-23 14:46:09', 0),
+(38, 4, 1, 1, 1, '2017-05-23 14:45:37', '2017-05-23 14:46:09', 0),
+(39, 4, 3, 1, 1, '2017-05-23 14:49:31', '2017-05-23 18:04:14', 0),
+(40, 4, 1, 1, 1, '2017-05-23 14:55:17', '2017-05-23 18:17:31', 0),
+(41, 3, 1, NULL, 1, '2017-05-29 10:50:09', NULL, 1),
+(42, 3, 1, NULL, 1, '2017-05-29 10:50:09', NULL, 1),
+(43, 3, 1, NULL, 1, '2017-05-29 10:50:09', NULL, 1),
+(44, 3, 1, NULL, 1, '2017-05-29 10:50:09', NULL, 1),
+(45, 3, 1, NULL, 1, '2017-05-29 10:50:09', NULL, 1),
+(46, 3, 1, NULL, 1, '2017-05-29 10:50:09', NULL, 1),
+(47, 4, 1, NULL, 1, '2017-05-29 11:28:08', NULL, 1),
+(48, 4, 1, NULL, 1, '2017-05-29 11:28:43', NULL, 1),
+(49, 4, 1, NULL, 1, '2017-05-29 11:28:43', NULL, 1),
+(50, 4, 1, NULL, 1, '2017-05-29 11:28:43', NULL, 1),
+(51, 4, 1, NULL, 1, '2017-05-29 11:28:43', NULL, 1),
+(52, 4, 1, NULL, 1, '2017-05-29 11:28:43', NULL, 1),
+(53, 1, 1, NULL, 1, '2017-05-29 11:29:23', NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -100,7 +132,8 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`id_user`, `identifiant_user`, `nom_user`, `prenom_user`, `mdp_user`, `role_user`) VALUES
 (1, 'virgile.parat', 'PARAT', 'virgile', '13m0wA4CrcIoc', 0),
-(2, 'Gingerboy', 'PARAT', 'Gingerboy', '13m0wA4CrcIoc', 0);
+(2, 'Gingerboy', 'PARAT', 'Gingerboy', '13m0wA4CrcIoc', 0),
+(3, 'Night', 'Fallon', 'Jimmy', 'ad8ZegQeUu2.6', 0);
 
 --
 -- Index pour les tables exportées
@@ -146,7 +179,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `entreprise`
 --
@@ -156,12 +189,12 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `scan`
 --
 ALTER TABLE `scan`
-  MODIFY `id_scan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_scan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Contraintes pour les tables exportées
 --

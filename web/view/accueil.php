@@ -15,12 +15,12 @@
 		</a>
 
 		<a class="menu-block orange" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan" ?>">
-			<img src="/zingage/web/images/fox.png" alt=""/>
+			<img class="img-responsive" src="/zingage/web/images/fox-min.png" alt=""/>
 			Historique
 		</a>
 
 		<a class="menu-block red" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article" ?>">
-			<img src="/zingage/web/images/fish-min.png" alt=""/>
+			<img class="img-responsive" src="/zingage/web/images/fish-min.png" alt=""/>
 			Article
 		</a>
 

@@ -48,7 +48,7 @@ $app->get('/depart', function (){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/view/depart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
@@ -60,7 +60,7 @@ $app->post('/depart/recap', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage/depart';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/view/departRecap.php'), 0, -1);
@@ -73,7 +73,7 @@ $app->post('/depart/recap/impression', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/departScanImpression.php'), 0, -1);
@@ -126,7 +126,7 @@ $app->get('/article', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/view/listArticle.php'), 0, -1);
@@ -139,7 +139,7 @@ $app->get('/article/ajout', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage/article';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $stop_enter = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/view/articleAjout.php'), 0, -1);
@@ -152,7 +152,7 @@ $app->post('/article/ajout/traitement', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage/article';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $stop_enter = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
@@ -167,7 +167,7 @@ $app->get('/article/edition/{id_article}', function($id_article) use($app){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage/article';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $stop_enter = true;
     $app->escape($id_article);
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -182,7 +182,7 @@ $app->post('/article/edition/traitement/{id_article}', function($id_article) use
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage/article';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $stop_enter = true;
     $app->escape($id_article);
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -198,7 +198,7 @@ $app->post('/article/suppression', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/articleSuppression.php'), 0, -1);
@@ -212,7 +212,7 @@ $app->get('/scan', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/view/listScan.php'), 0, -1);
@@ -220,19 +220,60 @@ $app->get('/scan', function(){
     return $content;
 });
 
-$app->get('/scan/edition/{id_scan}', function($id_scan) use($app){
+$app->get('/scan/details', function(){
     $logo_page =  "/zingage/scan";
     $logo_img = "logo.png";
     $page_color = '#009fe3';
-    $arrow_return = '/zingage/scan';
-    $arrow_color = "arrow.png";
-    $stop_enter = true;
-    $app->escape($id_scan);
+    $arrow_return = '/zingage';
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScanDetail.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
+
+$app->post('/scan/article', function(){
+    $logo_page =  "/zingage/scan";
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = '/zingage';
+    $arrow_color = "arrow-blue.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScanDetail.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/scan/details/{annee}/{mois}', function($annee, $mois) use($app){
+    $logo_page =  "/zingage/scan";
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = '/zingage';
+    $arrow_color = "arrow-blue.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/listScanMoisAnnee.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+/******************** Todo or not todo ***************************/
+
+// $app->get('/scan/edition/{id_scan}', function($id_scan) use($app){
+//     $logo_page =  "/zingage/scan";
+//     $logo_img = "logo.png";
+//     $page_color = '#009fe3';
+//     $arrow_return = '/zingage/scan';
+//     $arrow_color = "arrow-blue.png";
+//     $stop_enter = true;
+//     $app->escape($id_scan);
+//     $content =  substr((require_once '/web/view/header.php'), 0, -1);
+//     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+//     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+//     return $content;
+// });
 
 // Permet d'éditer les scans, projet à l'étude : est-il normal de pouvoir editer librement des dates sur un suivi ?
 
@@ -241,7 +282,7 @@ $app->get('/scan/edition/{id_scan}', function($id_scan) use($app){
 //     $logo_img = "logo.png";
 //     $page_color = '#009fe3';
 //     $arrow_return = '/zingage/scan';
-//     $arrow_color = "arrow.png";
+//     $arrow_color = "arrow-blue.png";
 //     $stop_enter = true;
 //     $app->escape($id_scan);
 //     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -255,7 +296,7 @@ $app->post('/scan/suppression', function(){
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
+    $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/scanSuppression.php'), 0, -1);
@@ -264,18 +305,6 @@ $app->post('/scan/suppression', function(){
     return $content;
 });
 
-$app->get('/scan/detail', function(){
-    $logo_page =  "/zingage/scan";
-    $logo_img = "logo.png";
-    $page_color = '#009fe3';
-    $arrow_return = '/zingage';
-    $arrow_color = "arrow.png";
-    $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/listScanDetail.php'), 0, -1);
-    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-    return $content;
-});
 
 $app->get('/connexion', function(){
     $logo_page =  "/zingage";
