@@ -33,7 +33,7 @@ $app['debug']=true;
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 $app->get('/', function (){
-    $logo_page =  "/zingage";
+    $hide_logo_page =  true;
     $logo_img = "logo.png";
     $page_color = '#009fe3';
     $hide_conect_btn = true;

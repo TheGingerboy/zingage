@@ -61,6 +61,10 @@
                   <div class="small-rectangle darkgreen"></div>
                   <a href="#">A venir</a>
               </li>
+              <button id="sidebar-close">
+                <img class="img-responsive center" src="/zingage/web/images/close-sidebar.png"  alt="AEML"/>
+              </button>
+              
           </ul>
       </nav>
 
@@ -72,7 +76,7 @@
         echo '<a id="bandeau-retour" href="http://' . $_SERVER['SERVER_NAME'] . $arrow_return . '">';
         echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
           echo '<div class="txt-container" style="background-color : ' . $page_color . ' ; ">';
-            echo '<div class="txt">Retour</div>';
+            echo '<div class="txt" style="background-color : ' . $page_color . ' ;" > Retour </div>';
           echo '</div>';
         echo '</a>';
       echo '</header>';
@@ -100,13 +104,15 @@
             //sinon le bandeau de connexion
             else
               if( !isset($hide_conect_btn) ){
-                echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class="btn-connexion btn btn-success">Connexion</button></a>' ;
+                echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class=" connexion btn-connexion btn btn-success">Connexion</button></a>' ;
                 echo '</p>';     
               }
-
-            //Affichage du logo, dépendant des paramètres dans index.php 
-            echo '<h1 class="text-center">';
-              echo '<a href="http://' . $_SERVER['SERVER_NAME'] . $logo_page . '">';
-                echo '<img id="logo" class="img-responsive" src="' . "/zingage/web/images/" . $logo_img . '" alt="AEML">';
-              echo '</a>';
-            echo '</h1>';
+      if ( !isset($hide_logo_page) ) 
+      {
+        //Affichage du logo, dépendant des paramètres dans index.php 
+        echo '<h1 class="text-center">';
+          echo '<a href="http://' . $_SERVER['SERVER_NAME'] . $logo_page . '">';
+            echo '<img id="logo" class="img-responsive" src="' . "/zingage/web/images/" . $logo_img . '" alt="AEML">';
+          echo '</a>';
+        echo '</h1>';
+      }

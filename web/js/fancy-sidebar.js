@@ -1,8 +1,9 @@
     $(document).ready(function () {
     var trigger = $('.hamburger'),
-      bandeau = $("#bandeau-retour"),
-      body = $("body"),
-      isClosed = true;
+            connexion = $(".connexion"),
+            bandeau = $("#bandeau-retour"),
+            body = $("body"),
+            isClosed = true;
 
     trigger.click(function () {
       hamburger_cross();      
@@ -20,12 +21,14 @@
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
         bandeau.removeClass('hidden');
+        connexion.removeClass('hidden');
         body.removeClass('fixed');
         isClosed = true;
       } else {   
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         bandeau.addClass('hidden');
+        connexion.addClass('hidden');
         body.addClass('fixed');
         isClosed = false;
       }

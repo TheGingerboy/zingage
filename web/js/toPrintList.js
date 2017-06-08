@@ -6,6 +6,7 @@
   field = document.querySelector( '#newitem' );
   data = document.querySelector( '#data' );
   hamburger = document.querySelector( '#hamburger' );
+  close_btn = document.querySelector( '#sidebar-close' );
   sendDataButton = document.querySelector( '#btn-valide' );
 
   //Maintient le zone de texte vide
@@ -62,7 +63,15 @@ document.getElementById('newitem').onblur = function (event) {
 
 //Si le menu est ouvert, déplacer le focus vert un élément inutile (ici le bouton hamburger)
 hamburger.addEventListener( 'click', function(){
-  if(hamburger.className === 'hamburger is-open'){
+  click();
+}, false);
+
+close_btn.addEventListener( 'click', function(){
+  click();
+}, false);
+
+function click(){
+    if(hamburger.className === 'hamburger is-open'){
     var blurEl = document.getElementById('newitem');
     setTimeout(function() {
     blurEl.focus()
@@ -74,7 +83,7 @@ hamburger.addEventListener( 'click', function(){
     blurEl.focus()
     }, 10);
   }
-}, false);
+}
 
 function clearstate() {
   localStorage.todolist = "";
