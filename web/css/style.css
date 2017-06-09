@@ -186,7 +186,7 @@ footer, section, header, aside, figure {
 }
 
 #newitem {
-  width: 70%;
+  width: 65%;
   color: black;
   border: 1px solid #8C787C;
   padding: 6px 12px;
@@ -254,7 +254,7 @@ footer, section, header, aside, figure {
 }
 
 #btn-zingage {
-  width: 25%;
+  width: 30%;
   border-radius: 0;
   border: inset;
 }

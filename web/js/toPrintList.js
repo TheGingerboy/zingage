@@ -61,16 +61,16 @@ document.getElementById('newitem').onblur = function (event) {
   }
 }
 
-//Si le menu est ouvert, déplacer le focus vert un élément inutile (ici le bouton hamburger)
+//Si le menu est ouvert, déplacer le focus vers un élément inutile (ici le bouton hamburger)
 hamburger.addEventListener( 'click', function(){
-  click();
+  on_burger_click();
 }, false);
 
 close_btn.addEventListener( 'click', function(){
-  click();
+  on_burger_click();
 }, false);
 
-function click(){
+function on_burger_click(){
     if(hamburger.className === 'hamburger is-open'){
     var blurEl = document.getElementById('newitem');
     setTimeout(function() {
@@ -85,11 +85,7 @@ function click(){
   }
 }
 
-function clearstate() {
-  localStorage.todolist = "";
-  disableButton (sendDataButton);
-  list.innerHTML = "";
-}
+
 
 function disableButton(e){
   e.disabled = true;

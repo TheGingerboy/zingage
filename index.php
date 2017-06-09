@@ -392,14 +392,5 @@ $app->post('/profil/traitement', function(){
     return $content;
 });
 
-$app->get('/test', function(){
-    $logo_page =  "/zingage";
-    $logo_img = "logo-green.png";
-    $page_color = '#96c11f';
-    $arrow_return = '/zingage';
-    $content =  substr((require_once '/web/view/fancy-sidebar.php'), 0, -1);
-    return $content;
-});
-
 $app->run();
 ?>

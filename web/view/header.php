@@ -61,9 +61,11 @@
                   <div class="small-rectangle darkgreen"></div>
                   <a href="#">A venir</a>
               </li>
-              <button id="sidebar-close">
-                <img class="img-responsive center" src="/zingage/web/images/close-sidebar.png"  alt="AEML"/>
-              </button>
+              <div class="center">
+                <button id="sidebar-close" class="button" type="button" data-toggle="offcanvas">
+                  <img class="img-responsive center" src="/zingage/web/images/close-sidebar.png"  alt="AEML"/>
+                </button>
+              </div>
               
           </ul>
       </nav>

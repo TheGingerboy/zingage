@@ -20,7 +20,7 @@
 					<label id="label-zing" for="newitem">Retour</label>
 					<div class="match-size">    
 						<input type="text" autofocus="autofocus" name="newitem" id="newitem" placeholder="En attente de scan..." autocomplete="off" required>
-						<input id="btn-zingage" class="btn btn-primary" type="submit" value="Ajouter">
+						<input id="btn-zingage" class="btn btn-primary" type="submit" value="Ajout">
 					</div>
 				</div>
 				

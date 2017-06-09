@@ -1,12 +1,18 @@
     $(document).ready(function () {
-    var trigger = $('.hamburger'),
-            connexion = $(".connexion"),
-            bandeau = $("#bandeau-retour"),
-            body = $("body"),
-            isClosed = true;
+    var trigger   = $('.hamburger'),
+        trigger2  = $( '#sidebar-close' ),
+        connexion = $(".connexion"),
+        bandeau   = $("#bandeau-retour"),
+        body      = $("body"),
+        isClosed  = true;
+
 
     trigger.click(function () {
-      hamburger_cross();      
+      show_sidebar();      
+    });
+
+    trigger2.click(function () {
+      show_sidebar();      
     });
 
 
@@ -15,7 +21,7 @@
 //hidden, cache ou non le menu
 //fixed, désactive la navigation tant qu'aucune séléction n'a été faite
 
-    function hamburger_cross() {
+    function show_sidebar() {
 
       if (isClosed == false) {          
         trigger.removeClass('is-open');
