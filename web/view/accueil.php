@@ -1,10 +1,12 @@
 <div id="accueil">
-	<?php 
-		if (isset($_SESSION['identifiant'])) 
-			echo '<h3 class="center">Bonjour ' . $_SESSION['identifiant'] . '</h3>' 
-	?>
 
 	<div class="menu">
+
+		<?php 
+		if (isset($_SESSION['identifiant'])) 
+			echo '<h3 class="center" style="padding-top : 30px;">Bonjour ' . $_SESSION['identifiant'] . '</h3>'
+		?>
+
 		<a class="menu-block blue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart" ?>">
 			<img class="img-responsive" src="/zingage/web/images/plane-blue-min.png" alt=""/>
 			<span>Zingage Départ</span>

@@ -2,14 +2,6 @@
 	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout" ?>">Ajouter un article</a>
 </div>
 
-<div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article" ?>">Liste des articles</a>
-</div>
-
-<div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan" ?>">Articles scannés</a>
-</div>
-
 <div id="body-scan">
 
 	<div id="zingage-result">

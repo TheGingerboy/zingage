@@ -31,7 +31,7 @@ footer, section, header, aside, figure {
 
 #logo {
     display: inline-block;
-    width: 200px;
+    width: 150px;
 }
 
 #scan form {
@@ -78,6 +78,24 @@ footer, section, header, aside, figure {
   padding: 5px;
 }
 
+.margin-all-small{
+  margin: 5px;
+}
+
+.padding-all-medium{
+  padding: 15px;
+}
+
+.margin-all-medium{
+  margin: 15px;
+}
+
+.full-width{
+  width: 100%;
+}
+
+
+
 
 /*****************Accueil*********************/
 
@@ -90,14 +108,30 @@ footer, section, header, aside, figure {
   color: #FFF;
   text-decoration: none;
 }
+
 #accueil .menu {
   width: 380px;
   max-width: 100%;
-  margin: 30px auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  pointer-events: none;
 }
+
+@media screen and (min-width: 600px) {
+    #accueil .menu {
+      width: 380px;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+}
+
 #accueil .menu a {
   width: 47%;
-  height: 180px;
+  height: 160px;
   display: block;
   margin: 4px;
   text-align: center;
@@ -107,7 +141,7 @@ footer, section, header, aside, figure {
 #accueil .menu a span {
   margin: auto;
   position: absolute;
-  top: 40%; 
+  top: 35%; 
   left: 0; 
   bottom: 0; 
   right: 0;
@@ -115,6 +149,7 @@ footer, section, header, aside, figure {
 
 #accueil .menu-block {
   position: relative;
+  pointer-events: auto;
 }
 
 #accueil .menu-block.blue         { background: #009fe3;  }

@@ -1,4 +1,5 @@
 <?php
+	
 	//Si session inactive, lancer la session
 	if(!(isset($_SESSION)))
 		session_start();
