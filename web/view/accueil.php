@@ -4,7 +4,7 @@
 
 		<?php 
 		if (isset($_SESSION['identifiant'])) 
-			echo '<h3 class="center" style="padding-top : 30px;">Bonjour ' . $_SESSION['identifiant'] . '</h3>'
+			echo '<h3 class="center padding-top-large">Bonjour ' . $_SESSION['identifiant'] . '</h3>'
 		?>
 
 		<a class="menu-block blue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart" ?>">

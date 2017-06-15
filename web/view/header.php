@@ -1,8 +1,6 @@
 <?php 
   if(!isset($_SESSION))
     session_start();
-
-  ob_start();
 ?> 
 
 <!DOCTYPE html>
@@ -77,6 +75,7 @@
       if ( isset($arrow_return) && isset($arrow_color) && isset($page_color) ) 
       {
       echo '<header>';
+        echo '<div class="padding-bottom-bigger"></div>';
         echo '<a id="bandeau-retour" href="http://' . $_SERVER['SERVER_NAME'] . $arrow_return . '">';
         echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
           echo '<div class="txt-container" style="background-color : ' . $page_color . ' ; ">';
@@ -99,18 +98,20 @@
         <body>
           <?php
             //Affichage de la situation de connexion 
-            echo '<p class="connexion center">';
+
             //si une session existe, afficher ce bandeau
             if ( isset($_SESSION['identifiant']) ){
+              echo '<p class="connexion center">';
               echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | ' .
                    '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
             }
             //sinon le bandeau de connexion
             else
               if( !isset($hide_conect_btn) ){
+                echo '<p class="connexion center">';
                 echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class=" connexion btn-connexion btn btn-success">Connexion</button></a>' ;
-                echo '</p>';     
               }
+            echo '</p>';     
       if ( !isset($hide_logo_page) ) 
       {
         //Affichage du logo, dépendant des paramètres dans index.php 
@@ -120,3 +121,4 @@
           echo '</a>';
         echo '</h1>';
       }
+
