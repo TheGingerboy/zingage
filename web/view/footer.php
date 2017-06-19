@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/components/jquery/jquery.min.js"></script>
 	<!-- Bootstrap, doit être chargé après JQuery -->
 	<script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- Permet l'affichage de la side barre avec menu -->
+	<!-- Permet l'affichage de la side barre avec menu et le retour via le bouton retour -->
 	<script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/js/fancy-sidebar.js"></script>
 
 	<?php if(isset($stop_enter)) { ?>

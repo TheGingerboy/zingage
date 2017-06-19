@@ -53,7 +53,7 @@
 
       echo "<h3>Votre article est maintenant ajouté dans la base !</h3>";
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-      $ajout = dirname(dirname(__FILE__)) . "\\view\\articleAjout.php";
+      $ajout = dirname(dirname(__FILE__)) . "\\view\\articleAjout\\articleAjoutRef.php";
       $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
       require_once($header);
       require_once($ajout);
@@ -64,7 +64,7 @@
     {
       echo "<h3>Votre article n'a pas été ajouté, veuillez corriger les erreurs ci-dessus !</h3>";
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-      $ajout = dirname(dirname(__FILE__)) . "\\view\\articleAjout.php";
+      $ajout = dirname(dirname(__FILE__)) . "\\view\\articleAjout\\articleAjoutRef.php";
       $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
       require_once($header);
       require_once($ajout);

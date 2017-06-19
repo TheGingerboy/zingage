@@ -1,4 +1,4 @@
-    $(document).ready(function () {
+$(document).ready(function () {
     var trigger   = $('.hamburger'),
         trigger2  = $( '#sidebar-close' ),
         connexion = $(".connexion"),
@@ -21,7 +21,7 @@
 //hidden, cache ou non le menu
 //fixed, désactive la navigation tant qu'aucune séléction n'a été faite
 
-    function show_sidebar() {
+function show_sidebar() {
 
       if (isClosed == false) {          
         trigger.removeClass('is-open');
@@ -45,3 +45,7 @@
 });
   
 });
+
+function goBack() {
+    window.history.back();
+}

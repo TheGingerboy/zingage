@@ -7,7 +7,7 @@
 
   <div id="formulaire">
     <h2>Connexion</h2>
-    <form id="connexion-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/connexion/traitement" ?>" method="post">
+    <form id="connexion-form" autocomplete="off" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/connexion/traitement" ?>" method="post">
       <div class="form-group center">
         <label for="identifiant" class="center full-width">Identifiant : </label>
         <div class="btn-group" data-toggle="buttons">
@@ -24,22 +24,22 @@
       </div>
       <div class="form-group center">
         <label for="mdp">Mot de passe : </label>
-        <input type="password" name="mdp" class="form-control center" id="mdp" required="required">
+        <input type="password" name="mdp" class="form-control center" id="mdp" pattern="[0-9]*" inputmode="numeric" maxlength="8" required="required" autocomplete="off">
       </div>
       <div class="container">
         <ul class="btn-group" data-toggle="buttons">
-            <button class="one btn btn-primary center">1</li>
-            <button class="two btn btn-primary center">2</li>
-            <button class="three btn btn-primary center">3</li>
-            <button class="four btn btn-primary center">4</li>
-            <button class="five btn btn-primary center">5</li>
-            <button class="six btn btn-primary center">6</li>
-            <button class="seven btn btn-primary center">7</li>
-            <button class="eight btn btn-primary center">8</li>
-            <button class="nine btn btn-primary center">9</li>
-            <button class="erease btn btn-danger center">Effacer</li>
-            <button class="zero btn btn-primary center">0</li>
-            <button type="submit" class="btn btn-success center">Valider</button>
+            <button id="numpad_one"    class="btn btn-primary center">1</button>
+            <button id="numpad_two"    class="btn btn-primary center">2</button>
+            <button id="numpad_three"  class="btn btn-primary center">3</button>
+            <button id="numpad_four"   class="btn btn-primary center">4</button>
+            <button id="numpad_five"   class="btn btn-primary center">5</button>
+            <button id="numpad_six"    class="btn btn-primary center">6</button>
+            <button id="numpad_seven"  class="btn btn-primary center">7</button>
+            <button id="numpad_eight"  class="btn btn-primary center">8</button>
+            <button id="numpad_nine"   class="btn btn-primary center">9</button>
+            <button id="numpad_erease" class="btn btn-danger  center">Effacer</button>
+            <button id="numpad_zero"   class="btn btn-primary center">0</button>
+            <button id="numpad_submit" class="btn btn-success center">Valider</button>
         </ul>
       </div>      
       <p class="center">
@@ -47,6 +47,8 @@
       </p>
     </form>
   </div>
+
+  <script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/js/numpad.js"></script>
 
 <?php
   }

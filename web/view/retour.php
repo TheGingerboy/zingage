@@ -1,5 +1,5 @@
 <div class="btn">
-	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout" ?>">Ajouter un article</a>
+	<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout/ref" ?>">Ajouter un article</a>
 </div>
 
 <div id="body-scan">

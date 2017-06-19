@@ -80,6 +80,6 @@
 // });
 
 // Lance le focus sur la première valeur pour permettre un scan plus rapide
-$("#ref-imput").focus();
+// $("#ref-imput").focus();
 
 </script>

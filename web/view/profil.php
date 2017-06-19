@@ -19,36 +19,36 @@
 
   <div id="formulaire">
     <h2 class="center">Profil de <?php echo $_SESSION['identifiant'] ?></h2>
-    <form id="profil-form" action="profil/traitement" method="post" class="form-horizontal">
+    <form id="profil-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/profil/traitement" ?>" method="post" class="form-horizontal" autocomplete="off">
       <div class="form-group">
         <label for="nom" class="col-sm-3 control-label">Nom : </label>
         <div class="col-sm-9">
-          <input type="text" name="nom" class="form-control" value="<?php echo $nom; ?>" id="nom">
+          <input type="text" name="nom" class="form-control" value="<?php echo $nom; ?>" id="nom" autocomplete="off">
         </div>
       </div>
       <div class="form-group">
         <label for="prenom" class="col-sm-3 control-label">Prénom : </label>
         <div class="col-sm-9">
-          <input type="text" name="prenom" class="form-control" value="<?php echo $prenom; ?>" id="prenom">
+          <input type="text" name="prenom" class="form-control" value="<?php echo $prenom; ?>" id="prenom" autocomplete="off">
         </div>
       </div>
       <h2 class="center"> Changement de mot de passe</h2>
       <div class="form-group">
         <label for="mdp" class="col-sm-3 control-label">Mot de passe actuel : </label>
         <div class="col-sm-9">
-          <input type="password" name="mdp_verif" class="form-control" id="mdp">
+          <input type="password" name="mdp_verif" class="form-control" id="mdp" autocomplete="off">
         </div>
       </div>
       <div class="form-group">
         <label for="mdp" class="col-sm-3 control-label">Nouveau mot de passe : </label>
         <div class="col-sm-9">
-          <input type="password" name="new_mdp" class="form-control" id="mdp">
+          <input type="password" name="new_mdp" class="form-control" id="mdp" autocomplete="off">
         </div>
       </div>
       <div class="form-group">
         <label for="mdp" class="col-sm-3 control-label">Confirmer le mot de passe : </label>
         <div class="col-sm-9">
-          <input type="password" name="new_mdp2" class="form-control" id="mdp2">
+          <input type="password" name="new_mdp2" class="form-control" id="mdp2" autocomplete="off">
         </div>
       </div>
       <div class="col-sm-offset-6 col-sm-6">

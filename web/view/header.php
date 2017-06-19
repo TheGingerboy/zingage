@@ -76,12 +76,12 @@
       {
       echo '<header>';
         echo '<div class="padding-bottom-bigger"></div>';
-        echo '<a id="bandeau-retour" href="http://' . $_SERVER['SERVER_NAME'] . $arrow_return . '">';
-        echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
+        echo '<button id="bandeau-retour" onclick="goBack()">';
+          echo '<img class="img-responsive" src="/zingage/web/images/' . $arrow_color . '" alt="AEML">';
           echo '<div class="txt-container" style="background-color : ' . $page_color . ' ; ">';
             echo '<div class="txt" style="background-color : ' . $page_color . ' ;" > Retour </div>';
           echo '</div>';
-        echo '</a>';
+        echo '</button>';
       echo '</header>';
       }
       ?>

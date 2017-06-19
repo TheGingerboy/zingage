@@ -7,27 +7,27 @@ $app = new Silex\Application();
 $app['debug']=true;
 
 /****************************** INFO *********************************************/
-//
-// Ce site utilise Silex php framework (dérivé de symfony)
-// Pour une liste de toutes les dépendances, merci de consulter le fichier composer.json
-//
-// $logo_page = lien vers lequel le logo redirigera l'utilisateur lors d'un click
-// $logo_image = nom du fichier image qui sera appeler pour l'affichage du logo
-// $page_color = défini la couleur de la page (présent dans la page en question) // necessaire affichage bandeau retour
-// $arrow_return = spécifie le chemin vers lequel le bandeau de retour renvoie // necessaire affichage bandeau retour
-// $arrow_color = nom du fichier image qui sera appeler pour faire la fleche du bandeau retour // necessaire affichage bandeau retour
-// $stop enter = permet d'empecher la touche 'enter' de valider un formulaire (via javascript), elle agira comme un touche 'tab'
+/*
+    Ce site utilise Silex php framework (dérivé de symfony)
+    Pour une liste de toutes les dépendances, merci de consulter le fichier composer.json
 
-// -- C'est quoi la valeur $content ?
-// La valeur content billy, elle contient ce qui sera affiché. En conséquence elle est formé de require de page web
-// Elle est ensuite retourné pour s'afficher
+    $logo_page = lien vers lequel le logo redirigera l'utilisateur lors d'un click
+    $logo_image = nom du fichier image qui sera appeler pour l'affichage du logo
+    $page_color = défini la couleur de la page (présent dans la page en question) // necessaire affichage bandeau retour
+    $arrow_return = spécifie le chemin vers lequel le bandeau de retour renvoie // necessaire affichage bandeau retour
+    $arrow_color = nom du fichier image qui sera appeler pour faire la fleche du bandeau retour // necessaire affichage bandeau retour
+    $stop enter = permet d'empecher la touche 'enter' de valider un formulaire (via javascript), elle agira comme un touche 'tab'
 
-// -- Pourquoi le $content subit la fonction substr ?
-// La valeur $content renvoie un '1' pour chaque require_once effectué, il s'agit d'une solution temporaire lié à un bug non compris
+    -- C'est quoi la valeur $content ?
+    La valeur content billy, elle contient ce qui sera affiché. En conséquence elle est formé de require de page web
+    Elle est ensuite retourné pour s'afficher
 
-// -- Pourquoi c'est moche ?
-// Hé oh, hein !
+    -- Pourquoi le $content subit la fonction substr ?
+    La valeur $content renvoie un '1' pour chaque require_once effectué, il s'agit d'une solution temporaire lié à un bug non compris
 
+    -- Pourquoi c'est moche ?
+    Hé oh, hein !
+*/
 
 
 $app->register(new Silex\Provider\SessionServiceProvider());
@@ -135,10 +135,11 @@ $app->get('/article', function(){
 });
 
 $app->get('/article/ajout', function(){
+    $hide_logo_page =  true;
     $logo_page =  "/zingage/article";
     $logo_img = "logo.png";
     $page_color = '#009fe3';
-    $arrow_return = '/zingage/article';
+    $arrow_return = true;
     $arrow_color = "arrow-blue.png";
     $stop_enter = true;
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
@@ -146,6 +147,107 @@ $app->get('/article/ajout', function(){
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
+
+/************** Décomposition de l'ajout ************************/
+
+/*
+    Permet de traiter l'ajout d'article
+    Décomposition effectué de la sorte de façon à éviter un bug du PDA/Douchette 
+    Le bug fait cliquer sur des éléments interactif du site et valide ou renvoie sur une page lors d'un changement de focus
+    En conséquence, tout élément interactif à été supprimer ET une décomposition du formulaire à été effectué
+*/
+
+$app->get('/article/ajout/ref', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutRef.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/nom', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutNom.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/nbr', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutNbr.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/dim', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutDim.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/bac', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutBac.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/poid', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutPoid.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/article/ajout/of', function(){
+    $hide_logo_page =  true;
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = true;
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content =  substr((require_once '/web/view/articleAjout/articleAjoutOf.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
 
 $app->post('/article/ajout/traitement', function(){
     $logo_page =  "/zingage/article";
@@ -160,7 +262,6 @@ $app->post('/article/ajout/traitement', function(){
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
-
 
 $app->get('/article/edition/{id_article}', function($id_article) use($app){
     $logo_page =  "/zingage/article";
@@ -259,37 +360,7 @@ $app->get('/scan/details/{annee}/{mois}', function($annee, $mois) use($app){
     return $content;
 });
 
-/******************** Todo or not todo ***************************/
 
-// $app->get('/scan/edition/{id_scan}', function($id_scan) use($app){
-//     $logo_page =  "/zingage/scan";
-//     $logo_img = "logo.png";
-//     $page_color = '#009fe3';
-//     $arrow_return = '/zingage/scan';
-//     $arrow_color = "arrow-blue.png";
-//     $stop_enter = true;
-//     $app->escape($id_scan);
-//     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-//     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-//     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-//     return $content;
-// });
-
-// Permet d'éditer les scans, projet à l'étude : est-il normal de pouvoir editer librement des dates sur un suivi ?
-
-// $app->get('/scan/edition/traitement/{id_scan}', function($id_scan) use($app){
-//     $logo_page =  "/zingage/scan";
-//     $logo_img = "logo.png";
-//     $page_color = '#009fe3';
-//     $arrow_return = '/zingage/scan';
-//     $arrow_color = "arrow-blue.png";
-//     $stop_enter = true;
-//     $app->escape($id_scan);
-//     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-//     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-//     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-//     return $content;
-// });
 
 $app->post('/scan/suppression', function(){
     $logo_page =  "/zingage/scan";
@@ -393,5 +464,40 @@ $app->post('/profil/traitement', function(){
     return $content;
 });
 
+/******************** Todo or not todo ***************************/
+
+/* $app->get('/scan/edition/{id_scan}', function($id_scan) use($app){
+    $logo_page =  "/zingage/scan";
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = '/zingage/scan';
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $app->escape($id_scan);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+}); */
+
+// Permet d'éditer les scans, projet à l'étude : est-il normal de pouvoir editer librement des dates sur un suivi ?
+
+/* $app->get('/scan/edition/traitement/{id_scan}', function($id_scan) use($app){
+    $logo_page =  "/zingage/scan";
+    $logo_img = "logo.png";
+    $page_color = '#009fe3';
+    $arrow_return = '/zingage/scan';
+    $arrow_color = "arrow-blue.png";
+    $stop_enter = true;
+    $app->escape($id_scan);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+}); */
+
+/*************************** This the end ****************************/
+/********************** My only friend, the end **********************/
+/* Lance le content obtenu préalablement par la détéction du routage */
+
 $app->run();
-?>

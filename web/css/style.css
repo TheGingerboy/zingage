@@ -213,6 +213,8 @@ footer, section, header, aside, figure {
   top: 24px;
   width: 200px;
   right: 1.35em;
+  background: none;
+  border: none;
 }
 
 #bandeau-retour .txt,
@@ -385,7 +387,7 @@ footer, section, header, aside, figure {
 }
 
 @media screen and (max-width: 600px) {
-  #connexion-form .container ul button {
+  #connexion-form .container ul button{
       height: 55px;
   }
 }
