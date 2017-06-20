@@ -122,6 +122,10 @@ footer, section, header, aside, figure {
   width: 100%;
 }
 
+.asterix{
+  color: red;
+  font-size: 1.5em;
+}
 
 
 
@@ -354,7 +358,7 @@ footer, section, header, aside, figure {
 /*****************Connexion / Profil*********************/
 
 
-#connexion-form .btn-connexion {
+.connexion .btn-connexion {
     position: fixed;
     right: 30px;
     top: 70px;

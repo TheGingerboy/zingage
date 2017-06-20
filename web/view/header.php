@@ -1,6 +1,8 @@
 <?php 
   if(!isset($_SESSION))
     session_start();
+
+  $serverName = $_SERVER['SERVER_NAME'];
 ?> 
 
 <!DOCTYPE html>
@@ -8,19 +10,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Zingage | AEML</title>
     <!-- Font awesome and minified CSS -->
-    <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>vendor/components/font-awesome/css/font-awesome.min.css"/>
     <!-- Bootstrap latest compiled and minified CSS -->
-    <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
     <!-- Fancy Sidebar -->
-    <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/fancy-sidebar.css"/>
+    <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>web/css/fancy-sidebar.css"/>
     <!-- Bootstrap Select -->
-    <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/bootstrap-select/bootstrap-select/dist/css/bootstrap-select.min.css"/>
+    <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>vendor/bootstrap-select/bootstrap-select/dist/css/bootstrap-select.min.css"/>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/css/style.css"/>
+    <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>web/css/style.css"/>
 
   </head>
   <!-- body fermé dans le footer -->
@@ -28,7 +30,7 @@
       <!-- Sidebar -->
       <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
           <ul class="nav sidebar-nav">
-              <a href="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/zingage/' ?>">
+              <a href="<?= 'http://' . $serverName . '/zingage/' ?>">
                   <img class="img-responsive" src="<?= "/zingage/web/images/" . $logo_img ?>" alt="AEML"/>
               </a>
               <li>
@@ -98,25 +100,25 @@
         <body>
           <?php
             //Affichage de la situation de connexion 
-
-            //si une session existe, afficher ce bandeau
-            if ( isset($_SESSION['identifiant']) ){
-              echo '<p class="connexion center">';
-              echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ') </a> | ' .
-                   '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/deconnexion">déconnexion</a>' ;
-            }
-            //sinon le bandeau de connexion
-            else
-              if( !isset($hide_conect_btn) ){
+            if( !isset($hide_conect_btn) ){
+              //si une session existe, afficher ce bandeau
+              if ( isset($_SESSION['identifiant']) ){
                 echo '<p class="connexion center">';
-                echo '<a href="http://' . $_SERVER['SERVER_NAME'] . '/zingage/connexion"><button class=" connexion btn-connexion btn btn-success">Connexion</button></a>' ;
+                echo '<a href="http://' . $serverName . '/zingage/profil"> Profil (' . $_SESSION['identifiant'] . ')'.
+                ' </a> | ' . '<a href="http://' . $serverName . '/zingage/deconnexion">déconnexion</a>' ;
               }
-            echo '</p>';     
+              //sinon le bandeau de connexion
+              else {
+                  echo '<p class="connexion center">';
+                  echo '<a href="http://' . $serverName . '/zingage/connexion"><button class="connexion btn-connexion btn btn-success">Connexion</button></a>' ;
+                }
+            echo '</p>';  
+             }
       if ( !isset($hide_logo_page) ) 
       {
         //Affichage du logo, dépendant des paramètres dans index.php 
         echo '<h1 class="text-center">';
-          echo '<a href="http://' . $_SERVER['SERVER_NAME'] . $logo_page . '">';
+          echo '<a href="http://' . $serverName . $logo_page . '">';
             echo '<img id="logo" class="img-responsive" src="' . "/zingage/web/images/" . $logo_img . '" alt="AEML">';
           echo '</a>';
         echo '</h1>';

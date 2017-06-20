@@ -80,5 +80,7 @@ btn_erease.addEventListener("click", function (event){
 }, false);
 
 btn_submit.addEventListener("click", function (event){
+	//Permet de réactiver les champs input (désactiver par défaut)
+	input_to_fill.disabled = false;
 	document.getElementById("connexion-form").submit();
 }, false);

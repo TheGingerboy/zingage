@@ -24,7 +24,7 @@
       </div>
       <div class="form-group center">
         <label for="mdp">Mot de passe : </label>
-        <input type="password" name="mdp" class="form-control center" id="mdp" pattern="[0-9]*" inputmode="numeric" maxlength="8" required="required" autocomplete="off">
+        <input type="password" name="mdp" class="form-control center" id="mdp" pattern="[0-9]*" inputmode="numeric" maxlength="8" required="required" disabled="disabled" autocomplete="off">
       </div>
       <div class="container">
         <ul class="btn-group" data-toggle="buttons">
