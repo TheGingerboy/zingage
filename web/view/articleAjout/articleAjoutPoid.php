@@ -13,7 +13,16 @@
 
       <div class="form-group">
         <label for="poid_article">Poids Total (Kilo) <span class="asterix">*</span> : </label>
-        <input type="number" id="poid-input" type="" name="poid_article" class="form-control">
+        <?php
+        // Import du numpad dans le form
+          $numpad_type = "text"; //Permet de définir le type de champ
+          $numpad_maxlength = "8";
+          $numpad_required = true;
+          $numpad_dot = true;
+          $numpad = "/../ressources/numpad/numpad.php";
+          require_once($numpad)
+        //Import des fichiers necessaire pour le bon fonctionnement du NumPad
+        ?>
       </div>
 
       <input type="hidden" value="<?= $bac_article ?>" name="bac_article" class="hidden">
@@ -21,11 +30,6 @@
       <input type="hidden" value="<?= $nb_article  ?>" name="nb_article"  class="hidden">
       <input type="hidden" value="<?= $nom_article ?>" name="nom_article" class="hidden">
       <input type="hidden" value="<?= $ref_article ?>" name="ref_article" class="hidden">
-
-
-      <button type="submit" class="btn btn-success">Valider</button>
-
-      <input type="button" onclick="clearField(document.getElementById('poid-input'))" value="Effacer" class="btn btn-danger"></input> 
 
       <input type="button" onclick="location.href='<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>';" value="Accueil" class="btn btn-warning">
       </input>

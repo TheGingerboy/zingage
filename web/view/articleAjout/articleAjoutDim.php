@@ -2,15 +2,16 @@
   if (isset($_SESSION['identifiant'])) {
     $ref_article = htmlspecialchars($_POST['ref_article']);
     $nom_article = htmlspecialchars($_POST['nom_article']);
-    $nb_article = htmlspecialchars($_POST['nb_article']);
+    $nb_article = htmlspecialchars($_POST['numpad_input']);
 ?>
 
   <div id="formulaire">
     <h2 class="center">Ajouter un article</h2>
     <form id="ajout-zing-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout/bac" ?>" method="post" autocomplete="off">
       <div class="form-group">
-        <h3 class="center">Cette information n'est pas obligatoire mais complétez la plus tard</h3>
-        <h3 class="center">(L)ongueur × (l)argeur × (h)auteur</h3>
+        <h4 class="center">Information non obligatoire mais completez là au plus tôt</h4>
+        <h4 class="center">Cliquez sur valider tout de suite ou sur "Accès" une fois l'info entrée</h4>
+        <h4 class="center">(L)ongueur × (l)argeur × (h)auteur</h4>
         <label for="dim_article">Dimensions : </label>
         <input id="dim-input" name="dim_article" class="form-control" autocomplete="off">
       </div>

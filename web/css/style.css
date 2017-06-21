@@ -365,33 +365,3 @@ footer, section, header, aside, figure {
     width: 190px;
     z-index: 100;
 }
-
-#connexion-form input#mdp{
-  margin-bottom: 50px;
-  max-width: 420px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#connexion-form .container {
-    width: 100%;
-    max-width: 420px;
-}
-#connexion-form .container ul {
-    padding: 0 0 30px 0; 
-    margin: 0;
-    list-style-type: none;
-}
-
-#connexion-form .container ul button {
-    width: 33%;
-    height: 85px;
-    float: left;
-    border-radius: 0;
-}
-
-@media screen and (max-width: 600px) {
-  #connexion-form .container ul button{
-      height: 55px;
-  }
-}

@@ -10,6 +10,7 @@
     <h2 class="center">Ajouter un article</h2>
     <form id="ajout-zing-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout/poid" ?>" method="post">
       <div class="form-group">
+        <h3 class="center">Cliquez pour choisir, puis valider via le bouton vert</h3>
         <label for="bac_article">Type de bac : </label>
          <select class="form-control" name="bac_article">
             <option selected="selected" value="Aucun">Aucun</option>

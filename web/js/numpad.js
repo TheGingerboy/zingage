@@ -12,8 +12,9 @@ btn_eight = document.getElementById('numpad_eight');
 btn_nine = document.getElementById('numpad_nine');
 btn_zero = document.getElementById('numpad_zero');
 btn_erease = document.getElementById('numpad_erease');
+btn_dot = document.getElementById('numpad_dot');
 btn_submit = document.getElementById('numpad_submit');
-input_to_fill = document.getElementById('mdp');
+input_to_fill = document.getElementById('numpad_input');
 
 btn_one.addEventListener("click", function (event){
 	if(input_to_fill.maxLength > input_to_fill.value.length){
@@ -77,6 +78,10 @@ btn_zero.addEventListener("click", function (event){
 
 btn_erease.addEventListener("click", function (event){
 	input_to_fill.value = '';
+}, false);
+
+btn_dot.addEventListener("click", function (event){
+	input_to_fill = '.';
 }, false);
 
 btn_submit.addEventListener("click", function (event){

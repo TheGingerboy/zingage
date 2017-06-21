@@ -14,7 +14,7 @@
         <?php
           while ($row = $get_user_id->fetch()){
             echo '<label class="btn btn-success margin-all-medium center full-width">';
-              echo '<input type="radio" name="identifiant" value="' . $row['identifiant_user'] . '">';
+              echo '<input type="radio" name="identifiant" value="' . $row['identifiant_user'] . '" required="required">';
               echo $row['identifiant_user'];
             echo '</label>';          
           }
@@ -22,33 +22,25 @@
         ?>
         </div> 
       </div>
-      <div class="form-group center">
-        <label for="mdp">Mot de passe : </label>
-        <input type="password" name="mdp" class="form-control center" id="mdp" pattern="[0-9]*" inputmode="numeric" maxlength="8" required="required" disabled="disabled" autocomplete="off">
-      </div>
-      <div class="container">
-        <ul class="btn-group" data-toggle="buttons">
-            <button id="numpad_one"    class="btn btn-primary center">1</button>
-            <button id="numpad_two"    class="btn btn-primary center">2</button>
-            <button id="numpad_three"  class="btn btn-primary center">3</button>
-            <button id="numpad_four"   class="btn btn-primary center">4</button>
-            <button id="numpad_five"   class="btn btn-primary center">5</button>
-            <button id="numpad_six"    class="btn btn-primary center">6</button>
-            <button id="numpad_seven"  class="btn btn-primary center">7</button>
-            <button id="numpad_eight"  class="btn btn-primary center">8</button>
-            <button id="numpad_nine"   class="btn btn-primary center">9</button>
-            <button id="numpad_erease" class="btn btn-danger  center">Effacer</button>
-            <button id="numpad_zero"   class="btn btn-primary center">0</button>
-            <button id="numpad_submit" class="btn btn-success center">Valider</button>
-        </ul>
-      </div>      
+      <h4 class="full-width center">Mot de passe : </h4>
+
+
+      <?php
+      // Import du numpad dans le form
+        $numpad_type = "password"; //Permet de définir le type de champ
+        $numpad_pattern = "[0-9]*"; //Permet de définir le paterne
+        $numpad_maxlength = "8";
+        $numpad_required = true;
+        $numpad = "http://".$_SERVER['SERVER_NAME']."/zingage/web/view/ressources/numpad/numpad.php";
+        require_once("ressources/numpad/numpad.php")
+      //Import des fichiers necessaire pour le bon fonctionnement du NumPad
+      ?>
+
       <p class="center">
         <a href="/zingage/inscription">Vous n'avez pas de compte ?</a>
       </p>
     </form>
   </div>
-
-  <script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/js/numpad.js"></script>
 
 <?php
   }

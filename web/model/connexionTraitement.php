@@ -9,15 +9,15 @@
 	$accueil = dirname(dirname(__FILE__)) . "\\view\\zingage.php";
 	$footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
 
+	if (isset($_POST['identifiant']) && isset($_POST['numpad_input']) ) {
 
-	//récupération des variables
-	$identifiant = htmlspecialchars($_POST['identifiant']);
-	$mdp = htmlspecialchars($_POST['mdp']);
+		//récupération des variables
+		$identifiant = htmlspecialchars($_POST['identifiant']);
+		$mdp = htmlspecialchars($_POST['numpad_input']);
 
- 	$mdp = crypt($key, $mdp);
+	 	$mdp = crypt($key, $mdp);
 
-	if ($identifiant) {
-	  $verifid = $pdo->query( "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
+		$verifid = $pdo->query( "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
 
 		//Verification de l'existence de l'utilisateur
 		if ($verifid && $verifid->rowCount() > 0) {
@@ -27,8 +27,7 @@
 				$verifpasswd  = $row['mdp_user'];
 			}
 			//Vérification du mot de passe
-			if (hash_equals($mdp, $verifpasswd))
-			{
+			if (hash_equals($mdp, $verifpasswd)) {
 				//Mise en session du compte
 				$sql_admin = $pdo->query("SELECT role_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
 				while ($row = $sql_admin->fetch()){
@@ -40,20 +39,25 @@
 				exit;
 			}
 
-			else
-			{
-			echo("Mot de passe incorrect, veuillez réessayer");
-			require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
-			require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
-			require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
+			else {
+				echo("Mot de passe incorrect, veuillez réessayer");
+				require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
+				require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
+				require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
 			}
 		}
 
-	  else
-	  {
+	  else {
 	  	echo("Identifiant introuvable, veuillez réessayer");
 		require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
 		require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
 		require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
 	  }
+	}
+
+	else {
+		echo ("<h3>Une erreur s'est produite, veuillez réessayer</h3>");
+		require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
+		require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
+		require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
 	}

@@ -9,7 +9,7 @@
 
       <div class="form-group">
         <h3 class="center">Entrez la nomination de votre article</h3>
-        <h3 class="center">Validez en appuyant sur le "OK" du clavier</h3>
+        <h3 class="center">Validez en appuyant sur le bouton "Accés" du clavier</h3>
         <label for="nom_article">Désignation <span class="asterix">*</span> : </label>
         <input id="nom-input" name="nom_article" class="form-control" autocomplete="off" required="required">
       </div>

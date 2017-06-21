@@ -10,18 +10,22 @@
     <form id="ajout-zing-form" action="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/zingage/article/ajout/dim" ?>" method="post" autocomplete="off">
 
       <div class="form-group">
-        <h3 class="center">Cliquez sur la zone pour la compléter</h3>
-        <h3 class="center">Appuyez sur suivant pour valider</h3>
+        <h3 class="center">Utilisez le clavier virtuel</h3>
+        <h3 class="center">Cliquez ensuite sur "Valider"</h3>
         <label for="nb_article">Nombre par bac <span class="asterix">*</span> : </label>
-        <input type="number" id="nbr-input" name="nb_article" class="form-control" autocomplete="off" required="required">
+      <?php
+      // Import du numpad dans le form
+        $numpad_type = "text"; //Permet de définir le type de champ
+        $numpad_maxlength = "8";
+        $numpad_required = true;
+        $numpad = "/../ressources/numpad/numpad.php";
+        require_once($numpad)
+      //Import des fichiers necessaire pour le bon fonctionnement du NumPad
+      ?>
       </div>
 
       <input type="hidden" value="<?= $nom_article ?>" name="nom_article" class="hidden">
       <input type="hidden" value="<?= $ref_article ?>" name="ref_article" class="hidden">
-
-      <button type="submit" class="btn btn-success">Valider</button>
-
-      <input type="button" onclick="clearField(document.getElementById('nbr-input'))" value="Effacer" class="btn btn-danger"></input> 
 
       <input type="button" onclick="location.href='<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>';" value="Accueil" class="btn btn-warning">
       </input>

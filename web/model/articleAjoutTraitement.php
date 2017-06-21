@@ -11,7 +11,7 @@
     $dim_article = htmlspecialchars($_POST['dim_article']);
     $bac_article = htmlspecialchars($_POST['bac_article']);
     $poid_article = htmlspecialchars($_POST['poid_article']);
-    $of_article = htmlspecialchars($_POST['of_article']);
+    $of_article = htmlspecialchars($_POST['numpad_input']);
 
     //Vérifie la présence d'un doublon
     $verif_ref = $pdo->query("SELECT ref_article FROM article WHERE ref_article='$ref_article'");

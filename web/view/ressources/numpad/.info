@@ -1,0 +1,18 @@
+Outil : Numpad
+Auteur : Virgile PARAT
+Libre de tout droit sans restriction
+
+Pour faire fonctionner le numpad il faut
+
+Insérer le code de la façon suivante :
+
+<?php
+	$numpad_type = text|password; (permet de définir le champ cible) 
+	$numpad_pattern = "[0-9]*"; //Permet de définir le paterne
+	$numpad_maxlength = "8"; // Permet de définir la longueur maximum du champ text
+	$numpad_required = true; // Permet de définir si le champ est nécessaire ou non; Non par défaut
+	$numpad_dot = false; // Permet d'afficher ou non le point; Non par défaut
+	$numpad = "http://".$_SERVER['SERVER_NAME']."/zingage/web/view/ressources/numpad/numpad.php"; // Chemin du fichier .php
+	require_once(numpad); // Lancement du numpad
+?>
+

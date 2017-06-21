@@ -5,7 +5,7 @@
     $nb_article = htmlspecialchars($_POST['nb_article']);
     $dim_article = htmlspecialchars($_POST['dim_article']);
     $bac_article = htmlspecialchars($_POST['bac_article']);
-    $poid_article = htmlspecialchars($_POST['poid_article']);
+    $poid_article = htmlspecialchars($_POST['numpad_input']);
 ?>
 
   <div id="formulaire">
@@ -14,7 +14,15 @@
 
       <div class="form-group">
         <label for="of_article">Numéro d'OF <span class="asterix">*</span> : </label>
-        <input type="number" id="of-input" name="of_article" class="form-control" id="of" pattern="[0-9]{6,8}" title="Numéro d'OF (6 à 8 chiffres)" required="required" autocomplete="off"> 
+        <?php
+        // Import du numpad dans le form
+          $numpad_type = "text"; //Permet de définir le type de champ
+          $numpad_maxlength = "8";
+          $numpad_required = true;
+          $numpad = "/../ressources/numpad/numpad.php";
+          require_once($numpad)
+        //Import des fichiers necessaire pour le bon fonctionnement du NumPad
+        ?>
       </div>
 
 
@@ -24,10 +32,6 @@
       <input type="hidden" value="<?= $nb_article ?>" name="nb_article" class="hidden">
       <input type="hidden" value="<?= $nom_article ?>" name="nom_article" class="hidden">
       <input type="hidden" value="<?= $ref_article ?>" name="ref_article" class="hidden">
-
-      <button type="submit" class="btn btn-success">Valider</button>
-
-      <input type="button" onclick="clearField(document.getElementById('of-input'))" value="Effacer" class="btn btn-danger"></input> 
 
       <input type="button" onclick="location.href='<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>';" value="Accueil" class="btn btn-warning">
       </input>
