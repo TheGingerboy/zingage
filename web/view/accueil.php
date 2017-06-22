@@ -4,7 +4,10 @@
 
 		<?php 
 		if (isset($_SESSION['identifiant'])) 
-			echo '<h3 class="center padding-top-large">Bonjour ' . $_SESSION['identifiant'] . '</h3>'
+			{ echo '<h3 class="center padding-top-large">Bonjour ' . $_SESSION['identifiant'] . '</h3>' ;	}
+		//Initialisation de la variable admin si la personne n'est pas connecté
+		else 
+			{ $_SESSION['admin'] = '0';	}
 		?>
 
 		<a class="menu-block blue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart" ?>">
@@ -43,10 +46,25 @@
 				?> 
 			</span>
 		</a>
-		<a class="menu-block darkgreen" href="#">
-			<img class="img-responsive" src="/zingage/web/images/foret-min.png" alt=""/>
-			<span>A venir</span>
-		</a>
+
+		<?php 
+		//L'utilisateur est admin
+		if($_SESSION['admin'] == '1'){ ?>
+
+			<a class="menu-block darkgreen" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration" ?>">
+				<img class="img-responsive" src="/zingage/web/images/foret-min.png" alt=""/>
+				<span>Administration</span>
+			</a>
+
+		<?php }
+		//L'utilisateur n'est pas admin
+		else { ?>
+			<a class="menu-block disabgreen" href="#">
+				<img class="img-responsive" src="/zingage/web/images/foret-min.png" alt=""/>
+				<span>Administration</span>
+			</a>
+
+		<?php } ?>
 	</div>
 
 </div>

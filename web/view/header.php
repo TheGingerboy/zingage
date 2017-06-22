@@ -61,7 +61,7 @@
               </li>
               <li>
                   <div class="small-rectangle darkgreen"></div>
-                  <a href="#">A venir</a>
+                  <a href="/zingage/administration">Administration</a>
               </li>
               <div class="center">
                 <button id="sidebar-close" class="button" type="button" data-toggle="offcanvas">

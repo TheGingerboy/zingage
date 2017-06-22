@@ -132,7 +132,6 @@ footer, section, header, aside, figure {
 /*****************Accueil*********************/
 
 #accueil {
-  font-family:'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 16pt;
 }
@@ -184,18 +183,20 @@ footer, section, header, aside, figure {
   pointer-events: auto;
 }
 
-#accueil .menu-block.blue         { background: #009fe3;  }
-#accueil .menu-block.blue img     { width: 65px; }
-#accueil .menu-block.yellow       { background: #fdd22a; }
-#accueil .menu-block.yellow img   { width: 100px; }
-#accueil .menu-block.green        { background: #96c11f; }
-#accueil .menu-block.green img    { width: 60px; }
-#accueil .menu-block.red          { background: #e43535;  }
-#accueil .menu-block.red img      { width: 50%; }
-#accueil .menu-block.orange       { background: #ee7202; }
-#accueil .menu-block.orange img   { width: 35%; bottom: 0; }
-#accueil .menu-block.darkgreen    { background: #1fb316; opacity: 0.3; cursor: unset;}
-#accueil .menu-block.darkgreen img{ width: 130px;}
+#accueil .menu-block.blue          { background: #009fe3;  }
+#accueil .menu-block.blue img      { width: 65px; }
+#accueil .menu-block.yellow        { background: #fdd22a; }
+#accueil .menu-block.yellow img    { width: 100px; }
+#accueil .menu-block.green         { background: #96c11f; }
+#accueil .menu-block.green img     { width: 60px; }
+#accueil .menu-block.red           { background: #e43535;  }
+#accueil .menu-block.red img       { width: 50%; }
+#accueil .menu-block.orange        { background: #ee7202; }
+#accueil .menu-block.orange img    { width: 35%; bottom: 0; }
+#accueil .menu-block.darkgreen     { background: #1fb316;}
+#accueil .menu-block.darkgreen  img{ width: 130px;}
+#accueil .menu-block.disabgreen    { background: #1fb316; opacity: 0.3; cursor: unset;}
+#accueil .menu-block.disabgreen img{ width: 130px;}
 
 #accueil .menu-block img  {
   position: absolute;
@@ -364,4 +365,64 @@ footer, section, header, aside, figure {
     top: 70px;
     width: 190px;
     z-index: 100;
+}
+
+/*********************Administration*********************/
+
+#accueilAdmin {
+  font-weight: 300;
+  font-size: 16pt;
+}
+
+#accueilAdmin a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 600px) {
+    #accueilAdmin .menu {
+      width: 380px;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+}
+
+#accueilAdmin .menu a {
+  width: 47%;
+  height: 160px;
+  display: block;
+  margin: 4px;
+  text-align: center;
+  float:left;
+}
+
+#accueilAdmin .menu a span {
+  margin: auto;
+  position: absolute;
+  top: 35%; 
+  left: 0; 
+  bottom: 0; 
+  right: 0;
+}
+
+#accueilAdmin .menu-block {
+  position: relative;
+  pointer-events: auto;
+}
+
+#accueilAdmin .menu-block.purple          { background: #9f038f;  }
+#accueilAdmin .menu-block.purple img      { width: 65px; }
+#accueilAdmin .menu-block.darkblue        { background: #3333ff; }
+#accueilAdmin .menu-block.yellow img      { width: 100px; }
+#accueilAdmin .menu-block.cyan            { background: #008290; }
+#accueilAdmin .menu-block.cyan img        { width: 35%; }
+
+#accueilAdmin .menu-block img  {
+  position: absolute;
+  bottom: 10px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }

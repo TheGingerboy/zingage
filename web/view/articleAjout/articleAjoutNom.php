@@ -34,7 +34,18 @@
 
 <script type="text/javascript">
 
-  document.getElementById("nom-input").focus();
+input = document.getElementById("nom-input");
+
+window.addEventListener('load', 
+  function() { 
+    showKeyboard(input);
+  }, false);
+
+
+function showKeyboard(e){
+  e.focus();
+}
+
 
 </script>
 

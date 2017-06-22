@@ -89,6 +89,8 @@ function storestate() {
 //récupération des données
 
 function retrievestate() {
+  if (typeof localStorage.todolist !== 'undefined') 
+    { localStorage.todolist = "";  }  
   list.innerHTML = localStorage.todolist;
   data.value = localStorage.todolist;
   if ( list.innerHTML === "" ) 

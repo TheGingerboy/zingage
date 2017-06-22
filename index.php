@@ -49,7 +49,7 @@ $app->get('/depart', function (){
     $arrow_return = true;
     $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/depart.php'), 0, -1);
+    $content .= substr((require_once '/web/view/depart/depart.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -62,7 +62,7 @@ $app->post('/depart/recap', function(){
     $arrow_color = "arrow-blue.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/departRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/view/depart/departRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -88,7 +88,7 @@ $app->get('/retour', function (){
     $arrow_return = true;
     $arrow_color = "arrow-gold.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    $content .= substr((require_once '/web/view/retour.php'), 0, -1);
+    $content .= substr((require_once '/web/view/retour/retour.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -101,7 +101,7 @@ $app->post('/retour/recap', function (){
     $arrow_color = "arrow-gold.png";
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/view/retourRecap.php'), 0, -1);
+    $content .= substr((require_once '/web/view/retour/retourRecap.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
@@ -455,6 +455,18 @@ $app->post('/profil/traitement', function(){
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
     $content .= substr((require_once '/web/model/profilTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/administration', function(){
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-dark-green.png";
+    $page_color = '#1fb316';
+    $arrow_return = true;
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/accueilAdmin.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });
