@@ -8,7 +8,8 @@ if (isset($_SESSION['identifiant'])) {
       id_scan, 
       ref_article, 
       nom_article, 
-      nom_entreprise, 
+      nom_entreprise,
+      nom_zingeur,
       date_scan_depart, 
       date_scan_retour, 
       depart.identifiant_user user_depart, 
@@ -16,6 +17,7 @@ if (isset($_SESSION['identifiant'])) {
     FROM scan
     JOIN article ON scan.id_article = article.id_article
     JOIN entreprise
+    JOIN zingeur
     JOIN utilisateur depart ON depart.id_user = scan.id_user_depart
     LEFT JOIN utilisateur retour ON retour.id_user = scan.id_user_retour
     GROUP BY id_scan
@@ -26,7 +28,7 @@ if (isset($_SESSION['identifiant'])) {
   //Déclaration du tableau et de son header
   echo "<table id=\"tab-list-article\" class=\"table table-bordered table-striped table-responsive\">";
   echo "<tr>";
-  echo "<th>REFERENCE</th>";
+  echo "<th>ZINGEUR</th>";
   echo "<th>NOM</th>";
   echo "<th>CLIENT</th>";
   echo "<th>UTILISATEUR DEPART</th>";
@@ -42,7 +44,7 @@ if (isset($_SESSION['identifiant'])) {
   else {
     while ($row = $sql->fetch()){
       echo "<tr>";
-      echo "<td>". htmlspecialchars_decode($row['ref_article']) . "</td>";
+      echo "<td>". htmlspecialchars_decode($row['nom_zingeur']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['nom_article']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['nom_entreprise']) . "</td>";
       echo "<td>". htmlspecialchars_decode($row['user_depart']) . "</td>";

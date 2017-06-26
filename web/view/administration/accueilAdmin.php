@@ -11,16 +11,16 @@
 					echo '<h3 class="center padding-top-large">Administration et Gestion</h3>'
 				?>
 
-				<a class="menu-block purple" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/utilisateur" ?>">
+				<a class="menu-block purple" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/utilisateurs" ?>">
 					<img class="img-responsive" src="" alt=""/>
 					<span>Utilisateurs</span>
 				</a>
-				<a class="menu-block cyan" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/zingeur" ?>">
+				<a class="menu-block cyan" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/zingeurs" ?>">
 					<img class="img-responsive" src="" alt=""/>
 					<span>Zingeurs</span>
 				</a>
 
-				<a class="menu-block darkblue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/client" ?>">
+				<a class="menu-block darkblue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/clients" ?>">
 					<img class="img-responsive" src="" alt=""/>
 					<span>Clients</span>
 				</a>

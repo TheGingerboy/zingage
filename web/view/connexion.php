@@ -18,7 +18,6 @@
               echo $row['identifiant_user'];
             echo '</label>';          
           }
-
         ?>
         </div> 
       </div>

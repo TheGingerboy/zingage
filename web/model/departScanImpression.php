@@ -6,11 +6,12 @@
   $err = false;
   $identifiant_user = htmlspecialchars($_SESSION['identifiant']);
   $id_article = json_decode($_POST['ref_article']);
+  $id_zingeur = htmlspecialchars($_POST['id_zingeur']);
 
   /******************************* Déclaration SQL ************************************/
   // insere la requête dans la base de données, si une erreur se produit, n'imprime pas les étiquettes
-  $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, date_scan_depart, is_in_zingage) 
-                 VALUES(?, ?, ?, now(), ?)";
+  $insert_sql = "INSERT INTO scan (id_article, id_user_depart, id_entreprise, id_zingeur, date_scan_depart, is_in_zingage) 
+                 VALUES(?, ?, ?, ?, now(), ?)";
 
   //Récupère l'ID de l'utilisateur
   $get_id = $pdo->query("SELECT id_user FROM utilisateur WHERE identifiant_user='$identifiant_user'");
@@ -57,7 +58,7 @@
     
     try{
       $prepare_insert_sql = $pdo->prepare($insert_sql);
-      $prepare_insert_sql->execute([$article, $id_user, $id_entreprise, '1']);
+      $prepare_insert_sql->execute([$article, $id_user, $id_entreprise, $id_zingeur, '1']);
     }
     catch (PDOException $ex) {
         echo  $ex->getMessage();

@@ -16,6 +16,7 @@ if (isset($_SESSION['identifiant'])) {
   // SQL
 
   $verif_ref = $pdo->prepare("SELECT id_article, ref_article, nom_article, bac_article FROM article WHERE ref_article= ? ");
+  $show_zingeur = $pdo->query("SELECT id_zingeur, nom_zingeur FROM zingeur");
 
   foreach ($ref_list[1] as $ref) {
     //Permet de compter le nombre d'occurence d'une variable
@@ -79,10 +80,22 @@ if (isset($_SESSION['identifiant'])) {
   if ( !empty($id_list) ) { 
     ?>
     <div id="formulaire" class="center">
-      <h3>Vérifiez bien vos scans puis validez vos opérations avec le bouton "envoyer"</h3>
+      <h3>Vérifiez bien vos scans puis séléctionnez le zingeur adequate</h3>
       <form action="<?=  "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart/recap/impression" ?>" method="post">
         <div>
-          <input type="hidden" name="ref_article" class="form-control" value="<?= json_encode($id_list) ?>">
+          <div class="btn-group" data-toggle="buttons">
+
+            <?php
+              while ($row = $show_zingeur->fetch()){
+                echo '<label class="btn btn-success margin-all-medium center full-width">';
+                  echo '<input type="radio" name="id_zingeur" value="' . $row['id_zingeur'] . '" required="required">';
+                  echo $row['nom_zingeur'];
+                echo '</label>';          
+              }
+            ?>
+          </div> 
+          <input type="hidden" name="ref_article" value="<?= json_encode($id_list) ?>">
+          <h3>Cliquez ensuite sur "Envoyer" pour terminer</h3>
           <input id="btn-valide" class="btn btn-success center" type="submit" value="Envoyer">
         </div>
       </form>
