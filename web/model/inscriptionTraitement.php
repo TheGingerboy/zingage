@@ -1,22 +1,20 @@
 <?php 
-  
+if($_SESSION['admin'] == '1') {
   //initialisation de la valeur d'erreur 0 = ok
   $err = 0;
 
   //récupération et normalisation des valeurs pour empécher les injections SQL et retirer les caractère pouvant causer des défauts
-  $identifiant = htmlspecialchars($_POST['identifiant']);
-  $nom = htmlspecialchars($_POST['nom']);
-  $prenom = htmlspecialchars($_POST['prenom']);
-  $mdp = htmlspecialchars($_POST['mdp']);
-  $mdp2 = htmlspecialchars($_POST['mdp2']);
+  $identifiant = htmlspecialchars($_POST['identifiant_utilisateur']);
+  $nom = htmlspecialchars($_POST['nom_utilisateur']);
+  $prenom = htmlspecialchars($_POST['prenom_utilisateur']);
+  $mdp = htmlspecialchars($_POST['mdp1_utilisateur']);
+  $mdp2 = htmlspecialchars($_POST['numpad_input']);
 
-  //Vérifie la présence d'un doublon
-  $verifid = $pdo->query("SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'");
+  //fichier pour rediriger sur la page suivante
+  $file_to_inscription = dirname(dirname(__FILE__)) . "\\view\\administration\\utilisateurAjout\\utilisateurAjoutIdentifiant.php";
+  $file_to_mdp = dirname(dirname(__FILE__)) . "\\view\\administration\\utilisateurAjout\\utilisateurAjoutMdp1.php";
+  $file_to_user =  dirname(dirname(__FILE__)) . "\\view\\administration\\utilisateur.php";
 
-  if ($verifid && $verifid->rowCount() > 0) {
-    echo "<h2>L'identifiant est déja utilisé, veuillez en choisir un autre<br></h2>";
-    $err = 1;
-  }
 
   //Verification de l'entrée de toutes les valeurs
   if(empty($nom)){ 
@@ -53,55 +51,24 @@
       $pdo->prepare($insertUser)->execute([$identifiant, $nom, $prenom, $mdp, '0']);
       echo "<h2>Votre inscription à bien été prise en compte !</h2>";
 
-      // Permet un affichage correct du header
-      $logo_page =  "/zingage";
-      $logo_img = "logo.png";
-      $page_color = '#009fe3';
-
-      //Renvoie vers l'accueil // reussite
-      $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-      $accueil = dirname(dirname(__FILE__)) . "\\view\\accueil.php";
-      $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
-      require_once($header);
-      require_once($accueil);
-      require_once($footer);
+      //Reussite
+      require_once($file_to_user);
     }
 
     else
     {
-      // Permet un affichage correct du header
-      $logo_page =  "/zingage";
-      $logo_img = "logo-green.png";
-      $page_color = '#96c11f';
-      $arrow_return = '/zingage';
-      $arrow_color = "arrow-green.png";
 
-      //Renvoie vers l'inscription // echec
+      //mot de passe ne correspondent pas
       echo "<h2>Votre inscription n'a pas été prise en compte, veuillez corriger les erreurs ci-dessus !</h2>";
-      $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-      $inscription = dirname(dirname(__FILE__)) . "\\view\\inscription.php";
-      $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
-      require_once($header);
-      require_once($inscription);
-      require_once($footer);
+      require_once($file_to_inscription);
     }
   }
 
   else
   {
-      // Permet un affichage correct du header
-      $logo_page =  "/zingage";
-      $logo_img = "logo-green.png";
-      $page_color = '#96c11f';
-      $arrow_return = '/zingage';
-      $arrow_color = "arrow-green.png";
 
-      //Renvoie vers l'inscription // echec
+      //Des champs n'ont pas correctement été rempli
       echo "<h2>Les mots de passe ne correspondent pas</h2>";
-      $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-      $inscription = dirname(dirname(__FILE__)) . "\\view\\inscription.php";
-      $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
-      require_once($header);
-      require_once($inscription);
-      require_once($footer);
+      require_once($file_to_mdp);
   }
+}

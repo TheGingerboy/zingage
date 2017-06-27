@@ -35,6 +35,7 @@ footer, section, header, aside, figure {
 #inscription-form,
 #ajout-zing-form,
 #ajout-zinger-form,
+#ajout-user-form,
 #profil-form {
   width: 100%;
   color: #fff;
@@ -51,8 +52,9 @@ footer, section, header, aside, figure {
   background: #008290;
 }
 
-
-
+#ajout-user-form{
+  background: #9f038f;
+}
 
 #connexion-form,
 #inscription-form,
@@ -132,6 +134,18 @@ footer, section, header, aside, figure {
   color: red;
   font-size: 1.5em;
 }
+
+.cyan,
+.cyan:hover{
+  background-color: #008290;
+}
+
+.purple,
+.purple:hover{
+  background-color: #9f038f;
+}
+
+
 
 /*****************Accueil*********************/
 
@@ -436,4 +450,17 @@ footer, section, header, aside, figure {
   margin-right: auto;
   left: 0;
   right: 0;
+}
+
+/***************Utilisateur**************/
+
+.btn-radio{
+  background-color: grey;
+  border-color: grey;
+  float: none;
+}
+
+.btn-radio.active{
+  color: #fff;
+  background-color: #4cae4c;
 }

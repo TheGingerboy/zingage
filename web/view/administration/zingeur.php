@@ -7,10 +7,10 @@
 	$sql_show_zingeur = $pdo->query("SELECT id_zingeur, nom_zingeur, ville_adr_zingeur, pays_adr_zingeur FROM zingeur");
 
 ?>
-
-<div class="btn">
-	<a href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/zingeurs/ajout/nom" ?>">Ajouter un zingeur</a>
+<div class="center margin-all-large">
+	<a class="btn btn-primary cyan" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/zingeurs/ajout/nom" ?>">Ajouter un zingeur</a>
 </div>
+
 
 <table id="tab-list-article" class="table table-bordered table-striped table-responsive">
 	<tr>
@@ -26,9 +26,9 @@
 		while ($row = $sql_show_zingeur->fetch())
 		{
 		    echo "<tr>";
-		    echo '<td>' . $row['nom_zingeur'] . '</td>';
-		    echo '<td>' . $row['ville_adr_zingeur'] . '</td>';
-		    echo '<td>' . $row['pays_adr_zingeur'] . '</td>';
+		    echo '<td class="center">' . $row['nom_zingeur'] . '</td>';
+		    echo '<td class="center">' . $row['ville_adr_zingeur'] . '</td>';
+		    echo '<td class="center">' . $row['pays_adr_zingeur'] . '</td>';
 		    //Edition
 			echo '<td class="center"> <a href =' . "http://" . $_SERVER['SERVER_NAME'] . 
 			"/zingage/administration/zingeurs/edition/" . $row['id_zingeur'] . 

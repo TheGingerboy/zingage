@@ -9,9 +9,14 @@
 	$cp_zingeur = htmlspecialchars($_POST['cp_zingeur']);
 	$pays_zingeur = htmlspecialchars($_POST['pays_zingeur']);
 
+    $sql_verif_if_zingeur = "SELECT * FROM zingeur WHERE id_zingeur = ? ";
+    $verif_if_zingeur = $pdo->prepare($sql_verif_if_zingeur);
+    $verif_if_zingeur->execute([$id_zingeur]);
+    $nb_row_zingeur = $verif_if_zingeur->fetch();
+
     $sql = $pdo->query("SELECT * FROM zingeur WHERE id_zingeur='$id_zingeur'");
 
-    if($sql->rowCount() == 0)
+    if( !$nb_row_zingeur )
     {
       echo '<h3 class="center">Une erreur s\'est produite, si l\'erreur persiste,
       veuillez contacter votre administrateur réseau</h3>';

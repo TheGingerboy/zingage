@@ -30,14 +30,10 @@
         $numpad_pattern = "[0-9]*"; //Permet de définir le paterne
         $numpad_maxlength = "8";
         $numpad_required = true;
-        $numpad = "http://".$_SERVER['SERVER_NAME']."/zingage/web/view/ressources/numpad/numpad.php";
         require_once("ressources/numpad/numpad.php")
       //Import des fichiers necessaire pour le bon fonctionnement du NumPad
       ?>
 
-      <p class="center">
-        <a href="/zingage/inscription">Vous n'avez pas de compte ?</a>
-      </p>
     </form>
   </div>
 

@@ -492,6 +492,152 @@ $app->get('/administration', function(){
     return $content;
 });
 
+/*********** Utilisateurs ***************/
+
+$app->get('/administration/utilisateurs', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateur.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/administration/utilisateurs/ajout/identifiant', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurAjout/utilisateurAjoutIdentifiant.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/ajout/nom', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    // Utilisation de la BDD pour verifier que l'utilisateur n'existe déja pas
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurAjout/utilisateurAjoutNom.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/ajout/prenom', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurAjout/utilisateurAjoutPrenom.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/ajout/mdp1', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurAjout/utilisateurAjoutMdp1.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/ajout/mdp2', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurAjout/utilisateurAjoutMdp2.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/ajout/traitement', function(){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration";
+    $logo_img = "logo-purple.png";
+    $page_color = '#9f038f';
+    $arrow_color = "arrow-purple.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/inscriptionTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->get('/administration/utilisateurs/edition/{id_user}', function($id_user) use($app){
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration/utilisateurs";
+    $logo_img = "logo-cyan.png";
+    $page_color = '#008290';
+    $arrow_color = "arrow-cyan.png";
+    $app->escape($id_user);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/edition/traitement/{id_user}', function($id_user) use($app){
+    $arrow_return = true;
+    $stop_enter = true;
+    $logo_page =  "/zingage/administration/utilisateurs";
+    $logo_img = "logo-cyan.png";
+    $page_color = '#008290';
+    $arrow_color = "arrow-cyan.png";
+    $app->escape($id_user);
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/utilisateurEditionTraitement.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateurEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+$app->post('/administration/utilisateurs/suppression', function(){
+    $hide_logo_page  = true;
+    $hide_conect_btn = true;
+    $arrow_return    = true;
+    $logo_page =  "/zingage/administration/utilisateurs";
+    $logo_img = "logo-cyan.png";
+    $page_color = '#008290';
+    $arrow_color = "arrow-cyan.png";
+    $content =  substr((require_once '/web/view/header.php'), 0, -1);
+    $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+    $content .= substr((require_once '/web/model/utilisateurSuppression.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/utilisateur.php'), 0, -1);
+    $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+    return $content;
+});
+
+
+/************** Zingeurs ***************/
 $app->get('/administration/zingeurs', function(){
     $arrow_return    = true;
     $logo_page =  "/zingage/administration/zingeurs";
@@ -630,7 +776,7 @@ $app->get('/administration/zingeurs/edition/{id_zingeur}', function($id_zingeur)
     $app->escape($id_zingeur);
     $content =  substr((require_once '/web/view/header.php'), 0, -1);
     $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-    $content .= substr((require_once '/web/model/zingeurEdition.php'), 0, -1);
+    $content .= substr((require_once '/web/view/administration/zingeurEdition.php'), 0, -1);
     $content .= substr((require_once '/web/view/footer.php'), 0, -1);
     return $content;
 });

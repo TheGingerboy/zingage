@@ -17,29 +17,29 @@
     $verif_ref = $pdo->query("SELECT ref_article FROM article WHERE ref_article='$ref_article'");
 
     if ($verif_ref && $verif_ref->rowCount() != 0) {
-      echo "<h3>La référence est déja entrée dans le système<br></h3>";
+      echo '<h3 class="center">La référence est déja entrée dans le système<br></h3>';
       $err = true;
     }
 
     //Verification de la présence de toutes les valeurs
     if(empty($ref_article)){ 
-      echo "<h3>Référence de l'article absente<br></h3>";
+      echo '<h3 class="center">Référence de l\'article absente<br></h3>';
       $err = true;
     }
     if(empty($nom_article)){ 
-      echo "<h3>Désignation de l'article absente<br></h3>";
+      echo '<h3 class="center">Désignation de l\'article absente<br></h3>';
       $err = true;
     }
     if(empty($nb_article)){ 
-      echo "<h3>Quantité par bac absente<br></h3>";
+      echo '<h3 class="center">Quantité par bac absente<br></h3>';
       $err = true;
     }
     if(empty($bac_article)){ 
-      echo "<h3>Type de bac absent<br></h3>";
+      echo '<h3 class="center">Type de bac absent<br></h3>';
       $err = true;
     }
     if(empty($poid_article)){ 
-      echo "<h3>Poid du bac absent<br></h3>";
+      echo '<h3 class="center">Poid du bac absent<br></h3>';
       $err = true;
     }
 
@@ -51,7 +51,7 @@
         [$ref_article, $nom_article, $nb_article, $dim_article, $bac_article, $poid_article, $of_article]
       );
 
-      echo "<h3>Votre article est maintenant ajouté dans la base !</h3>";
+      echo '<h3 class="center">Votre article est maintenant ajouté dans la base !</h3>';
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
       $ajout = dirname(dirname(__FILE__)) . "\\view\\articleAjout\\articleAjoutRef.php";
       $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
@@ -62,7 +62,8 @@
 
     else
     {
-      echo "<h3>Votre article n'a pas été ajouté, veuillez corriger les erreurs ci-dessus !</h3>";
+      echo '<h4 class="center">Veuillez corriger les erreurs ci-dessus !</h4>';
+      echo '<h4 class="center">Votre article n\'a pas été ajouté</h4>';
       $header = dirname(dirname(__FILE__)) . "\\view\\header.php";
       $ajout = dirname(dirname(__FILE__)) . "\\view\\articleAjout\\articleAjoutRef.php";
       $footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
