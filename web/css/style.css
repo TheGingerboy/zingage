@@ -9,6 +9,15 @@ footer, section, header, aside, figure {
   display: block;
 }
 
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #808080;
+  margin: 1em 0;
+  padding: 0;
+}
+
 @media (min-width: 600px){
   body {
   padding: 2em;
@@ -36,7 +45,8 @@ footer, section, header, aside, figure {
 #ajout-zing-form,
 #ajout-zinger-form,
 #ajout-user-form,
-#profil-form {
+#profil-info-form,
+#profil-mdp-form {
   width: 100%;
   color: #fff;
   padding: 40px;
@@ -58,7 +68,8 @@ footer, section, header, aside, figure {
 
 #connexion-form,
 #inscription-form,
-#profil-form{
+#profil-info-form,
+#profil-mdp-form{
   background: #96c11f;
 }
 
@@ -145,6 +156,9 @@ footer, section, header, aside, figure {
   background-color: #9f038f;
 }
 
+.block{
+  display: block;
+}
 
 
 /*****************Accueil*********************/
@@ -153,7 +167,7 @@ footer, section, header, aside, figure {
   font-weight: 300;
   font-size: 16pt;
 }
-#accueil a {
+#accueil .menu a {
   color: #FFF;
   text-decoration: none;
 }
@@ -194,6 +208,10 @@ footer, section, header, aside, figure {
   left: 0; 
   bottom: 0; 
   right: 0;
+}
+
+#accueil .padding-top-ultra{
+  padding-top: 110px;
 }
 
 #accueil .menu-block {
@@ -436,11 +454,8 @@ footer, section, header, aside, figure {
 }
 
 #accueilAdmin .menu-block.purple          { background: #9f038f;  }
-#accueilAdmin .menu-block.purple img      { width: 65px; }
-#accueilAdmin .menu-block.darkblue        { background: #3333ff; }
-#accueilAdmin .menu-block.yellow img      { width: 100px; }
+#accueilAdmin .menu-block.darkblue        { background: #3333ff; opacity: 0.3; pointer-events: none; }
 #accueilAdmin .menu-block.cyan            { background: #008290; }
-#accueilAdmin .menu-block.cyan img        { width: 35%; }
 
 #accueilAdmin .menu-block img  {
   position: absolute;
@@ -454,13 +469,16 @@ footer, section, header, aside, figure {
 
 /***************Utilisateur**************/
 
-.btn-radio{
+#formulaire-user .btn-radio{
   background-color: grey;
   border-color: grey;
-  float: none;
 }
 
-.btn-radio.active{
+#formulaire-user .btn-radio.active{
   color: #fff;
   background-color: #4cae4c;
+}
+
+#formulaire-user .no-float{
+  float: none;
 }

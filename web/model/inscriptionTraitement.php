@@ -44,7 +44,7 @@ if($_SESSION['admin'] == '1') {
     if ($err == 0)
     {
       //Cryptage du mot de passe
-      $mdp = crypt($key, $mdp);
+      $mdp = crypt($mdp, $key);
 
       //Insertion des valeurs dans la table
       $insertUser = "INSERT INTO utilisateur VALUES('', ?, ?, ?, ?, ?)";

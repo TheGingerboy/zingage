@@ -1,11 +1,14 @@
 <?php
+	if ($_SESSION['admin'] == '1') {
 	//Récupération des valeurs
 	$id_user = 			htmlspecialchars($_POST['id_user']);
 	$identifiant_user = htmlspecialchars($_POST['identifiant_user']);
 	$nom_user =			htmlspecialchars($_POST['nom_user']);
 	$prenom_user = 		htmlspecialchars($_POST['prenom_user']);
 	$role_user = 		htmlspecialchars($_POST['role_user']);
-	// $reset_user = 		htmlspecialchars($_POST['reset_user']);
+
+	if (isset($_POST['reset_user']))
+		$reset_user = 		htmlspecialchars($_POST['reset_user']);	
 
     $sql_verif_if_user = "SELECT * FROM utilisateur WHERE id_user = ? ";
     $verif_if_user = $pdo->prepare($sql_verif_if_user);
@@ -42,10 +45,17 @@
 				$pdo->prepare($sql)->execute([$prenom_user, $id_user]);
 				echo '<h3 class="center">Le prénom de l\'utilisateur à été modifié</h3>';
 			}
-    	if ((!empty($role_user)) && ($role_user != $role_user_current)) {
+    	if (($role_user != $role_user_current)) {
 				$sql ="UPDATE utilisateur SET role_user = ? WHERE id_user = ?";
 				$pdo->prepare($sql)->execute([$role_user, $id_user]);
 				echo '<h3 class="center">Le rôle de l\'utilisateur à été modifié</h3>';
 			}
+    	if (isset($reset_user)) {
+				$sql ="UPDATE utilisateur SET mdp_user = ? WHERE id_user = ?";
+		      	$mdp = crypt('0000', $key);
+				$pdo->prepare($sql)->execute([$mdp, $id_user]);
+				echo '<h3 class="center">Le mot de passe de l\'utilisateur à été réintialisé</h3>';
+			}
 		}
+	}
 ?>

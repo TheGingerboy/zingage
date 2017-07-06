@@ -20,7 +20,7 @@
 					<span>Zingeurs</span>
 				</a>
 
-				<a class="menu-block darkblue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/clients" ?>">
+				<a class="menu-block darkblue" href="#">
 					<img class="img-responsive" src="" alt=""/>
 					<span>Clients</span>
 				</a>

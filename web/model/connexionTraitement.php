@@ -15,7 +15,7 @@
 		$identifiant = htmlspecialchars($_POST['identifiant']);
 		$mdp = htmlspecialchars($_POST['numpad_input']);
 
-	 	$mdp = crypt($key, $mdp);
+	 	$mdp = crypt($mdp, $key);
 
 		$verifid = $pdo->query( "SELECT identifiant_user FROM utilisateur WHERE identifiant_user='$identifiant'" );
 

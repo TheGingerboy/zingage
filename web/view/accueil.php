@@ -1,14 +1,23 @@
 <div id="accueil">
 
-	<div class="menu">
-
 		<?php 
 		if (isset($_SESSION['identifiant'])) 
-			{ echo '<h3 class="center padding-top-large">Bonjour ' . $_SESSION['identifiant'] . '</h3>' ;	}
+			{ 
+				echo '<div class="center">' ;
+					echo '<a class="btn btn-primary" href="http://' . $serverName . '/zingage/deconnexion">Déconnexion</a>';
+				echo '<div>' ;
+				echo '<h3 class="center">Bonjour ' . $_SESSION['identifiant'] . '</h3>' ;	
+				echo '<div class="menu padding-top-ultra">';
+			}
 		//Initialisation de la variable admin si la personne n'est pas connecté
 		else 
-			{ $_SESSION['admin'] = '0';	}
+			{ 
+				$_SESSION['admin'] = '0';
+				echo '<div class="menu">';
+			}
 		?>
+
+
 
 		<a class="menu-block blue" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/depart" ?>">
 			<img class="img-responsive" src="/zingage/web/images/plane-blue-min.png" alt=""/>

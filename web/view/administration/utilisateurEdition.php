@@ -27,9 +27,9 @@
 
 ?>
 
-  <div id="formulaire">
+  <div id="formulaire-user">
     <h2 class="center">Modifier le zingeur :</h2>
-    <form id="ajout-zinger-form" action=" <?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/utilisateurs/edition/traitement/" . $id_user; ?>" method="post">
+    <form id="ajout-user-form" action=" <?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/administration/utilisateurs/edition/traitement/" . $id_user; ?>" method="post">
       <!-- Caché pour permettre un passage de l'ID article -->
       <input type="hidden" name="id_user" value="<?= $id_user; ?>">
 
@@ -49,7 +49,7 @@
       </div>
 
       <div class="form-group">
-          <label for="prenom_user">Prenom : </label>
+          <label for="prenom_user">Rôle : </label>
           <div class="btn-group" data-toggle="buttons">
 
           <?php if ($role_user) { ?>
@@ -80,16 +80,21 @@
           </div> 
       </div>
 
-      <div class="form-group">
-          <label class="center" for="prenom_user">Réinitialise le mot de passe utilisateur (0000 à la connexion) : </label>
+      <div class="form-group center">
+          <label class="center block" for="reset_user">Réinitialise le mot de passe utilisateur (0000 à la connexion) : </label>
           <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-radio">
-                  <input type="checkbox" name="role_user" value="0">
-                  Utilisateur
+              <label class="btn btn-radio no-float block">
+                  <input type="checkbox" name="reset_user" value="1">
+                  Si activé : Réinitialisation
               </label>
           </div> 
       </div>
-   <input type="submit" value="Submit">
+
+      <hr/>
+      <div class="center block">
+        <input type="submit" class="btn btn-success center" value="Valider">
+      </div>
+
 
     </form>
   </div>

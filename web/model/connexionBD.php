@@ -1,6 +1,6 @@
 <?php
 	// Contient la clef de cryptage des mots de passe
-	$key = "ravioliravioligivemetheformioli";
+	$key = "Gb5UGkN1lLyl86V4R1yC12dVUqxe9ix3";
 
 	// Contient les informations nécessaire pour se connecter au serveur
 	$host = 'localhost';

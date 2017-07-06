@@ -130,7 +130,7 @@ if (isset($_SESSION['identifiant'])) {
             <h3 class="center">L'article le plus ancien envoyé au zingage posséde la référence : </h3>
             <h3 class="center"><b>"<?= $oldest_ref ?>"</b></h3>
             <h3 class="center"> Il a été envoyé le </h3>
-            <h3 class="center"><b><?= date( "d/m/Y H\h i:s", strtotime($oldest_depart) ) ?></b> </h3>
+            <h3 class="center"><b><?= date( "d/m/Y H\hi:s", strtotime($oldest_depart) ) ?></b> </h3>
           </div>
           <?php } ?>
 

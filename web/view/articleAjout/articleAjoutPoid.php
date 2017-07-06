@@ -47,12 +47,6 @@
   <p class="center">Type de bac : <?= $bac_article ?> </p>
 </div>
 
-<script type="text/javascript">
-
-  document.getElementById("poid-input").focus();
-
-</script>
-
 <script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>web/js/enter_to_submit.js"></script>
 
   <?php
