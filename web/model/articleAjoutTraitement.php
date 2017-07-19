@@ -46,7 +46,7 @@
     //Gestion des erreurs false = ok (pas d'erreur), true = ko (erreur présente)
     if ($err == false)
     {  //Insertion des valeurs dans la table
-      $zingAjout = "INSERT INTO article VALUES('', ?, ?, ?, ?, ?, ?, ?)";
+      $zingAjout = "INSERT INTO article (ref_article, nom_article, nb_article, dim_article, bac_article, poid_article, of_article) VALUES(?, ?, ?, ?, ?, ?, ?)";
       $pdo->prepare($zingAjout)->execute(
         [$ref_article, $nom_article, $nb_article, $dim_article, $bac_article, $poid_article, $of_article]
       );

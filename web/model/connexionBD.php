@@ -6,7 +6,7 @@
 	$host = 'localhost';
 	$db   = 'zingage';
 	$user = 'zingage';
-	$pass = 'admin';
+	$pass = 'aemlzing';
 	$charset = 'utf8';
 	
 	// PDO

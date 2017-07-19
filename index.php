@@ -43,6 +43,18 @@ $app['debug']=true;
         $content .= substr((require_once '/web/view/footer.php'), 0, -1);
         return $content;
     });
+	
+
+    $app->get('/zingage', function (){
+        $hide_logo_page =  true;
+        $logo_img = "logo.png";
+        $page_color = '#009fe3';
+        $hide_conect_btn = true;
+        $content =  substr((require_once '/web/view/header.php'), 0, -1);
+        $content .= substr((require_once '/web/view/accueil.php'), 0, -1);
+        $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+        return $content;
+    });
 
     /****************************** Depart *******************************************/
 

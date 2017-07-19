@@ -89,12 +89,13 @@ function storestate() {
 //récupération des données
 
 function retrievestate() {
-  if (typeof localStorage.todolist !== 'undefined') 
-    { localStorage.todolist = "";  }  
-  list.innerHTML = localStorage.todolist;
-  data.value = localStorage.todolist;
-  if ( list.innerHTML === "" ) 
-    { disableButton (sendDataButton); }
+  if (localStorage.todolist){
+	  data.value = localStorage.todolist;
+	  if ( localStorage.todolist === "" ) 
+		{ disableButton (sendDataButton); }
+  }
+  else
+	{ disableButton (sendDataButton); }
 };
 
 //nettoyage des données
