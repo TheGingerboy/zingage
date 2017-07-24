@@ -47,7 +47,7 @@
 		else{
 			$monthnb--;
 		}
-		$url = "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan/details/" . $year . "/" . $monthnb;
+		$url = "http://" . $_SERVER['SERVER_NAME'] . "/zingage/historique/details/" . $year . "/" . $monthnb;
 		return $url;
 	}
 
@@ -59,7 +59,7 @@
 		else{
 			$monthnb++;
 		}
-		$url = "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan/details/" . $year . "/" . $monthnb;
+		$url = "http://" . $_SERVER['SERVER_NAME'] . "/zingage/historique/details/" . $year . "/" . $monthnb;
 		return $url;
 	}
 

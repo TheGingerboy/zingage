@@ -35,7 +35,7 @@ hr {
     width: 150px;
 }
 
-#scan form {
+#Historique form {
   background-color: #fff;
 }
 
@@ -344,7 +344,75 @@ hr {
   padding: 10px;
 }
 
-/*****************Scan*********************/
+/************Historique**************/
+
+/**      Accueil Historique       **/
+
+#accueilHistorique {
+  font-weight: 300;
+  font-size: 16pt;
+}
+
+#accueilHistorique a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#accueilHistorique .menu {
+  width: 380px;
+  max-width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+}
+
+@media screen and (min-width: 600px) {
+    #accueilHistorique .menu {
+      width: 380px;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+}
+
+#accueilHistorique .menu a {
+  width: 47%;
+  height: 142px;
+  display: block;
+  margin: 4px;
+  text-align: center;
+  float:left;
+}
+
+#accueilHistorique .menu a span {
+  margin: auto;
+  position: absolute;
+  top: 35%; 
+  left: 0; 
+  bottom: 0; 
+  right: 0;
+}
+
+#accueilHistorique .menu-block {
+  position: relative;
+  pointer-events: auto;
+}
+
+#accueilHistorique .menu-block.orange    { background: #EE7202;  }
+#accueilHistorique .menu-block.yellow    { background: #FFC524;  }
+#accueilHistorique .menu-block.red       { background: #F00000; /*opacity: 0.3; pointer-events: none;*/ }
+
+#accueilHistorique .menu-block img  {
+  position: absolute;
+  bottom: 10px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
 
 #label-zing{
     width: 100%;

@@ -333,8 +333,22 @@ $app['debug']=true;
 
     /************************* Scan de l'article ************************************/
 
-    $app->get('/scan', function(){
-        $logo_page =  "/zingage/scan";
+    $app->get('/historique', function(){
+        $hide_logo_page  = true;
+        $hide_conect_btn = true;
+        $arrow_return    = true;
+        $logo_page =  "/zingage/historique";
+        $logo_img = "logo.png";
+        $page_color = '#009fe3';
+        $arrow_color = "arrow-blue.png";
+        $content =  substr((require_once '/web/view/header.php'), 0, -1);
+        $content .= substr((require_once '/web/view/historique/accueilHistorique.php'), 0, -1);
+        $content .= substr((require_once '/web/view/footer.php'), 0, -1);
+        return $content;
+    });
+
+    $app->get('/historique/control', function(){
+        $logo_page =  "/zingage/historique";
         $logo_img = "logo.png";
         $page_color = '#009fe3';
         $arrow_return = '/zingage';
@@ -346,8 +360,8 @@ $app['debug']=true;
         return $content;
     });
 
-    $app->get('/scan/details', function(){
-        $logo_page =  "/zingage/scan";
+    $app->get('/historique/details', function(){
+        $logo_page =  "/zingage/historique";
         $logo_img = "logo.png";
         $page_color = '#009fe3';
         $arrow_return = '/zingage';
@@ -359,21 +373,9 @@ $app['debug']=true;
         return $content;
     });
 
-    $app->post('/scan/article', function(){
-        $logo_page =  "/zingage/scan";
-        $logo_img = "logo.png";
-        $page_color = '#009fe3';
-        $arrow_return = '/zingage';
-        $arrow_color = "arrow-blue.png";
-        $content =  substr((require_once '/web/view/header.php'), 0, -1);
-        $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
-        $content .= substr((require_once '/web/view/listScanDetail.php'), 0, -1);
-        $content .= substr((require_once '/web/view/footer.php'), 0, -1);
-        return $content;
-    });
 
-    $app->get('/scan/details/{annee}/{mois}', function($annee, $mois) use($app){
-        $logo_page =  "/zingage/scan";
+    $app->get('/historique/details/{annee}/{mois}', function($annee, $mois) use($app){
+        $logo_page =  "/zingage/historique";
         $logo_img = "logo.png";
         $page_color = '#009fe3';
         $arrow_return = '/zingage';
@@ -385,7 +387,7 @@ $app['debug']=true;
         return $content;
     });
 
-    $app->post('/scan/suppression', function(){
+    $app->post('/historique/scan/suppression', function(){
         $logo_page =  "/zingage/scan";
         $logo_img = "logo.png";
         $page_color = '#009fe3';
@@ -416,16 +418,9 @@ $app['debug']=true;
     });
 
     $app->post('/connexion/traitement', function(){
-        $logo_page =  "/zingage";
-        $logo_img = "logo-green.png";
-        $page_color = '#96c11f';
-        $arrow_return = '/zingage';
-        $arrow_color = "arrow-green.png";
         $hide_conect_btn = true;
-        $content =  substr((require_once '/web/view/header.php'), 0, -1);
-        $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
+        $content = substr((require_once '/web/model/connexionBD.php'), 0, -1);
         $content .= substr((require_once '/web/model/connexionTraitement.php'), 0, -1);
-        $content .= substr((require_once '/web/view/footer.php'), 0, -1);
         return $content;
     });
 
@@ -507,6 +502,7 @@ $app['debug']=true;
 
     $app->get('/deconnexion', function(){
         $logo_page =  "/zingage";
+        $logo_img = "logo.png";
         $hide_logo_page =  true;
         $page_color = '#009fe3';
         $hide_conect_btn = true;
@@ -571,7 +567,7 @@ $app['debug']=true;
         $page_color = '#9f038f';
         $arrow_color = "arrow-purple.png";
         $content =  substr((require_once '/web/view/header.php'), 0, -1);
-    // Utilisation de la BDD pour verifier que l'utilisateur n'existe déja pas
+        // Utilisation de la BDD pour verifier que l'utilisateur n'existe déja pas
         $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
         $content .= substr((require_once '/web/view/administration/utilisateurAjout/utilisateurAjoutNom.php'), 0, -1);
         $content .= substr((require_once '/web/view/footer.php'), 0, -1);
@@ -888,6 +884,6 @@ $app['debug']=true;
 
 /*************************** This the end ****************************/
 /********************** My only friend, the end **********************/
-/* Lance le content obtenu préalablement par la détéction du routage */
+/* Lance le "content" défini en fonction de l'URl (routage) */
 
 $app->run();

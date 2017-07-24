@@ -3,7 +3,9 @@
     session_start();
 
   $serverName = $_SERVER['SERVER_NAME'];
+
 ?> 
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,10 +21,15 @@
     <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
     <!-- Fancy Sidebar -->
     <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>web/css/fancy-sidebar.css"/>
+    <!-- DataTables -->
+    <link rel="stylesheet"  type="text/css" href="<?= "http://" . $serverName . "/zingage/" ?>web/css/datatables.css"/>
     <!-- Bootstrap Select -->
     <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>vendor/bootstrap-select/bootstrap-select/dist/css/bootstrap-select.min.css"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= "http://" . $serverName . "/zingage/" ?>web/css/style.css"/>
+    <!-- jQuery - Why on head ? Because it's a mess otherwise -->
+    <script type="text/javascript" src="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/" ?>vendor/components/jquery/jquery.min.js"></script>
+
 
   </head>
   <!-- body fermé dans le footer -->
@@ -47,7 +54,7 @@
               </li>
               <li>
                   <div class="small-rectangle orange"></div>
-                  <a href="/zingage/scan">Historique</a>
+                  <a href="/zingage/historique">Historique</a>
               </li>
               <li>
                   <div class="small-rectangle green"></div>

@@ -4,9 +4,15 @@
 	if(!(isset($_SESSION)))
 		session_start();
 	
+    $logo_page =  "/zingage";
+    $logo_img = "logo-green.png";
+    $page_color = '#96c11f';
+    $arrow_color = "arrow-green.png";
+
 	//Renvoie vers la page de connexion : stockage des fichiers de dépendance
 	$header = dirname(dirname(__FILE__)) . "\\view\\header.php";
-	$accueil = dirname(dirname(__FILE__)) . "\\view\\zingage.php";
+	$accueil = dirname(dirname(__FILE__)) . "\\view\\accueil.php";
+	$connexion = dirname(dirname(__FILE__)) . "\\view\\connexion.php";
 	$footer = dirname(dirname(__FILE__)) . "\\view\\footer.php";
 
 	if (isset($_POST['identifiant']) && isset($_POST['numpad_input']) ) {
@@ -32,29 +38,35 @@
 				//Mise en session du compte
 				$_SESSION['admin'] = $admin;
 				$_SESSION['identifiant'] = $identifiant;
-				header( "Location: /zingage/" );
-				exit;
+		        $hide_logo_page =  true;
+		        $hide_conect_btn = true;
+		        $logo_img = "logo.png";
+		        $page_color = '#009fe3';
+			    $arrow_color = "arrow-blue.png";
+				require_once($header);
+				require_once($accueil);
+				require_once($footer);
 			}
 
 			else {
 				echo("Mot de passe incorrect, veuillez réessayer");
-				require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
-				require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
-				require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
+				require_once($header);
+				require_once($connexion);
+				require_once($footer);
 			}
 		}
 
 	  else {
 	  	echo("Identifiant introuvable, veuillez réessayer");
-		require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
-		require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
-		require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
+		require_once($header);
+		require_once($connexion);
+		require_once($footer);
 	  }
 	}
 
 	else {
 		echo ("<h3>Une erreur s'est produite, veuillez réessayer</h3>");
-		require_once(dirname(dirname(__FILE__)) . "\\view\\header.php");
-		require_once(dirname(dirname(__FILE__)) . "\\view\\connexion.php");
-		require_once(dirname(dirname(__FILE__)) . "\\view\\footer.php");
+		require_once($header);
+		require_once($connexion);
+		require_once($footer);
 	}
