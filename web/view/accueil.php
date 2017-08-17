@@ -28,7 +28,7 @@
 			<span>Zingage Retour</span>
 		</a>
 
-		<a class="menu-block orange" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/scan" ?>">
+		<a class="menu-block orange" href="<?= "http://" . $_SERVER['SERVER_NAME'] . "/zingage/historique" ?>">
 			<img class="img-responsive" src="/zingage/web/images/fox-min.png" alt=""/>
 			<span>Historique</span>
 		</a>

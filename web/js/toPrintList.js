@@ -13,7 +13,7 @@
   list.value = "";
 
   //Vérifie que la var temporaire est bien initalisé
-  if ( (localStorage.todolist === null) || (localStorage.todolist) ) 
+  if ( !localStorage.todolist ) 
     localStorage = "";
 
   //Permet d'activer une fonction régulirement (ajout automatique de l'input dans le formulaire)
@@ -94,8 +94,6 @@ function retrievestate() {
 	  if ( localStorage.todolist === "" ) 
 		{ disableButton (sendDataButton); }
   }
-  else
-	{ disableButton (sendDataButton); }
 };
 
 //nettoyage des données

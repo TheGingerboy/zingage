@@ -388,7 +388,7 @@ $app['debug']=true;
     });
 
     $app->post('/historique/scan/suppression', function(){
-        $logo_page =  "/zingage/scan";
+        $logo_page =  "/zingage/historique";
         $logo_img = "logo.png";
         $page_color = '#009fe3';
         $arrow_return = '/zingage';
@@ -396,7 +396,7 @@ $app['debug']=true;
         $content =  substr((require_once '/web/view/header.php'), 0, -1);
         $content .= substr((require_once '/web/model/connexionBD.php'), 0, -1);
         $content .= substr((require_once '/web/model/scanSuppression.php'), 0, -1);
-        $content .= substr((require_once '/web/view/listScan.php'), 0, -1);
+        $content .= substr((require_once '/web/view/listScanDetail.php'), 0, -1);
         $content .= substr((require_once '/web/view/footer.php'), 0, -1);
         return $content;
     });

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 12 Juillet 2017 à 11:58
+-- Généré le :  Jeu 17 Août 2017 à 16:20
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -36,21 +36,6 @@ CREATE TABLE `article` (
   `poid_article` decimal(10,3) DEFAULT NULL,
   `of_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Contenu de la table `article`
---
-
-INSERT INTO `article` (`id_article`, `ref_article`, `nom_article`, `nb_article`, `dim_article`, `bac_article`, `poid_article`, `of_article`) VALUES
-(1, 'GD4130-BKK1-E11A50800', 'TOTO', 5, '20X30', 'T2', '0.200', 256895),
-(2, '42930VGO0002', 'ARM COMP TENSION ZINGUE', 0, 'test', 'Aucun', '0.000', 77777),
-(3, 'test', 'SCANNER', 1, '20X30', 'T2', '15.000', 125565),
-(4, 'Test', 'Ceci est un test', 666, '2x2cm', 'T3', '0.000', 67457234),
-(5, 't', 'ARM COMP TENSION ZINGUE', 20, '10*15', 'T1', '50.000', 6035395),
-(6, '306832008000', 'bouteille d''eau', 6, '27.5cm', 'T1', '1.250', 12326480),
-(7, '213443378124', 'boîte en carton ', 10, '20 x 45 x 13', 'Carton', '250.150', 634525),
-(8, '42940VGO0002', 'Arm Comp RL RR adj Zingue Blanc', 20, '', 'T1', '11.000', 666666),
-(9, '42911VFO0000', 'ttt', 1309, '', 'T1', '15.000', 15);
 
 -- --------------------------------------------------------
 
@@ -87,27 +72,6 @@ CREATE TABLE `scan` (
   `date_scan_retour` datetime DEFAULT NULL,
   `is_in_zingage` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Contenu de la table `scan`
---
-
-INSERT INTO `scan` (`id_scan`, `id_article`, `id_user_depart`, `id_user_retour`, `id_entreprise`, `id_zingeur`, `date_scan_depart`, `date_scan_retour`, `is_in_zingage`) VALUES
-(13, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(14, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(15, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(16, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(17, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(18, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(19, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(20, 5, 1, NULL, 1, 12, '2017-06-26 18:05:20', NULL, 1),
-(21, 7, 1, 1, 1, 12, '2017-06-28 17:43:37', '2017-06-28 17:45:57', 0),
-(22, 7, 1, 1, 1, 12, '2017-06-28 17:43:37', '2017-06-28 17:45:57', 0),
-(23, 5, 1, NULL, 1, 12, '2017-06-28 17:44:05', NULL, 1),
-(24, 7, 1, 1, 1, 12, '2017-06-28 17:45:07', '2017-06-28 17:45:57', 0),
-(25, 7, 1, 1, 1, 12, '2017-06-28 17:47:46', '2017-06-28 17:48:18', 0),
-(26, 9, 1, NULL, 1, 12, '2017-06-29 16:51:22', NULL, 1),
-(27, 9, 1, NULL, 1, 12, '2017-06-29 16:51:22', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +118,8 @@ CREATE TABLE `zingeur` (
 --
 
 INSERT INTO `zingeur` (`id_zingeur`, `nom_zingeur`, `num_adr_zingeur`, `rue_adr_zingeur`, `compl_adr_zingeur`, `ville_adr_zingeur`, `cp_adr_zingeur`, `pays_adr_zingeur`) VALUES
-(12, 'Test Zingeur', '36 bis', 'Rue du savoir', 'CEDEX 454', 'Orléans', 45150, 'FRANCE');
+(14, 'GMC Beaujoin', '\\', 'ROUTE DE TOURS', '', 'BUZANCAIS', 36500, 'FRANCE'),
+(15, 'Métal Protection', '4 ', 'CHEMIN DE LA RIGOLE', '', 'BLENEAU', 89220, 'FRANCE');
 
 --
 -- Index pour les tables exportées
@@ -218,7 +183,7 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `scan`
 --
 ALTER TABLE `scan`
-  MODIFY `id_scan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_scan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
@@ -228,7 +193,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `zingeur`
 --
 ALTER TABLE `zingeur`
-  MODIFY `id_zingeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_zingeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Contraintes pour les tables exportées
 --

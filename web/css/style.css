@@ -160,6 +160,10 @@ hr {
   display: block;
 }
 
+.noevent{
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 /*****************Accueil*********************/
 
